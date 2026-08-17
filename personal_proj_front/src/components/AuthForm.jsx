@@ -25,7 +25,7 @@ const AuthForm = ({setUser}) => {
     return (
         <>
             <Form onSubmit={handleSubmit}>
-                <Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email Address</Form.Label>
                     <Form.Control
                         type = "email"
@@ -38,7 +38,7 @@ const AuthForm = ({setUser}) => {
                     </Form.Text>
                 </Form.Group>
 
-                <Form.Group>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type = "password"
@@ -47,7 +47,8 @@ const AuthForm = ({setUser}) => {
                         onChange={(e)=>setPassword(e.target.value)}
                     />
                 </Form.Group>
-                <Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check
                         type="checkbox"
                         label={signup ? "Ceate Account":"Login"}
