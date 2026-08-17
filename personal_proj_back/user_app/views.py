@@ -6,23 +6,6 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status as s
 from .models import User
-# from django.conf import settings
-
-# COOKIE_MAX_AGE = 60 * 60 * 204 * 7 # 7 day cookie life
-
-# def set_token_cookie(response, token_key):
-# response.set_cookie(
-# key =,"token",
-# value = token_value,
-# httponly = True,
-# secure = settings.AUTH_COOKIE_SECURE,
-# samesite = settings.AUTH_COOKIE_SAMESITE,
-# max_age = COOKIE_MAX_AGE,
-# path = "/"
-# )
-# return response
-
-
 # Create your views here.
 
 class CreateUser(APIView):
