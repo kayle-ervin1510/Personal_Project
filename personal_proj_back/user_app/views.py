@@ -8,7 +8,7 @@ from rest_framework import status as s
 from .models import User
 # Create your views here.
 
-class CreateUser(APIView):
+class SignUp(APIView):
     authentication_classes = []
     permission_classes = []
 

@@ -35,10 +35,10 @@ const errorMessage = (error) => {
 // follow psudeocode below:
 
 // most of my errors on the front end come back to this post request
-export const userAuth = async (email, password, create)=>{
+export const userAuth = async (email, password, signup)=>{
  try{
      const response = await api.post(
-     create ? "users/create/" : "users/login/",
+     signup ? "users/signup/" : "users/login/",
         {
         email,
         password
