@@ -16,6 +16,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
             {index:true,
+                // Error going to the AuthPage
             element:<AuthPage />,
             loader:redirectIfLoggedIn},
 

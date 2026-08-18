@@ -12,6 +12,7 @@ const AuthForm = ({setUser}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        //Error also on the below await function
         const loggedInUser = await userAuth(email, password, signup)
         if (!loggedInUser) return 
 
@@ -21,7 +22,7 @@ const AuthForm = ({setUser}) => {
         setPassword('')
         navigate('/home')
     }
-
+// Some sort of issue on line 28, with onSubmit={handleSubmit}
     return (
         <>
             <Form onSubmit={handleSubmit}>
