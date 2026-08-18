@@ -42,6 +42,6 @@ class ANote(APIView):
 
     def delete(self, request, note_id):
         note = request.user.notes.get(id=note_id)
-        return_string = f"Note {note.title} has been deleted."
+        return_string = f"{note.title} has been deleted."
         note.delete()
         return Response(return_string)

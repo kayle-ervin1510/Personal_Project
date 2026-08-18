@@ -96,7 +96,7 @@ export const userConfirmation = async () => {
 // block a route to bounce hte login page, if the user has no token
 // follow psuedo code below. P.S. renaming requireLogin to mustLogin
 
-export const mustLogin = () =>{
+export const mustLogin = async () =>{
   const email = await userConfirmation()
   if (!email) throw redirect("/");
     return null;
@@ -109,7 +109,7 @@ export const mustLogin = () =>{
 // if a user is logged in, they don't need to be on login page
 // follow psudeo code below:
 
-export const redirectIfLoggedIn = () =>{
+export const redirectIfLoggedIn = async () =>{
   const email = await userConfirmation()
   return email ? redirect("/home") : null;
   // return localStorage.getItem("token") ? redirect("/home") : null;
@@ -132,7 +132,7 @@ export const getNotes = async()=>{
   }
 }
 
-export const createNote = async(noteObj)=>{
+export const createNote = async (noteObj)=>{
   try{
     const response = await api.post('notes/', noteObj)
     return response.data
