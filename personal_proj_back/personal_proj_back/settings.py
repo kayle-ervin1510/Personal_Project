@@ -21,15 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = os.environ.get('SECRET_KEY','django-insecure-*9sf65x%1xzc%^4(=&(uy9wt&+5j&$91_mmb99(yc*48-3o%q0')
-SECRET_KEY = os.environ.get("SECRET_KEY", 'django-insecure-local-dev-only')
+SECRET_KEY = 'django-insecure-*9sf65x%1xzc%^4(=&(uy9wt&+5j&$91_mmb99(yc*48-3o%q0'
+#SECRET_KEY = os.environ.get("SECRET_KEY", 'django-insecure-local-dev-only')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
-DEBUG = os.environ.get("DEBUG", 'False') == 'True'
+DEBUG = True
+#DEBUG = os.environ.get("DEBUG", 'False') == 'True'
 
-ALLOWED_HOSTS =  os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
-
+#ALLOWED_HOSTS =  os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -94,22 +94,22 @@ DATABASES = {
         'NAME': os.environ.get('POSTGRES_DB'),
         'USER': os.environ.get('POSTGRES_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST','personal_proj-container'),
-        'PORT': os.environ.get('DB_PORT','5432')
+        'HOST': 'personal_proj-container',#os.environ.get('DB_HOST','personal_proj-container'),
+        'PORT': '5432'#os.environ.get('DB_PORT','5432')
     }
 }
 # Cookie Sessions
 
-SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE', 'False') == 'True'
-SESSION_COOKIE_HTTPONLY = os.environ.get('SESSION_COOKIE_HTTPONLY', 'True') == 'True'
-CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE', 'False') == 'True'
+# SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE', 'False') == 'True'
+# SESSION_COOKIE_HTTPONLY = os.environ.get('SESSION_COOKIE_HTTPONLY', 'True') == 'True'
+# CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE', 'False') == 'True'
 
-# Cookie Authentication
+# # Cookie Authentication
 
-AUTH_COOKIE_SECURE = os.environ.get('AUTH_COOKIE_SECURE', False) == 'True'
-AUTH_COOKIE_SAMESITE = os.environ.get('AUTH_COOKIE_SECURE', 'Lax')
+# AUTH_COOKIE_SECURE = os.environ.get('AUTH_COOKIE_SECURE', False) == 'True'
+# AUTH_COOKIE_SAMESITE = os.environ.get('AUTH_COOKIE_SECURE', 'Lax')
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 

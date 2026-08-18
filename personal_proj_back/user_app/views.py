@@ -6,29 +6,29 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status as s
 from .models import User
-from django.conf import settings
+# from django.conf import settings
 # Create your views here.
 
-COOKIE_MAX_AGE = 60 * 60 * 7
+# COOKIE_MAX_AGE = 60 * 60 * 7
 
-def set_token_cookie(response, token_key):
-    response.set_cookie(
-        key="token",
-        value=token_key,
-        httponly=True,
-        secure=settings.AUTH_COOKIE_SECURE,
-        samesite=settings.AUTH_COOKIE_SAMESITE,
-        max_age=COOKIE_MAX_AGE,
-        path="/"
-    )
-    return response
+# def set_token_cookie(response, token_key):
+#     response.set_cookie(
+#         key="token",
+#         value=token_key,
+#         httponly=True,
+#         secure=settings.AUTH_COOKIE_SECURE,
+#         samesite=settings.AUTH_COOKIE_SAMESITE,
+#         max_age=COOKIE_MAX_AGE,
+#         path="/"
+#     )
+#     return response
 
-class CookieAuthentication(TokenAuthentication):
-    def authentication(self, request):
-        token_key = request.COOKIES.get("token")
-        if not token_key:
-            return None
-        return self.authenticate_credentials(token_key)
+# class CookieAuthentication(TokenAuthentication):
+#     def authentication(self, request):
+#         token_key = request.COOKIES.get("token")
+#         if not token_key:
+#             return None
+#         return self.authenticate_credentials(token_key)
 
 
 class SignUp(APIView):
@@ -43,8 +43,9 @@ class SignUp(APIView):
             new_user.full_clean()
             new_user.save()
             token = Token.objects.create(user=new_user)
-            response = Response({"email":new_user.email}, status=s.HTTP_201_CREATED)
-            return set_token_cookie(response, token.key)
+            return Response({"token":token.key, "email":new_user.email}, status=s.HTTP_201_CREATED)
+            # response = Response({"email":new_user.email}, status=s.HTTP_201_CREATED)
+            # return set_token_cookie(response, token.key)
         except Exception as e:
             return Response(e.args, status=s.HTTP_400_BAD_REQUEST)
 
@@ -57,30 +58,31 @@ class Login(APIView):
         data['username'] = request.data.get('email')
         user = authenticate(username=data.get('username'), password=data.get("password"))
         if user:
-            token, _= Token.objects.get_or_create(user=user)
-            response = Response({"email":user.email})
-            # Token.objects.get_or_create(user=user)
-            # return Response({"token":user.auth_token.key, "email":user.email})
-            return set_token_cookie(response, token.key)
+            # token, _= Token.objects.get_or_create(user=user)
+            # response = Response({"email":user.email})
+            Token.objects.get_or_create(user=user)
+            return Response({"token":user.auth_token.key, "email":user.email})
+            #return set_token_cookie(response, token.key)
         else:
             return Response("A user matching that value does not exist.", status=s.HTTP_404_NOT_FOUND)
 
 class UserView(APIView):
-    # authentication_classes = [TokenAuthentication]
-    # permission_classes = [IsAuthenticated]
-    authentication_classes = [CookieAuthentication]
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
+    # authentication_classes = [CookieAuthentication]
+    # permission_classes = [IsAuthenticated]
 
 class Info(UserView):
     
     def get(self, request):
         user = request.user
-        return Response({"email":user.email})
+        return Response({"token":user.auth_token.key, "email":user.email})
 
 class Logout(UserView):
     def post(self, request):
         user = request.user
         user.auth_token.delete()
-        response = Response({"detail":"logged out"})
-        response.delete_cookie("token", path="/")
-        return response
+        return Response(f"{user.email} has been logged out.")
+        # response = Response({"detail":"logged out"})
+        # response.delete_cookie("token", path="/")
+        # return response
