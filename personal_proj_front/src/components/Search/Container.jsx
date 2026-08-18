@@ -1,6 +1,6 @@
 import CatCard from './CatCard';
 
-export default function Container({httpList=[]}) {
+export default function Container({list}) {
     return (
         <>
          <div id="cat-container"
