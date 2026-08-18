@@ -93,7 +93,7 @@ export const userConfirmation = async () => {
 
 
 // -------------------------------------
-// block a route to bounce hte login page, if the user has no token
+// block a route to bounce the login page, if the user has no token
 // P.S. renaming requireLogin to mustLogin
 
 export const mustLogin = () =>{
