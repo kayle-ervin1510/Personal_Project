@@ -4,20 +4,21 @@ import { redirect } from 'react-router-dom';
 // find out what my baseURL is for my back-end api.
 // Use that baseURL to create the following:
 export const api = axios.create ({ 
-  baseURL: "/api/v1/"
+  baseURL: "/api/v1/",
+   withCredentials:true
 })
 // ---------------------------------------------------------
 // make an interceptor that can run before or after an api call
 // namely, one that will run immediately before very request the client sends.
 // follow psuedo-code below:
 
-api.interceptors.request.use((config)=>{
-   const token = localStorage.getItem("token");
-   if (token){
-         config.headers.Authorization = `Token ${token}`
-        }
-        return config
- })
+// api.interceptors.request.use((config)=>{
+//    const token = localStorage.getItem("token");
+//    if (token){
+//          config.headers.Authorization = `Token ${token}`
+//         }
+//         return config
+//  })
 
 // -------------------------------------
 // Create an error message
@@ -55,6 +56,22 @@ export const userAuth = async (email, password, signup)=>{
    }
  }
 
+
+// -------------------------------------
+// user logout. Follow psuedo code below:
+
+export const userLogout = async () => {
+  try {
+    await api.post("users/logout/")
+  }catch(error){
+    console.error("Logout request has failed", error)
+}
+//  localStorage.removeItem("token")
+ return null;
+}
+
+
+
 // -------------------------------------
 // confirm the user
 // follow psuedo code below:
@@ -67,32 +84,25 @@ export const userConfirmation = async () => {
          return response.data.email
      
     }catch(error){
-      localStorage.removeItem("token");
-      console.log(error);
+      // localStorage.removeItem("token");
+      // console.log(error);
       return null;
     }
 }
 
-// -------------------------------------
-// user logout. Follow psuedo code below:
 
-export const userLogout = async () => {
-  try {
-    await api.post("users/logout/")
-  }catch(error){
-    console.error("Logout request has failed. Clearing local session.", error)
-}
- localStorage.removeItem("token")
- return null;
-}
 
 // -------------------------------------
 // block a route to bounce hte login page, if the user has no token
 // follow psuedo code below. P.S. renaming requireLogin to mustLogin
 
 export const mustLogin = () =>{
- if (!localStorage.getItem("token")) throw redirect("/");
- return null;
+  const email = await userConfirmation()
+  if (!email) throw redirect("/");
+    return null;
+  
+//  if (!localStorage.getItem("token")) throw redirect("/");
+//  return null;
    }
 
 // -------------------------------------
@@ -100,7 +110,9 @@ export const mustLogin = () =>{
 // follow psudeo code below:
 
 export const redirectIfLoggedIn = () =>{
-  return localStorage.getItem("token") ? redirect("/home") : null;
+  const email = await userConfirmation()
+  return email ? redirect("/home") : null;
+  // return localStorage.getItem("token") ? redirect("/home") : null;
 
     
 }

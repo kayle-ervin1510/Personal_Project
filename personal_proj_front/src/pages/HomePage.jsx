@@ -31,7 +31,9 @@ const HomePage = ()=>{
         setUser(await userLogout());
         navigate('/')
     }
-
+// Why do I have addNote and not CreateNote?
+// Why is it I have rmNote, and not deleteNote?
+// Why editNote, and not updateNote
     return (
         <>
             <h1>Weolcome {user && user}: Here are your Notes! <button onClick={handleLogout}>Log Out</button></h1>

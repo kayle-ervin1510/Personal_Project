@@ -1,11 +1,12 @@
 import { useParams, useOutletContext } from 'react-router-dom';
 
 const HttpCatDeetsPage =() => {
-    const {id } = useParams();
+    const {id} = useParams();
     const {list =[], addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
 
     const Httpcode = id?.trim();
 
+        // Why do I have this test Httpcode?
     const isValidCode = /^[1-5]\d{2}$/.test(Httpcode);
 
     const isCaught = list.some((cat)=>cat.id === Httpcode);

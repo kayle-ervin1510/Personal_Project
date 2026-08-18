@@ -5,7 +5,7 @@ import { createNote } from '../user_utilities'
 
 function NoteForm({addNote}) {
     const [noteTitle, setNoteTitle] = useState('')
-
+// Why do I have addNote here?
     const handleSubmit = async (e) => {
         e.preventDefault()
         const newNote = await createNote({title:noteTitle})

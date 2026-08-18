@@ -1,7 +1,7 @@
 export default function MissingPage() {
     return (
         <>
-        <div></div>
+        <div>Seems this page is missing. Woops!</div>
         </>
     )
 }

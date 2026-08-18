@@ -25,16 +25,16 @@ const router = createBrowserRouter([
             element: <HomePage />,
             loader:homeLoader},
 
-            {path: 'list',
-            element: <ListPage />, 
-            loader:mustLogin},
+            // {path: 'list',
+            // element: <ListPage />, 
+            // loader:mustLogin},
 
-            {path: 'cat/:id',
-            element: <HttpCatDeetsPage />}  
+            // {path: 'cat/:id',
+            // element: <HttpCatDeetsPage />}  
         ],
     },
-    {path: '*',
-    element: <NotFound />},
+    // {path: '*',
+    // element: <NotFound />},
 
 ])
 export default router;
