@@ -22,9 +22,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY','django-insecure-*9sf65x%1xzc%^4(=&(uy9wt&+5j&$91_mmb99(yc*48-3o%q0')
+# SECRET_KEY = os.environ.get("SECRET_KEY", 'django-insecure-local-dev-only')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# DEBUG = os.environ.get("DEBUG", 'False') == 'True'
 
 ALLOWED_HOSTS = ['*'] # os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
@@ -96,6 +98,20 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT','5432')
     }
 }
+# Cookie Sessions
+
+# SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE', 'False') == 'True'
+# SESSION_COOKIE_HTTPONLY = os.environ.get('SESSION_COOKIE_HTTPONLY', 'True') == 'True'
+# CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE', 'False') == 'True'
+
+# # Cookie Authentication
+
+# AUTH_COOKIE_SECURE = os.environ.get('AUTH_COOKIE_SECURE', False) == 'True'
+# AUTH_COOKIE_SAMESITE = os.environ.get('AUTH_COOKIE_SECURE', 'Lax')
+
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
 
 
 # Password validation
@@ -137,5 +153,8 @@ STATIC_URL = 'static/'
 
 AUTH_USER_MODEL = "user_app.User"
 
-# Configuring authentication redirections
 
+# According to the documention from the django project link
+# The code below allows me to define a list of directories in 
+# my settings files where Django will look for static files
+STATICFILES_DIRS = [BASE_DIR / "static"]
