@@ -4,7 +4,7 @@ import { redirect } from 'react-router-dom';
 // find out what my baseURL is for my back-end api.
 // Use that baseURL to create the following:
 export const api = axios.create ({ 
-  baseURL: '/api/v1/'
+  baseURL: "/api/v1/"
 })
 // ---------------------------------------------------------
 // make an interceptor that can run before or after an api call
@@ -25,7 +25,7 @@ api.interceptors.request.use((config)=>{
 
 const errorMessage = (error) => {
   const data = error.response?.data;
-  if (!data) return "could not reach the server. Sorry.";
+  if (!data) return "Could not reach the server. Sorry.";
   return typeof data === "string" ? data : JSON.stringify(data);
 
   }
