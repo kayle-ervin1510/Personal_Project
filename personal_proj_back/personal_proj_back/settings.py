@@ -157,4 +157,12 @@ AUTH_USER_MODEL = "user_app.User"
 # According to the documention from the django project link
 # The code below allows me to define a list of directories in 
 # my settings files where Django will look for static files
-STATICFILES_DIRS = [BASE_DIR / "static"]
+# STATICFILES_DIRS = [BASE_DIR / "static"]
+
+#Not my issue after all - apparently when I try to look at my 
+# api/v1/users/signup I'm sending a GET request
+# rather than sending a POSt request
+# Which seems rather odd. Perhaps it's becuase
+# I can't runserver to open up the backend
+# but rather I have to type in localhost:8000
+# Then add the: "/api/v1/users/signup/"

@@ -53,9 +53,6 @@ class Login(APIView):
     authentication_classes = []
     permission_classes = []
 
-
-
-
     def post(self, request):
         data = request.data
         data['username'] = request.data.get('email')
