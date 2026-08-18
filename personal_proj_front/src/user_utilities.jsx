@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { redirect } from 'react-router-dom';
 
-// find out what my baseURL is for my back-end api.
+
 // Use that baseURL to create the following:
 export const api = axios.create ({ 
   baseURL: "/api/v1/",
