@@ -44,9 +44,10 @@ export const userAuth = async (email, password, signup)=>{
         password
         }
      );
-     const {email: userEmail, token} = response.data
-     localStorage.setItem("token", token)
-     return userEmail
+     return response.data.email
+    //  const {email: userEmail, token} = response.data
+    //  localStorage.setItem("token", token)
+    //  return userEmail
 
      }catch (error){
       alert(errorMessage(error))
