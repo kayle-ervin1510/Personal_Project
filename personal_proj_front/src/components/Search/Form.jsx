@@ -1,9 +1,9 @@
 export default function Form({ handleSubmit, setHttpCatName, httpCatName}) {
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(event) => handleSubmit(event)} className="mb-6 p-6 rounded-x1">
             <input
                 id="http-number"
-                type="number"
+                type="text"
                 name="name"
                 placeholder="Search...Try '308'"
                 value={httpCatName ?? ""}

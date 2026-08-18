@@ -7,32 +7,30 @@ import { Link } from 'react-router-dom';
 
 export default function CatCard ({httpCat, canCatch}){
     const [capture, setCapture] = useState(false);
-    const code = typeof httpCat === 'object' ? httpCat?.id : httpCat;
-    // const imageSource = `http://http.cat/${Httpcode}`
+    const imageSource = `http://http.cat/${httpCat}`
 
     return (
-        <Card style={ {width:"18rem"} } id={ `cat-${code}-card` }>
+        <Card style={ {width:"18rem"} } id={ `cat-${httpCat}-card` }>
             <Card.Img
                 variant="top"
-                src={`http://http.cat/${code}`}
-                alt={`HTTP Cat ${code}`}
+                src={`http://http.cat/${httpCat}`}
+                alt={`HTTP Cat ${httpCat}`}
             />
             <Card.Body>
                 <Card.Text>
                     <Badge bg="secondary">HTTP Code #{code}</Badge>
                 </Card.Text>
                 <Card.Title>
-                    Status {code}
+                    Status {httpCat}
                 </Card.Title>
                 <Stack gap={2}>
                     <Button
                     variant={capture?"secondary":"warning"}
                     onClick={()=>setCapture(!capture)}
-                    disabled={!capture && canCatch === false}
                     >
                         {capture?"Release Cat":"Collect Cat"}
                     </Button>
-                    <Button as={Link} to={`/cat/${code}`}>Details</Button>
+                    <Button as={Link} to={`/cat/${httpCat.id}`}>Details</Button>
                 </Stack>
             </Card.Body>
 
