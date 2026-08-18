@@ -1,45 +1,32 @@
 import { useParams, useOutletContext } from 'react-router-dom';
 
-const HttpCatDeetsPage =() => {
+export default function HttpCatDeetsPage() {
+
+    const [httpCat, setHttpCat] = useState(null);
+    const [errorMessage, setErrorMessage] = useState("");
     const {id} = useParams();
-    const {list =[], addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
+    const {list, addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
 
-    const Httpcode = id?.trim();
+    const isCaught = httpCat ? hasHttpCat(HttpCatDeetsPage.id): false;
+    const canCatch = httpCat ? !isCaught && list.length < 10 : false;
+   
 
-        // Why do I have this test Httpcode?
-    const isValidCode = /^[1-5]\d{2}$/.test(Httpcode);
-
-    const isCaught = list.some((cat)=>cat.id === Httpcode);
-    //const isCaught = Httpcode ? hasHttpCat(Httpcode) : false;
-    const canCatch = !isCaught && list.length < 10;
-
-    if (!isValidCode) {
-        return (
-            <div className = "main-page-contents">
-                <h2>Invalid HTTP Code</h2>
-                <p>'{Httpcode}' is not a valid Http code. Must be a three digit value.</p>
-            </div>
-        )
-    }
+   
     return (
-        <div>
-            <h2>HTTP Status {Httpcode}</h2>
-            <img src={`https://http.cat/${Httpcode}`} alt={`HTTP ${Httpcode}`}/>
+        <div className="cat-ard">
+            <h2>HTTP Status {httpCat}</h2>
+            <img src={`https://http.cat/${httpCat}`}
+             alt={`HTTP ${httpCat}`}
+             />
 
-            <div>
-                {isCaught ? (
-                    <button onClick={()=>removeHttpCat(Httpcode)}>Remove Cat</button>
-                ) : (
-                    <button 
-                        disabled={!canCatch}
-                        onClick={() => addHttpCat({id:Httpcode})}
-                    >
-                        {list.length >= 10 ? "Your list is full!" : "Collect Cat"}
-                    </button>
-                )}
-            </div>
+            <button 
+            className="cat-action"
+            disabled={!canCatch && !isCaught}
+            onClick={() => (isCaught ? removeHttpCat(httpCat.id) : addHttpCat(httpCat))}
+            >
+                {isCaught ? "Remove Cat" : "Add Cat"}
+            </button>
         </div>
-    )
+    );
 }
 
-export default HttpCatDeetsPage
