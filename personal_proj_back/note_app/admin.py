@@ -1,8 +1,3 @@
-# from django.contrib import admin
-# from .models import Note
+from django.contrib import admin
 
-# @admin.register(Note)
-# class NoteAdmin(admin.ModelAdmin):
-#     list_display = ("title", "user")
-
-# # Register your models here.
+# Register your model here.

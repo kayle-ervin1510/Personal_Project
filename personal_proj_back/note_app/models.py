@@ -4,8 +4,8 @@ from user_app.models import User
 # Create your models here.
 
 class Note(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notes')
     title = models.CharField(max_length=150)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notes')
     # content = models.TextField(default="", blank=True)
     # created_at = models.DateTimeField(auto_now_add=True)
     # updated_at = models.DateTimeField(auto_now=True)
@@ -13,7 +13,3 @@ class Note(models.Model):
 
     def __str__(self):
         return f"{self.title}"
-
-# class NoteBookNote(models.Model):
-#     note = models.ForeignKey(Note, on_delete=models.CASCADE)
-#     user = models.ForeignKey(User, on_delte=models.CASCADE)
