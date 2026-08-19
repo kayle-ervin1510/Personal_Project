@@ -38,8 +38,8 @@ class SignUp(APIView):
     def post(self, request):
         data = request.data
         data['username'] = request.data.get('email')
-        new_user = User.objects.create_user(**data)
         try:
+            new_user = User.objects.create_user(**data)
             new_user.full_clean()
             new_user.save()
             token = Token.objects.create(user=new_user)

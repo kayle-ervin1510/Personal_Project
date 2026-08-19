@@ -7,7 +7,7 @@ export const api = axios.create ({
   baseURL: "/api/v1/",
 //   withCredentials:true
 })
-// ---------------------------------------------------------
+
 // make an interceptor that can run before or after an api call
 // namely, one that will run immediately before very request the client sends.
 
@@ -20,7 +20,7 @@ api.interceptors.request.use((config)=>{
         return config
  })
 
-// -------------------------------------
+
 // Create an error message
 
 
@@ -31,50 +31,66 @@ const errorMessage = (error) => {
 
   }
 
-// -------------------------------------
+
 // Register and Login Features
 
 
-// most of my errors on the front end come back to this post request
-export const userAuth = async (email, password, signup)=>{
- try{
-     const response = await api.post(
-     signup ? "users/signup/" : "users/login/",
-        {
-        email,
-        password
-        }
-     );
- //    return response.data.email
-     const {email: userEmail, token} = response.data
-     localStorage.setItem("token", token)
-     return userEmail
-
-     }catch (error){
-      alert(errorMessage(error))
-      return null;
-   }
- }
+// most of my errors on the front end come back to this post - specifically line 41
+export const userAuth = async (email, password, signup)=> {
+  try{const response = await api.post(
+    signup ? "users/signup/" : "users/login/",
+    {
+      email,
+      password
+    }
+  );
+  const { email: userErmail, token} = response.data
+  localStorage.setItem("token", token)
+  return userEmail
+}catch (error){
+  alert(errorMessage(error))
+  return null;
+}
+  
+}
 
 
-// -------------------------------------
+// export const userAuth = async (email, password, signup)=>{
+//  try{
+//      const response = await api.post(
+//       signup ? "users/signup/" : "users/login/",
+//         {
+//         email,
+//         password
+//         }
+//      );
+//  //    return response.data.email
+//      const {email: userEmail, token} = response.data
+//      localStorage.setItem("token", token);
+//      return userEmail
+
+//      }catch (error){
+//       alert(errorMessage(error));
+//       return null;
+//    }
+//  }
+
+
+
 // user logout. 
 
 export const userLogout = async () => {
   try {
     await api.post("users/logout/")
   }catch(error){
-    console.error("Logout request has failed", error)
+    console.error("Logout request has failed", error);
 }
- localStorage.removeItem("token")
+ localStorage.removeItem("token");
  return null;
 }
 
 
-
-// -------------------------------------
 // confirm the user
-
 
 export const userConfirmation = async () => {
      const token = localStorage.getItem("token");
@@ -90,9 +106,6 @@ export const userConfirmation = async () => {
     }
 }
 
-
-
-// -------------------------------------
 // block a route to bounce the login page, if the user has no token
 // P.S. renaming requireLogin to mustLogin
 
@@ -103,9 +116,9 @@ export const mustLogin = () =>{
   
  if (!localStorage.getItem("token")) throw redirect("/");
  return null;
-   }
+}
 
-// -------------------------------------
+
 // if a user is logged in, they don't need to be on login page
 
 
@@ -113,14 +126,14 @@ export const redirectIfLoggedIn =  () =>{
   // const email = await userConfirmation()
   // return email ? redirect("/home") : null;
    return localStorage.getItem("token") ? redirect("/home") : null;
-
-    
+ 
 }
 
 export const homeLoader =  ()=>{
   mustLogin()
   return getNotes()
 }
+
 
 export const getNotes = async()=>{
   try{
@@ -132,15 +145,17 @@ export const getNotes = async()=>{
   }
 }
 
+
 export const createNote = async (noteObj)=>{
   try{
-    const response = await api.post('notes/', noteObj)
-    return response.data
+    const response = await api.post('notes/', noteObj);
+    return response.data;
   }catch(error){
     alert(errorMessage(error));
-    return null
+    return null;
   }
 }
+
 
 export const updateNote = async (noteObj)=>{
   try{
@@ -148,9 +163,10 @@ export const updateNote = async (noteObj)=>{
     return response.data;
   }catch(error){
     alert(errorMessage(error));
-    return null
+    return null;
   }
 }
+
 
 export const deleteNote = async (noteId) =>{
   try{

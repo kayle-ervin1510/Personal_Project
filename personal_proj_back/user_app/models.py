@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 # from .validators import validate_user_email
 
 # Create your models here.
-
+# refactor the username to equal email
 class User(AbstractUser):
 
     email = models.EmailField(unique=True)
