@@ -1,4 +1,4 @@
-from rest_framework.views import APIView
+from user_app.views import UserView
 from .serializers import NoteSerializer
 from rest_framework.response import Response
 from rest_framework import status as s
@@ -6,14 +6,12 @@ from rest_framework import status as s
 
 # Create your views here.
 
-class AllNotes(APIView):
+class AllNotes(UserView):
 
 
     def get(self, request):
         return Response(NoteSerializer(request.user.notes.all(), many=True).data)
-        # notes = Note.objects.all().order_by('id')
-        # serializer = NoteSerializer(notes, many=True)
-        # return Response(serializer.data, status=s.HTTP_200_OK)
+        
 
     def post(self, request):
         data = request.data.copy()
@@ -26,7 +24,7 @@ class AllNotes(APIView):
             return Response(ser_note.errors, status=s.HTTP_400_BAD_REQUEST)
 
 
-class ANote(APIView):
+class ANote(UserView):
 
     def get(self, request, note_id):
         return Response(NoteSerializer(request.user.notes.get(id=note_id)).data)
