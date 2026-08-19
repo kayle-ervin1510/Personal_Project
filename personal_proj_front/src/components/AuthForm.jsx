@@ -5,11 +5,13 @@ import Form from 'react-bootstrap/Form';
 import { userAuth } from '../user_utilities';
 
 const AuthForm = ({setUser}) => {
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [create, setCreate] = useState(true)
     const navigate = useNavigate()
 // changed signup to create, and setSignup to setCreate
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         //Error also on the below await function specifcally at await

@@ -37,7 +37,8 @@ const errorMessage = (error) => {
 
 // most of my errors on the front end come back to this post - specifically line 41
 export const userAuth = async (email, password, create)=> {
-  try{const response = await api.post(
+  try{
+    const response = await api.post(
     create ? "users/create/" : "users/login/",
     {
       email,
