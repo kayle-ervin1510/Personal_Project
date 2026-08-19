@@ -1,7 +1,7 @@
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
-from django.contrib.auth import authenticate
+from django.contrib.auth import login, authenticate, logout
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status as s
@@ -73,9 +73,9 @@ from .models import User
 #         return self.authenticate_credentials(token_key)
 
 
-class SignUp(APIView):
-    authentication_classes = []
-    permission_classes = []
+class CreateUser(APIView):
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         data = request.data
