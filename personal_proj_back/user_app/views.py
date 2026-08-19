@@ -91,6 +91,8 @@ class SignUp(APIView):
             # return set_token_cookie(response, token.key)
         except Exception as e:
             return Response(e.args, status=s.HTTP_400_BAD_REQUEST)
+        # On firefox, trying to create an account, I got a 400 bad request, saying user could not be null
+        # When it came to creating a note, that is
 
 class Login(APIView):
     authentication_classes = []
