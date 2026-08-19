@@ -117,7 +117,7 @@ export const homeLoader =  ()=>{
 
 export const getNotes = async()=>{
   try{
-    const response = await api.get('notes/');
+    const response = await api.get("notes/");
     return response.data
   }catch (error){
     console.error(errorMessage(error));

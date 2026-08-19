@@ -15,26 +15,36 @@ const router = createBrowserRouter([
         loader: userConfirmation,
         errorElement: <ErrorPage />,
         children: [
-            {index:true,
-                // Error going to the AuthPage
+            {
+            index:true,
+            // Error going to the AuthPage
             element:<AuthPage />,
-            loader:redirectIfLoggedIn},
+            loader:redirectIfLoggedIn
+            },
 
 
-            {path:'home',
+            {
+                path:'home',
             element: <HomePage />,
-            loader:homeLoader},
+            loader:homeLoader
+            },
 
-            // {path: 'list',
+            // {
+            //path: 'list',
             // element: <ListPage />, 
-            // loader:mustLogin},
+            // loader:mustLogin
+            // },
 
-            // {path: 'cat/:id',
-            // element: <HttpCatDeetsPage />}  
+            // {
+            // path: 'cat/:id',
+            // element: <HttpCatDeetsPage />
+            // }  
         ],
     },
-    // {path: '*',
-    // element: <NotFound />},
+    // {
+    // path: '*',
+    // element: <NotFound />
+    // },
 
 ])
 export default router;
