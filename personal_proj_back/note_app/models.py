@@ -4,7 +4,7 @@ from user_app.models import User
 # Create your models here.
 
 class Note(models.Model):
-    title = models.CharField(max_length=150)
+    title = models.CharField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notes')
     # content = models.TextField(default="", blank=True)
     # created_at = models.DateTimeField(auto_now_add=True)
