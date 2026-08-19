@@ -7,17 +7,17 @@ import { userAuth } from '../user_utilities';
 const AuthForm = ({setUser}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [signup, setSignup] = useState(true)
+    const [create, setCreate] = useState(true)
     const navigate = useNavigate()
-
+// changed signup to create, and setSignup to setCreate
     const handleSubmit = async (e) => {
         e.preventDefault()
         //Error also on the below await function specifcally at await
-        const loggedInUser = await userAuth(email, password, signup)
+        const loggedInUser = await userAuth(email, password, create)
         if (!loggedInUser) return 
 
         setUser(loggedInUser)
-        setSignup(true)
+        setCreate(true)
         setEmail('')
         setPassword('')
         navigate('/home')
@@ -52,14 +52,14 @@ const AuthForm = ({setUser}) => {
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check
                         type="checkbox"
-                        label={signup ? "Ceate Account":"Login"}
-                        checked={signup}
-                        onChange={(e)=>setSignup(e.target.checked)}
+                        label={create ? "Ceate Account":"Login"}
+                        checked={create}
+                        onChange={(e)=>setCreate(e.target.checked)}
                     />
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
-                    {signup ? "Create Account" : "Login"}
+                    {create ? "Create Account" : "Login"}
                 </Button>
             </Form>
         </>
