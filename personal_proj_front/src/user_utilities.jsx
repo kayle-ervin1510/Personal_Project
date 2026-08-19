@@ -44,7 +44,7 @@ export const userAuth = async (email, password, signup)=> {
       password
     }
   );
-  const { email: userErmail, token} = response.data
+  const { email: userEmail, token} = response.data
   localStorage.setItem("token", token)
   return userEmail
 }catch (error){
@@ -54,26 +54,6 @@ export const userAuth = async (email, password, signup)=> {
   
 }
 
-
-// export const userAuth = async (email, password, signup)=>{
-//  try{
-//      const response = await api.post(
-//       signup ? "users/signup/" : "users/login/",
-//         {
-//         email,
-//         password
-//         }
-//      );
-//  //    return response.data.email
-//      const {email: userEmail, token} = response.data
-//      localStorage.setItem("token", token);
-//      return userEmail
-
-//      }catch (error){
-//       alert(errorMessage(error));
-//       return null;
-//    }
-//  }
 
 
 
