@@ -128,7 +128,7 @@ export const getNotes = async()=>{
 
 export const createNote = async (noteObj)=>{
   try{
-    const response = await api.post('notes/', noteObj);
+    const response = await api.post("notes/", noteObj);
     return response.data;
   }catch(error){
     alert(errorMessage(error));

@@ -12,7 +12,7 @@ const AuthForm = ({setUser}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        //Error also on the below await function
+        //Error also on the below await function specifcally at await
         const loggedInUser = await userAuth(email, password, signup)
         if (!loggedInUser) return 
 
