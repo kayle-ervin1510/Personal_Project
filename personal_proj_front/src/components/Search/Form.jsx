@@ -1,4 +1,4 @@
-export default function Form({ handleSubmit, setHttpCatName, httpCatName}) {
+export default function Form({ handleSubmit, setHttpCat, httpCat}) {
     return (
         <form onSubmit={(event) => handleSubmit(event)} className="mb-6 p-6 rounded-x1">
             <input
@@ -6,8 +6,8 @@ export default function Form({ handleSubmit, setHttpCatName, httpCatName}) {
                 type="text"
                 name="name"
                 placeholder="Search...Try '308'"
-                value={httpCatName ?? ""}
-                onChange={(e) => setHttpCatName(e.target.value)}
+                value={httpCat ?? ""}
+                onChange={(e) => setHttpCat(e.target.value)}
                 className="flex-1 rounded-md border border-slate-300 px-3 py-2 outline-none"
             />
             <button type="submit">Search!</button>

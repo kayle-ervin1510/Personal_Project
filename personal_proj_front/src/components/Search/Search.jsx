@@ -4,9 +4,9 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Search() {
-    const [httpCatName, setHttpCatName] = useState("");
+    const [httpCat, setHttpCat] = useState("");
     const [team] = useState([]);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
 
     const handleSubmit = (event) =>{
@@ -21,8 +21,8 @@ export default function Search() {
         <>
             <Form
                 handleSubmit={handleSubmit}
-                setHttpCatName={setHttpCatName}
-                httpCatName={httpCatName}
+                setHttpCat={setHttpCat}
+                httpCat={httpCat}
             />
             <Container team={team}/>
         </>
