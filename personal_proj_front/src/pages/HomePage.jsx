@@ -4,6 +4,7 @@ import Stack from 'react-bootstrap/Stack';
 import NoteDisplay from '../components/NoteDisplay';
 import NoteForm from '../components/NoteForm';
 import { userLogout } from '../user_utilities';
+import NavBar from '../components/NavBar';
 
 const HomePage = ()=>{
     const {user, setUser} = useOutletContext()
@@ -32,9 +33,13 @@ const HomePage = ()=>{
     }
     return (
         <>
+        
             <h2>Welcome {user && user}: Here are your Notes! <button onClick={handleLogout}>Log Out</button></h2>
-
+            
             <Stack gap={3}>
+                <NavBar>
+                
+                </NavBar>
                 <NoteForm addNote={addNote}/>
 
                 {notes.map((note)=>(
@@ -46,6 +51,7 @@ const HomePage = ()=>{
                     />
                 ))}
             </Stack>
+            
         </>
     )
 }
