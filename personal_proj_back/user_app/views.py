@@ -82,7 +82,7 @@ class CreateUser(APIView):
         data['username'] = data.get('email')
         # data['username'] = request.data.get('email')
         try:
-            new_user = User.objects.create_user(**data)
+            new_user = User.objects.create_user(data)
             # keep eye on **data
             new_user.full_clean()
             new_user.save()
@@ -192,3 +192,14 @@ class Logout(UserView):
         #   except TokenError:
         #       pass
         # return clear_aruth_cookies(Response({"detail":"logged out"}))
+
+
+## When trying to create a user on port 8000
+# I get the following error:
+# POST /api/v1/users/create/
+# HTTP 400 Bad Request
+# Allow: POST, OPTIONS
+# Content-Type: application/json
+# Vary: Accept
+# [ "User() got unexpected keyword arguments:
+#  '_content_type",'_content'" ]
