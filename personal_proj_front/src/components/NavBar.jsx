@@ -9,7 +9,6 @@ export default function NavBar() {
             <h1>HTTP What</h1>
             <Nav.Link as={Link} to="/home">Home</Nav.Link>
             <Nav.Link as={Link} to="/list">My List</Nav.Link>
-            {/* issue in line 13, stemming from container, line ten */}
             <Search/>
         </Navbar>
     )

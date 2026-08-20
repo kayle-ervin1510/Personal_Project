@@ -24,7 +24,6 @@ export default function Search() {
                 setHttpCatName={setHttpCatName}
                 httpCatName={httpCatName}
             />
-            {/* line 28 has an issue, linked back to container.jsx line 10 */}
             <Container team={team}/>
         </>
     )

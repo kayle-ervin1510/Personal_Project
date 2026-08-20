@@ -5,7 +5,7 @@ export default function Container({team}) {
         <>
          <div id="cat-container"
             className="flex flex-wrap items-stretch gap-5">
-                {/* issue with line 10 & 14 - apparently team.map and id are both undefined */}
+               
                 {
                     team.map(
                         (httpCat)=>(
@@ -21,6 +21,4 @@ export default function Container({team}) {
         </>
     )
 }
-// after commenting out the team.map, httpCatis now listed as undefined - which is possible
-// when I put httpCat into the COntainer parameters
-// id in httpCat.id is said to be undefined
+// defined team in search, so no longer getting an error there.

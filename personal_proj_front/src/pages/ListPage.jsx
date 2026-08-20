@@ -34,3 +34,7 @@ const ListPage = () =>{
 export default ListPage;
 
 // swapped list for team
+// When I click on the link for home, I'm do not see the HomePage rendered
+// When I click the link for list, I don't see the ListPage rendered
+// Can't seem to search for anything in the search bar either
+// search button appears to be stuck.
