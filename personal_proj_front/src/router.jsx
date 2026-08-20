@@ -50,3 +50,8 @@ const router = createBrowserRouter([
 
 ])
 export default router;
+
+// when I press the link for Home, I'm not taken to homepage
+// when I press the link for My List, I'm not taken to ListPage
+// when I search for /cat/200 (or another id), I'm not taken to CatDeetsPage
+// When I click the search button, nothing happens.
