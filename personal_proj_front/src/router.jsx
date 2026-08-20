@@ -6,6 +6,7 @@ import ListPage from './pages/ListPage';
 import NotFound from './pages/NotFound';
 import HttpCatDeetsPage from './pages/HttpCatDeetsPage'
 import App from './App';
+
 import { redirectIfLoggedIn, homeLoader, mustLogin, userConfirmation } from './user_utilities'
 
 const router = createBrowserRouter([
@@ -25,27 +26,27 @@ const router = createBrowserRouter([
 
 
             {
-                path:'home',
+                path:'/home',
             element: <HomePage />,
             loader:homeLoader
             },
 
-            // {
-            //path: 'list',
-            // element: <ListPage />, 
-            // loader:mustLogin
-            // },
+            {
+            path: '/list',
+            element: <ListPage />, 
+            loader:mustLogin
+            },
 
-            // {
-            // path: 'cat/:id',
-            // element: <HttpCatDeetsPage />
-            // }  
+            {
+            path: '/cat/:id',
+            element: <HttpCatDeetsPage />
+            }  
         ],
     },
-    // {
-    // path: '*',
-    // element: <NotFound />
-    // },
+    {
+    path: '*',
+    element: <NotFound />
+    },
 
 ])
 export default router;
