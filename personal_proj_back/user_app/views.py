@@ -6,14 +6,14 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status as s
 from .models import User
-# from django.conf import settings
 
+# from django.conf import settings
 # from rest_framework_simplejwt.tokens import RefreshToken
 # from rest_framework_simplejwt.exceptions import TokenError
 # from rest_framework_simplejwt.authentication import JWTAuthentication
 # from rest_framework_simplejwt.settings import api_settings
 
-# # Create your views here.
+
 
 # ACESS_MAX_AGE = int(settings.SIMPLE_JWT["ACCESS_TOKEN_LIFETIME"].total_seconds())
 # REFRESH_MAX_AGE = int(settings.SIMPLE_JWT["REFRESH_TOKEN_LIFETIME"].total_seconds())
@@ -73,6 +73,7 @@ from .models import User
 #         return self.authenticate_credentials(token_key)
 
 
+
 class CreateUser(APIView):
     authentication_classes = []
     permission_classes = []
@@ -102,7 +103,6 @@ class Login(APIView):
     permission_classes = []
 # can't sign in with exisitng credentials
 # Can create new credentials, but not with existing user data
-# scratch that, I can login now with exising credentials
 
     def post(self, request):
         data = request.data.copy()
@@ -113,15 +113,19 @@ class Login(APIView):
         # can make a new account with data.get('email')
         user = authenticate(username=data.get('username'), password=data.get("password"))
         if user:
+
             # token, _= Token.objects.get_or_create(user=user)
             # response = Response({"email":user.email})
+
             Token.objects.get_or_create(user=user)
             return Response({"token":user.auth_token.key, "email":user.email})
+        
             #return set_token_cookie(response, token.key)
 
             # acess, refresh = tokens_for(user)
             # response = Response({"email":user.email})
             # return set_auth_cookies(response, access, refresh)
+        
         else:
             return Response("A user matching that value does not exist.", status=s.HTTP_404_NOT_FOUND)
 
@@ -159,18 +163,10 @@ class Login(APIView):
 #         return set_auth_cookies(response, access, new_refresh)
 
 
-
-
-
-
-
-
-
-
-
 class UserView(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
+
     # authentication_classes = [CookieAuthentication]
     # permission_classes = [IsAuthenticated]
 
@@ -182,6 +178,7 @@ class Info(UserView):
     def get(self, request):
         user = request.user
         return Response({"token":user.auth_token.key, "email":user.email})
+
         # return Response({"email":user.email})
 
 class Logout(UserView):
@@ -189,6 +186,7 @@ class Logout(UserView):
         user = request.user
         user.auth_token.delete()
         return Response(f"{user.email} has been logged out.")
+
         # response = Response({"detail":"logged out"})
         # response.delete_cookie("token", path="/")
         # return response
@@ -202,7 +200,7 @@ class Logout(UserView):
         # return clear_aruth_cookies(Response({"detail":"logged out"}))
 
 
-## When trying to create a user on port 8000
+## When trying to create a user on port 8000 ##
 
 # I get the following error:
 # POST /api/v1/users/create/
