@@ -1,5 +1,5 @@
-from django.apps import AppConfig
+# from django.apps import AppConfig
 
-# changed UserAppConfig to UserConfig
-class UserConfig(AppConfig):
-    name = 'user_app'
+# # changed UserAppConfig to UserConfig
+# class UserConfig(AppConfig):
+#     name = 'user_app'

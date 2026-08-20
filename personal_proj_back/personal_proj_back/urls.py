@@ -26,5 +26,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('api/v1/test/', connection),
     path('api/v1/notes/', include('note_app.urls')),
-    path('api/v1/users/', include('user_app2.urls'))
+    path('api/v1/users/', include('user_app.urls'))
 ]
