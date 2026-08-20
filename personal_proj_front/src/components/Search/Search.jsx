@@ -6,15 +6,15 @@ import { useNavigate } from 'react-router-dom';
 export default function Search() {
     const [httpCat, setHttpCat] = useState("");
     const [team] = useState([]);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
 
     const handleSubmit = (event) =>{
         event.preventDefault();
-        // if(!httpCatName) return;
+        if(!httpCat) return;
 
-        // navigate(`/cat/${httpCatName}`);
-        // setHttpCatName("");
+        navigate(`/cat/${httpCat}`);
+        setHttpCat("");
     }
 
     return (

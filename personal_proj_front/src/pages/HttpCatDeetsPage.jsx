@@ -2,9 +2,9 @@ import { useParams, useOutletContext } from 'react-router-dom';
 
 export default function HttpCatDeetsPage() {
 
-    const [httpCat, setHttpCat] = useState(null);
-    const [errorMessage, setErrorMessage] = useState("");
-    const {id} = useParams();
+    const [httpCat] = useState(null);
+    // const [errorMessage, setErrorMessage] = useState("");
+    // const {id} = useParams();
     const {list, addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
 
     const isCaught = httpCat ? hasHttpCat(HttpCatDeetsPage.id): false;
