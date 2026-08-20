@@ -11,10 +11,10 @@ export default function Search() {
 
     const handleSubmit = (event) =>{
         event.preventDefault();
-        if(!httpCatName) return;
+        // if(!httpCatName) return;
 
-        navigate(`/cat/${httpCatName}`);
-        setHttpCatName("");
+        // navigate(`/cat/${httpCatName}`);
+        // setHttpCatName("");
     }
 
     return (
@@ -25,7 +25,7 @@ export default function Search() {
                 httpCatName={httpCatName}
             />
             {/* line 28 has an issue, linked back to container.jsx line 10 */}
-            <Container httpList={list}/>
+            <Container list={list}/>
         </>
     )
 }

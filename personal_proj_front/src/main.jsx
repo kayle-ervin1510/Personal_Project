@@ -6,5 +6,6 @@ import './index.css';
 
 
 createRoot(document.getElementById('root')).render(
+  // no hydration provided during initial rendering?
   <RouterProvider router={router} />
 )
