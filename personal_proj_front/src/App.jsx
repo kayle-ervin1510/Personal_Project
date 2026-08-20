@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Outlet, useLoaderData } from 'react-router-dom';
 import './App.css';
-import NavBar from './components/NavBar';
-import HttpCatDeetsPage from './pages/HttpCatDeetsPage';
+// import NavBar from './components/NavBar';
+// import HttpCatDeetsPage from './pages/HttpCatDeetsPage';
 
 
 
@@ -31,12 +31,11 @@ function App() {
 
   return (
     <>
-   {/* <NavBar id="nav"> */}
+
       <main>
       <Outlet context={{ user, setUser}} />
-        
       </main>
-   {/* </NavBar> */}
+
     </>
   )
 }

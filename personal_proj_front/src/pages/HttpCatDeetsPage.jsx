@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, useOutletContext } from 'react-router-dom';
-import CatCard from '../components/Search/CatCard';
+// import CatCard from '../components/Search/CatCard';
+import MissingPage from './MissingPage';
 
 export default function HttpCatDeetsPage() {
 
@@ -10,6 +11,7 @@ export default function HttpCatDeetsPage() {
     // const {id} = useParams();
     const {team, addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
     const [errorMessage, setErrorMessage] = useState("");
+    const {id} = useParams()
     const isCaught = httpCat ? hasHttpCat(httpCat.id): false;
     const canCatch = httpCat ? !isCaught && team.length < 10 : false;
    
