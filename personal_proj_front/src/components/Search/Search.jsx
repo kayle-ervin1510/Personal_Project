@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Search() {
     const [httpCatName, setHttpCatName] = useState("");
-    const [list] = useState();
+    const [team] = useState();
     const navigate = useNavigate();
 
 
@@ -25,7 +25,9 @@ export default function Search() {
                 httpCatName={httpCatName}
             />
             {/* line 28 has an issue, linked back to container.jsx line 10 */}
-            <Container list={list}/>
+            <Container team={team}/>
         </>
     )
 }
+
+// swapped out list from list={list} to team.

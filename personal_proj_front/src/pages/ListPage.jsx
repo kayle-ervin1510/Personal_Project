@@ -1,18 +1,18 @@
 import { useOutletContext } from 'react-router-dom';
 
 const ListPage = () =>{
-    const {list, removeHttpCat} = useOutletContext();
+    const {team, removeHttpCat} = useOutletContext();
 
     return (
         <>
         <div className="main-page-contents">
             <h2>My saved HTTP Codes</h2>
 
-            {list.length === 0 ? (
+            {team.length === 0 ? (
                 <h3>No HTTP Codes Added Yet</h3>
             ) : (
                 <div>
-                    {list.map((httpCat)=> (
+                    {team.map((httpCat)=> (
                         <div className="cat-card" key={httpCat.id}>
                             <h3>Status Code: {httpCat.id}</h3>
                             <img
@@ -32,3 +32,5 @@ const ListPage = () =>{
     )
 }
 export default ListPage;
+
+// swapped list for team
