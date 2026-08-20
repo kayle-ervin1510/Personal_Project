@@ -2,7 +2,6 @@ import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
-
 import { updateNote as updateNoteRequest, deleteNote as deleteNoteRequest } from '../user_utilities';
 
 const NoteDisplay = ({note, rmNote, updateNote}) => {

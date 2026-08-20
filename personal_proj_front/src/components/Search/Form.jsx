@@ -5,10 +5,10 @@ export default function Form({ handleSubmit, setHttpCat, httpCat}) {
                 id="http-number"
                 type="text"
                 // name="name"
-                placeholder="Search...Try '308'"
+                placeholder="Try '308'"
                 value={httpCat ?? ""}
                 onChange={(e) => setHttpCat(e.target.value)}
-                className="flex-1 rounded-md border border-slate-300 px-3 py-2 outline-none"
+                className="flex-1 rounded-md border border-slate-300 px-3 py-1 outline-none"
             />
             <button type="submit">Search!</button>
         </form>

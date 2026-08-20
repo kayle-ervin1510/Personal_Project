@@ -8,10 +8,10 @@ const ListPage = () =>{
         <div className="main-page-contents">
             <h2>My saved HTTP Codes</h2>
 
-            {team.length === 0 ? (
-                <h3>No HTTP Codes Added Yet</h3>
-            ) : (
-                <div>
+            {/* {team.length === 0 ? ( */}
+                <h2>No HTTP Codes Added Yet</h2>
+            {/* ) : ( */}
+                {/* <div>
                     {team.map((httpCat)=> (
                         <div className="cat-card" key={httpCat.id}>
                             <h3>Status Code: {httpCat.id}</h3>
@@ -26,7 +26,7 @@ const ListPage = () =>{
                     ))}
                 </div>
             )
-        }
+        } */}
         </div>
     </>
     )
@@ -48,3 +48,12 @@ export default ListPage;
 // i.e. team is undefined...for some reason
 // 08/20/2026 - later afternoon
 // can't login now
+// But can create a new account
+// 08/20/2026 - 1:45 pm
+// When commenting out the team.length
+// and the mapping of team, which is a list,
+// I can see My saved HTTP Codes 
+// and No HTTP Codes Added Yet
+// So I need to define team, as the added together
+// http cat images I can add or remove from my list
+// and if my list is less than 10, have No Http Codes Added Yet
