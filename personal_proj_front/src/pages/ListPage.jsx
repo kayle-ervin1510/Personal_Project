@@ -1,4 +1,5 @@
 import { useOutletContext } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 
 const ListPage = () =>{
     const {team, removeHttpCat} = useOutletContext();
@@ -6,6 +7,9 @@ const ListPage = () =>{
     return (
         <>
         <div className="main-page-contents">
+                <NavBar>
+                            
+                </NavBar>
             <h2>My saved HTTP Codes</h2>
 
             {/* {team.length === 0 ? ( */}
@@ -28,6 +32,7 @@ const ListPage = () =>{
             )
         } */}
         </div>
+        
     </>
     )
 }
