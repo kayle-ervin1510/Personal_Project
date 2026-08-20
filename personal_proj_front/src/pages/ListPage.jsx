@@ -42,3 +42,7 @@ export default ListPage;
 // 08/20/2026 - afternoon
 // Search button no longer stuck, I can click it. I just don't get any images. 
 // Also I tried clicking on the link in src, and it comes up as a code 404
+// 08/20/2026 - late afternoon
+// when I click on My List, I am told:
+// Cannot read properties of undefined(reading 'length')
+// i.e. team is undefined...for some reason
