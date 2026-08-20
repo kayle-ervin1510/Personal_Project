@@ -14,3 +14,5 @@ export default function Form({ handleSubmit, setHttpCat, httpCat}) {
         </form>
     );
 }
+
+// should I take out name="name"? Maybe swap it out with something like httpCat={httpCat}?
