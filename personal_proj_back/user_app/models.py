@@ -2,8 +2,9 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from .validators import validate_user_email
 from django.core import validators as val
-# Create your models here.
+
 # refactor the username to equal email - thought I did that already?
+
 class User(AbstractUser):
 
     # email = models.EmailField(
