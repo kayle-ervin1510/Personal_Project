@@ -195,6 +195,7 @@ class Logout(UserView):
 
 
 ## When trying to create a user on port 8000
+
 # I get the following error:
 # POST /api/v1/users/create/
 # HTTP 400 Bad Request
@@ -203,3 +204,24 @@ class Logout(UserView):
 # Vary: Accept
 # [ "User() got unexpected keyword arguments:
 #  '_content_type",'_content'" ]
+
+# When I submit the username, email, and password as a dictionary
+# Then I receive this response:
+# POST /api/v1/users/create/
+# HTTP 400 Bad Request
+# Allow: POST, OPTIONS
+# Content-Type: application/json
+# Vary: Accept
+# [ "value too long for type character varrying(150)"]
+
+# When I try to send in an email and password, no username now
+# I get this error:
+# POST /api/v1/users/create/
+# HTTP 400 Bad Request
+# Allow: POST, OPTIONS
+# Content-Type: application/json
+# Vary: Accept
+
+# [
+#     "duplicate key value violates unique constraint \"user_app_user_email_key\"\nDETAIL:  Key (email)=() already exists."
+# ]
