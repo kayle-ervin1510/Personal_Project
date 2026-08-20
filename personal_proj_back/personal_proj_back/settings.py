@@ -151,7 +151,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 
-AUTH_USER_MODEL = "user_app.User"
+AUTH_USER_MODEL = "user_app2.AppUser"
 
 
 # According to the documention from the django project link

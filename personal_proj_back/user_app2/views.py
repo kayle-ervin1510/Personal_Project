@@ -5,7 +5,7 @@ from django.contrib.auth import login, authenticate, logout
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status as s
-from .models import User
+from .models import AppUser
 # from django.conf import settings
 
 # from rest_framework_simplejwt.tokens import RefreshToken
@@ -82,7 +82,7 @@ class CreateUser(APIView):
         data['username'] = data.get('email')
         # data['username'] = request.data.get('email')
         try:
-            new_user = User.objects.create_user(**data)
+            new_user = AppUser.objects.create_user(**data)
             # keep eye on **data
             new_user.full_clean()
             new_user.save()

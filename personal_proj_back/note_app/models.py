@@ -1,11 +1,11 @@
 from django.db import models
-from user_app.models import User
+from user_app2.models import AppUser
 
 # Create your models here.
 
 class Note(models.Model):
     title = models.CharField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notes')
+    user = models.ForeignKey(AppUser, on_delete=models.CASCADE, related_name='notes')
     # content = models.TextField(default="", blank=True)
     # created_at = models.DateTimeField(auto_now_add=True)
     # updated_at = models.DateTimeField(auto_now=True)
