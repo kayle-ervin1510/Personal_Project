@@ -11,6 +11,7 @@ import { redirectIfLoggedIn, homeLoader, mustLogin, userConfirmation } from './u
 const router = createBrowserRouter([
     {
         path:'/',
+        // issue in line 15, stemming from container line ten
         element: <App/>,
         loader: userConfirmation,
         errorElement: <ErrorPage />,
