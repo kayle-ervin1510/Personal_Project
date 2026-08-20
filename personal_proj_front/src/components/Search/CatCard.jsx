@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
 import { Link } from 'react-router-dom';
 
-export default function CatCard ({httpCat, canCatch}){
+export default function CatCard ({httpCat}){
     const [capture, setCapture] = useState(false);
     const imageSource = `http://http.cat/${httpCat}`
 
