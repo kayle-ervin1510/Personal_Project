@@ -7,8 +7,10 @@ export default function NavBar() {
     return (
         <Navbar id="nav">
             <h1>HTTP What</h1>
+            <Nav.Link as={Link} to="/">Main</Nav.Link>
             <Nav.Link as={Link} to="/home">Home</Nav.Link>
             <Nav.Link as={Link} to="/list">My List</Nav.Link>
+            <Nav.Link></Nav.Link>
             <Search/>
         </Navbar>
     )

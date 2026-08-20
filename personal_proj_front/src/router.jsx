@@ -12,14 +12,12 @@ import { redirectIfLoggedIn, homeLoader, mustLogin, userConfirmation } from './u
 const router = createBrowserRouter([
     {
         path:'/',
-        // issue in line 15, stemming from container line ten
         element: <App/>,
         loader: userConfirmation,
         errorElement: <ErrorPage />,
         children: [
             {
             index:true,
-            // Error going to the AuthPage
             element:<AuthPage />,
             loader:redirectIfLoggedIn
             },
@@ -54,4 +52,10 @@ export default router;
 // when I press the link for Home, I'm not taken to homepage
 // when I press the link for My List, I'm not taken to ListPage
 // when I search for /cat/200 (or another id), I'm not taken to CatDeetsPage
-// When I click the search button, nothing happens.
+// Links not working...but I can now search for things
+// I'm taken to the cat id page...but no images appear
+// nothing appears if the id page doesn't exist, it just takes me there
+// So MissingPage doesn't work
+// But NotFound works
+// And ErrorPage also works
+// and the NavBar works. Which is good, I guess
