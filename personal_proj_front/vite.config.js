@@ -3,10 +3,10 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  resolve: {
-    dedupe: ['react', 'react-dom'],
+  // resolve: {
+  //   dedupe: ['react', 'react-dom'],
     
-  },
+  // },
   plugins: [react()],
   server: {
     proxy: {
@@ -14,3 +14,4 @@ export default defineConfig({
     }
   }
 })
+// I have the dedupe to get rid of any duplicates of react and react-dom
