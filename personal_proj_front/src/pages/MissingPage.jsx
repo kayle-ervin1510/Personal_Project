@@ -1,7 +1,7 @@
-export default function MissingPage() {
+export default function MissingPage({ message }) {
     return (
-        <>
-        <div>Seems this page is missing. Woops!</div>
-        </>
+        
+        <div>{message ?? "No such HTTP Cat with id of '{id}' exists."}</div>
+        
     )
 }
