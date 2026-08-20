@@ -108,8 +108,9 @@ class Login(APIView):
         data = request.data.copy()
         # originally data = request.data
         # can make a new account with data = request.data.copy()
-        data['username'] = request.data.get('email')
+        data['username'] = data.get('email')
         # originally data['username'] = request.data.get('email')
+        # can make a new account with data.get('email')
         user = authenticate(username=data.get('username'), password=data.get("password"))
         if user:
             # token, _= Token.objects.get_or_create(user=user)
