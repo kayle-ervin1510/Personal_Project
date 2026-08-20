@@ -32,7 +32,7 @@ const HomePage = ()=>{
     }
     return (
         <>
-            <h1>Weolcome {user && user}: Here are your Notes! <button onClick={handleLogout}>Log Out</button></h1>
+            <h1>Welcome {user && user}: Here are your Notes! <button onClick={handleLogout}>Log Out</button></h1>
 
             <Stack gap={3}>
                 <NoteForm addNote={addNote}/>

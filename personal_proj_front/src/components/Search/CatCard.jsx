@@ -18,7 +18,7 @@ export default function CatCard ({httpCat, canCatch}){
             />
             <Card.Body>
                 <Card.Text>
-                    <Badge bg="secondary">HTTP Code #{code}</Badge>
+                    <Badge bg="secondary">HTTP Code #{httpCat}</Badge>
                 </Card.Text>
                 <Card.Title>
                     Status {httpCat}

@@ -7,7 +7,7 @@ export default function Container({list}) {
             className="flex flex-wrap items-stretch gap-5">
                 
                 {
-                    httpList.map(
+                    list.map(
                         (httpCat)=>(
                             <CatCard
                                 httpCat={httpCat}
