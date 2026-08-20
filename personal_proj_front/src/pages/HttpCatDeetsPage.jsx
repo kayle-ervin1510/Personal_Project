@@ -11,14 +11,14 @@ export default function HttpCatDeetsPage() {
     // const {id} = useParams();
     const {team, addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
     const [errorMessage, setErrorMessage] = useState("");
-    const {id} = useParams()
+    const {id} = useParams();
+
     const isCaught = httpCat ? hasHttpCat(httpCat.id): false;
     const canCatch = httpCat ? !isCaught && team.length < 10 : false;
    
     useEffect(() => {
-        const lookupId = id?.charAt(0) + id?.slice(1) || "";
-        
-    
+    const lookupId = id?.charAt(0) + id?.slice(1) || "";
+          
 
 
     const fetchHttpCat = async () => {

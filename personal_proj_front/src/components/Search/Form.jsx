@@ -4,7 +4,7 @@ export default function Form({ handleSubmit, setHttpCat, httpCat}) {
             <input
                 id="http-number"
                 type="text"
-                // name="name"
+                name="name"
                 placeholder="Try '308'"
                 value={httpCat ?? ""}
                 onChange={(e) => setHttpCat(e.target.value)}
