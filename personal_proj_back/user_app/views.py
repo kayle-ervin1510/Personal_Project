@@ -79,8 +79,8 @@ class CreateUser(APIView):
     permission_classes = []
 
     def post(self, request):
-        data = request.data.copy()
-        data['username'] = data.get('email')
+        data = data.copy()
+        data['username'] = request.data.get('email')
         # data['username'] = request.data.get('email')
         try:
             # when I have **data, I can create an account, but I can't login.
