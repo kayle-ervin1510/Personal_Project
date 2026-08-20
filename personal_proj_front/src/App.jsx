@@ -31,11 +31,12 @@ function App() {
 
   return (
     <>
-    <NavBar id="nav">
+   {/* <NavBar id="nav"> */}
       <main>
       <Outlet context={{ user, setUser}} />
+        
       </main>
-    </NavBar>
+   {/* </NavBar> */}
     </>
   )
 }
