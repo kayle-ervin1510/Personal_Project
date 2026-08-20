@@ -19,7 +19,7 @@ function NoteForm({addNote}) {
             <Form onSubmit={handleSubmit} style={{width:"100%", display:"flex", justifyContent:"space-around"}}>
                 <Form.Control 
                 type="text"
-                placeholder='input a new note title here!'
+                placeholder='Input a new note here!'
                 value={noteTitle}
                 onChange={(e)=>setNoteTitle(e.target.value)}
                 />
