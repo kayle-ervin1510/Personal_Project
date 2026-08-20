@@ -30,7 +30,7 @@ export default function CatCard ({httpCat}){
                     >
                         {capture?"Release Cat":"Collect Cat"}
                     </Button>
-                    <Button as={Link} to={`/cat/${httpCat.id}`}>Details</Button>
+                    {/* <Button as={Link} to={`/cat/${httpCat.id}`}>Details</Button> */}
                 </Stack>
             </Card.Body>
 
