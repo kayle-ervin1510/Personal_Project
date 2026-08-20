@@ -10,7 +10,7 @@ export default function HttpCatDeetsPage() {
     // const {id} = useParams();
     const {team, addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
     const [errorMessage, setErrorMessage] = useState("");
-    const isCaught = httpCat ? hasHttpCat(HttpCatDeetsPage.id): false;
+    const isCaught = httpCat ? hasHttpCat(httpCat.id): false;
     const canCatch = httpCat ? !isCaught && team.length < 10 : false;
    
     useEffect(() => {
