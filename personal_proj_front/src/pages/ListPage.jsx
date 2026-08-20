@@ -46,3 +46,5 @@ export default ListPage;
 // when I click on My List, I am told:
 // Cannot read properties of undefined(reading 'length')
 // i.e. team is undefined...for some reason
+// 08/20/2026 - later afternoon
+// can't login now

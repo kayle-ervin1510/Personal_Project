@@ -105,8 +105,9 @@ class Login(APIView):
 # scratch that, I can login now with exising credentials
 
     def post(self, request):
-        data = request.data
+        data = request.data.copy()
         # originally data = request.data
+        # can make a new account with data = request.data.copy()
         data['username'] = request.data.get('email')
         # originally data['username'] = request.data.get('email')
         user = authenticate(username=data.get('username'), password=data.get("password"))

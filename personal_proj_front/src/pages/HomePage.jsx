@@ -34,7 +34,8 @@ const HomePage = ()=>{
     return (
         <>
         
-            <h2>Welcome {user && user}: Here are your Notes! <button onClick={handleLogout}>Log Out</button></h2>
+            <h4>Welcome {user && user}: Here are your Notes! </h4>
+            <button onClick={handleLogout}>Log Out</button>
             
             <Stack gap={3}>
                 <NavBar>
