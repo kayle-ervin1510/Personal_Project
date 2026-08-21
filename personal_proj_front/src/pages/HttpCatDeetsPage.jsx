@@ -41,16 +41,7 @@ export default function HttpCatDeetsPage() {
 
 const [src, setSrc] = useState(`https://http.cat/${httpCat}`)
 
-// Maybe swap out httpCat with lookupId?
-// When I search for the id it comes up as: No such HTTP Cat with id of '<whatever I searched for>' exists.
-// in the dev tools console I get the error: 
-// Access to XMLHttpRequest at 
-// 'https://http.cat/404' from 
-// origin 'http://localhost:5173' 
-// has been blocked by CORS policy: 
-// No 'Access-Control-Allow-Origin'
-//  header is present on the requested resource.
-// Also lines 26 and 36 are gettting errors, probably with regards to id
+
     if (errorMessage) {
         return <MissingPage message={errorMessage}/>
     }
