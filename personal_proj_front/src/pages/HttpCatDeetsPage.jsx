@@ -27,7 +27,8 @@ export default function HttpCatDeetsPage() {
                 `https://http.cat/${lookupId}`
             // `/cat/${lookupId}`
             // Return an image, not a json - the cat api only deals with images
-            )
+            // I don't need an axios call to http.cat - but ai can call it like did an image source
+        )
             setHttpCat(response.data);
             setErrorMessage("");
         }catch (error) {
