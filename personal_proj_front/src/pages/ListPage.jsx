@@ -3,7 +3,7 @@ import NavBar from '../components/NavBar';
 
 const ListPage = () =>{
     const {team, removeHttpCat} = useOutletContext();
-    const count = team?.length
+    // const count = team?.length
     return (
         <>
         <div className="main-page-contents">
