@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 
 export default function CatCard ({httpCat}){
     const [capture, setCapture] = useState(false);
-    // const imageSource = `https://http.cat/${httpCat}`
+    const src = `https://http.cat/${httpCat}`
 
     return (
         <Card style={ {width:"18rem"} } id={ `cat-${httpCat}-card` }>
             <Card.Img
                 variant="top"
-                imageSource={`https://http.cat/${httpCat}`}
+                src={`https://http.cat/${httpCat}`}
                 alt={`HTTP Cat ${httpCat}`}
             />
             <Card.Body>
