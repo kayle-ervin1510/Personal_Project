@@ -21,23 +21,25 @@ export default function HttpCatDeetsPage() {
           
 
 
-    const fetchHttpCat = async () => {
-        try{
-            const response = `/cat/${httpCat}`
+    // const fetchHttpCat = async () => {
+    //     try{
+    //         const response = `/cat/${httpCat}`
             // `/cat/${lookupId}`
             // Return an image, not a json - the cat api only deals with images
             // I don't need an axios call to http.cat - but ai can call it like did an image source
         
-            setHttpCat(response.data);
-            setErrorMessage("");
-        }catch (error) {
-            setHttpCat(null);
-            setErrorMessage(`No such HTTP Cat with id of '${lookupId}' exists.`);
-        }
-    };
-    fetchHttpCat();
+    //         setHttpCat(response.data);
+    //         setErrorMessage("");
+    //     }catch (error) {
+    //         setHttpCat(null);
+    //         setErrorMessage(`No such HTTP Cat with id of '${lookupId}' exists.`);
+    //     }
+    // };
+    // fetchHttpCat();
 
 // }, [id]);
+
+const [src, setSrc] = useState(`https://http.cat/${httpCat}`)
 
 // Maybe swap out httpCat with lookupId?
 // When I search for the id it comes up as: No such HTTP Cat with id of '<whatever I searched for>' exists.
