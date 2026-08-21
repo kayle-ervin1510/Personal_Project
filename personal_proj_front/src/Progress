@@ -32,3 +32,7 @@
 // A note I've created will remain saved after I logout, and login again
 // But after tearing down the application and bringing it back up
 // the note(s) disapear. Something to work on
+// 08/21/2026 - afternoon
+// So, now when I look up something that is not an
+// http cat code - I get the 404 cat
+// So I know I'm on the right track

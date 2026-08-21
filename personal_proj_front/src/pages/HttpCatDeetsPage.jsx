@@ -23,7 +23,7 @@ export default function HttpCatDeetsPage() {
 
     const fetchHttpCat = async () => {
         try{
-            const response = `https://http.cat/${lookupId}`
+            const response = `/cat/${lookupId}`
             // `/cat/${lookupId}`
             // Return an image, not a json - the cat api only deals with images
             // I don't need an axios call to http.cat - but ai can call it like did an image source
@@ -54,7 +54,7 @@ export default function HttpCatDeetsPage() {
     if (!httpCat) {
         return <MissingPage message={errorMessage}/>
     }
-   // use src, and not ImageSource - find and replace all ImageSources
+  
     return (
         <div className="cat-ard">
             <h2>HTTP Status {httpCat}</h2>
