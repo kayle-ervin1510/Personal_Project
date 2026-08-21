@@ -54,7 +54,7 @@ export default function HttpCatDeetsPage() {
     if (!httpCat) {
         return <MissingPage message={errorMessage}/>
     }
-   
+   // use src, and not ImageSource - find and replace all ImageSources
     return (
         <div className="cat-ard">
             <h2>HTTP Status {httpCat}</h2>
