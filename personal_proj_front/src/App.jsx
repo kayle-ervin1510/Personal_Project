@@ -32,7 +32,7 @@ function App() {
   return (
     <>
 
-      <main>
+      <main className="main">
       <Outlet context={{ user, setUser}} />
       </main>
 
