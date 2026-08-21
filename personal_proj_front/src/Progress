@@ -36,3 +36,5 @@
 // So, now when I look up something that is not an
 // http cat code - I get the 404 cat
 // So I know I'm on the right track
+// Now, everything I type into the search returns a 404 image -
+// and I can't add it or anything. It's just there lol
