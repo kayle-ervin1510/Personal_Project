@@ -81,11 +81,12 @@ class CreateUser(APIView):
     def post(self, request):
         data = request.data.copy()
         data['username'] = request.data.get('email')
-        # data['username'] = request.data.get('email')
+        # DON'T CHANGE THE ABOVE - I CAN MAKE A NEW ACCOUNT, AND LOGIN
+        
         try:
-            # when I have **data, I can create an account, but I can't login.
+            #**data
             new_user = User.objects.create_user(**data)
-            # keep eye on **data
+            
             new_user.full_clean()
             new_user.save()
             # acess, refresh = tokens_for(new_user_)
@@ -101,17 +102,17 @@ class CreateUser(APIView):
 class Login(APIView):
     authentication_classes = []
     permission_classes = []
-# can't sign in with exisitng credentials
-# Can create new credentials, but not with existing user data
+
 
     def post(self, request):
         data = request.data.copy()
         # originally data = request.data
-        # can make a new account with data = request.data.copy()
+        # can make a new account & signin with data = request.data.copy()
             
         data['username'] = data.get('email')
         # originally data['username'] = request.data.get('email')
-        # can make a new account with data.get('email')
+        # can make a new account & sign in with data.get('email')
+        # DON'T CHANGE THE ABOVE - I CAN MAKE A NEW ACCOUNT, AND LOGIN
         
         user = authenticate(username=data.get('username'), password=data.get("password"))
         if user:
