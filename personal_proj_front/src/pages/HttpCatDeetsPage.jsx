@@ -61,7 +61,9 @@ const [src, setSrc] = useState(`https://http.cat/${httpCat}`)
     return (
         <div className="cat-ard">
             <h2>HTTP Status {httpCat}</h2>
-            <img src={`https://http.cat/${httpCat}`}
+            <img 
+            src={src}
+            // src={`https://http.cat/${httpCat}`}
              alt={httpCat}
              />
 
