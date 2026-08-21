@@ -11,6 +11,11 @@ export default defineConfig({
   server: {
     proxy: {
       '/api':'http://localhost:8000',
+      // '/cat': {
+      //   target: 'https://http.cat',
+      //   changeOrigin: true,
+      //   rewrite: (path) => path.replace(/^\/api-cat/, '')
+      // }
     }
   }
 })

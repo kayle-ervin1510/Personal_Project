@@ -79,7 +79,7 @@ class CreateUser(APIView):
     permission_classes = []
 
     def post(self, request):
-        data = request.data#.copy()
+        data = request.data.copy()
         data['username'] = request.data.get('email')
         # data['username'] = request.data.get('email')
         try:
@@ -105,15 +105,11 @@ class Login(APIView):
 # Can create new credentials, but not with existing user data
 
     def post(self, request):
-        data = request.data#.copy()
+        data = request.data.copy()
         # originally data = request.data
         # can make a new account with data = request.data.copy()
-
-
-        # username = request.data.get("email")
-        # password = request.data.get("password")
-        
-        data['username'] = request.data.get('email')
+            
+        data['username'] = data.get('email')
         # originally data['username'] = request.data.get('email')
         # can make a new account with data.get('email')
         
