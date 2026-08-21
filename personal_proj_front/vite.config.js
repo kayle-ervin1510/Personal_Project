@@ -11,12 +11,15 @@ export default defineConfig({
   server: {
     proxy: {
       '/api':'http://localhost:8000',
+
       // '/cat': {
       //   target: 'https://http.cat',
-      //   changeOrigin: true,
-      //   rewrite: (path) => path.replace(/^\/api-cat/, '')
       // }
     }
   }
 })
-// I have the dedupe to get rid of any duplicates of react and react-dom
+// Tried changing the api by proxy 
+// as I did for the backend
+// isn't working as I'd like it
+// but I'm keeping it for reference
+// in case I can redo so it works
