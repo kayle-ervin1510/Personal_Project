@@ -22,3 +22,13 @@
 // So I need to define team, as the added together
 // http cat images I can add or remove from my list
 // and if my list is less than 10, have No Http Codes Added Yet
+// 08/21/2026
+// Don't fetch the cat api images via axios
+// Instead, call them from the api like I would the src, for images
+// Because axios fetch tries to bring back a json file
+// and the cat api sends back images
+// also maybe work on trying to get around the CORS error?
+// Btw, I can login, logout, and sign up
+// A note I've created will remain saved after I logout, and login again
+// But after tearing down the application and bringing it back up
+// the note(s) disapear. Something to work on
