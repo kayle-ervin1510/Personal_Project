@@ -26,6 +26,7 @@ export default function HttpCatDeetsPage() {
             const response = await axios.get(
                 `https://http.cat/${lookupId}`
             // `/cat/${lookupId}`
+            // Return an image, not a json - the cat api only deals with images
             )
             setHttpCat(response.data);
             setErrorMessage("");
