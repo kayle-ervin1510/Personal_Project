@@ -7,11 +7,11 @@ const ListPage = () =>{
     return (
         <>
         <div className="main-page-contents">
-                <NavBar>
+               
                             
-                </NavBar>
+                
             <h2>My saved HTTP Codes</h2>
-            {/* {team.length >= 0} ? (
+             {team.length >= 0} ? (
                 
                 <h2>No HTTP Codes Added Yet</h2> 
             ): ()
@@ -28,7 +28,7 @@ const ListPage = () =>{
                                 Remove
                             </button>
                         </div>
-                    ))} */}
+                    ))} 
                 
         </div>
         

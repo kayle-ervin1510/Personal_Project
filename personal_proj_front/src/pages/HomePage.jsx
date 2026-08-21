@@ -38,9 +38,9 @@ const HomePage = ()=>{
             <button onClick={handleLogout}>Log Out</button>
             
             <Stack gap={3}>
-                <NavBar>
+                {/* <NavBar/> */}
                 
-                </NavBar>
+                
                 <NoteForm addNote={addNote}/>
 
                 {notes.map((note)=>(
