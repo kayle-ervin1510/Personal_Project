@@ -25,7 +25,7 @@ export default function HttpCatDeetsPage() {
         try{
             const response = await axios.get(
                 `https://http.cat/${lookupId}`
-            // `/api-cat/${lookupId}`
+            
             )
             setHttpCat(response.data);
             setErrorMessage("");
