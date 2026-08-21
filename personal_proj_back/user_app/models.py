@@ -27,12 +27,12 @@ class User(AbstractUser):
     #         val.MaxValueValidator(200, "Password must be less than or equal to 200 characters.")
     #     ]
     # )
-    username = None
+    # username = None
     email = models.EmailField(unique=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     
-    def __str__(self):
-        return self.email
+    # def __str__(self):
+    #     return self.email
 # I'm receiving the error, "value type too long for character(150)"
 # Even after adding in the max_lenght, I'm still getting the above error
