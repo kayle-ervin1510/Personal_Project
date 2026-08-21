@@ -12,9 +12,7 @@ export default defineConfig({
     proxy: {
       '/api':'http://localhost:8000',
 
-      // '/cat': {
-      //   target: 'https://http.cat',
-      // }
+      // '/cat': 'https://http.cat'
     }
   }
 })
