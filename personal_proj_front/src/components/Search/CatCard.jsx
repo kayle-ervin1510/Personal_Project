@@ -38,3 +38,7 @@ export default function CatCard ({httpCat}){
 }
 
 // for HTTP Cats, the url usage is: https://http.cat/[status_code]
+// httpCat is a stand-in for the status code
+// so .id won't be of use, because it has no call for "id"
+// I need to call and list the image as an image
+// not using id, or name
