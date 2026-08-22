@@ -42,6 +42,8 @@ export default function HttpCatDeetsPage() {
 const [src, setSrc] = useState(`https://http.cat/${httpCat}`)
 // maybe write a function that fetches the image from http cat
 // and returns an image
+// Request https://http.cat/{code}, e.g. https://http.cat/404
+// https://freeapihub.com/apis/http-cat <- link to docs on http cat
 
     if (errorMessage) {
         return <MissingPage message={errorMessage}/>
