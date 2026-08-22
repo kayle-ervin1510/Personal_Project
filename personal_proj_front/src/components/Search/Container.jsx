@@ -2,7 +2,7 @@ import CatCard from './CatCard';
 // I think I need to remove list...maybe repalce it with team?
 // team is undefined
 // need to define it
-export default function Container({team}) {
+export default function Container({team, httpCat}) {
     return (
         <>
          <div id="cat-container"
