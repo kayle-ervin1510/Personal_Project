@@ -24,14 +24,14 @@ function Clock() {
 
         }
 
-        const intervalId = setINterval(setTime, 1000);
+        const intervalId = setInterval(setTime, 1000);
         return () => clearInterval(intervalId);
     }, []);
 
 
 
     return (
-        <main>
+        <main className="clock">
             <section>
                 <span ref={secondsRef}></span>
                 <span ref={minutesRef}></span>
