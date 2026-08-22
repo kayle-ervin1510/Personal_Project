@@ -38,6 +38,7 @@ export default function HttpCatDeetsPage() {
 //     fetchHttpCat();
 
 // }, [id]);
+
     // useEffect(() => {
     // const [src, setSrc] = useState(`https://http.cat/${httpCat}`);
 
@@ -68,7 +69,7 @@ export default function HttpCatDeetsPage() {
         <div className="cat-ard">
             <h2>HTTP Status {httpCat}</h2>
             <img 
-            src={src}
+            src={`https://http.cat/${httpCat}`}
              alt={httpCat}
              />
 
