@@ -9,15 +9,15 @@ export default function Container({team, httpCat}) {
         <>
          <div id="cat-container"
             className="flex flex-wrap items-stretch gap-5">
-               
-                  {/* {
+{/*                
+                  {
                     team.map(
-                        (httpCat)=>(  */}
+                        (httpCat)=>( 
                             <CatCard
                                 httpCat={httpCat}
                                 key={httpCat.id}
                             />
-                          {/* )
+                          )
                      )
                  }   */}
 
