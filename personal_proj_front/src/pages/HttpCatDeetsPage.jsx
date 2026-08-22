@@ -40,7 +40,8 @@ export default function HttpCatDeetsPage() {
 // }, [id]);
 
 const [src, setSrc] = useState(`https://http.cat/${httpCat}`)
-
+// maybe write a function that fetches the image from http cat
+// and returns an image
 
     if (errorMessage) {
         return <MissingPage message={errorMessage}/>
@@ -54,7 +55,6 @@ const [src, setSrc] = useState(`https://http.cat/${httpCat}`)
             <h2>HTTP Status {httpCat}</h2>
             <img 
             src={src}
-            // src={`https://http.cat/${httpCat}`}
              alt={httpCat}
              />
 
