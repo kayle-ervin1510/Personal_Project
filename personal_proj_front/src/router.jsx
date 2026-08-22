@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import ErrorPage from './pages/ErrorPage';
 import ListPage from './pages/ListPage';
 import NotFound from './pages/NotFound';
+import Clock from './components/Clock';
 import HttpCatDeetsPage from './pages/HttpCatDeetsPage'
 import App from './App';
 
@@ -38,7 +39,12 @@ const router = createBrowserRouter([
             {
             path: '/cat/:id',
             element: <HttpCatDeetsPage />
-            }  
+            },
+            
+            {
+                path: '/clock',
+                element: <Clock />
+            }
         ],
     },
     {
