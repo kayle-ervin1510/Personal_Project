@@ -55,13 +55,3 @@ const router = createBrowserRouter([
 ])
 export default router;
 
-// when I press the link for Home, I'm not taken to homepage
-// when I press the link for My List, I'm not taken to ListPage
-// when I search for /cat/200 (or another id), I'm not taken to CatDeetsPage
-// Links not working...but I can now search for things
-// I'm taken to the cat id page...but no images appear
-// nothing appears if the id page doesn't exist, it just takes me there
-// So MissingPage doesn't work
-// But NotFound works
-// And ErrorPage also works
-// and the NavBar works. Which is good, I guess
