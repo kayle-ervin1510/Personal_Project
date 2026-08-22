@@ -30,8 +30,8 @@ function App() {
   // }
 
   return (
-    <>
-      <NavBar count={team.length}/>
+    <section>
+      <NavBar  count={team.length}/>
       <div>
       <Outlet 
       context={{ 
@@ -45,7 +45,7 @@ function App() {
         />
       </div>
 
-    </>
+  </section>
   )
 }
 
