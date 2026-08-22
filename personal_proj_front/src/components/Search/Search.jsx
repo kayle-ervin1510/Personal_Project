@@ -29,4 +29,4 @@ export default function Search() {
     )
 }
 
-// swapped out list from list={list} to team.
+// took team={team} out of <Container />
