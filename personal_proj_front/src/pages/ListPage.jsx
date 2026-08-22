@@ -1,9 +1,9 @@
 import { useOutletContext } from 'react-router-dom';
-// import NavBar from '../components/NavBar';
 
 const ListPage = () =>{
     const {team, removeHttpCat} = useOutletContext();
     // length is marked as undefined, which means team is undefined. Need to define team
+    
     return (
         <>
         <div className="main-page-contents">
@@ -11,7 +11,7 @@ const ListPage = () =>{
                             
                 
             <h2>My saved HTTP Codes</h2>
-             {team.length >= 0} ? (
+             {/* {team.length >= 0} ? (
                 
                 <h2>No HTTP Codes Added Yet</h2> 
             ): ()
@@ -28,7 +28,7 @@ const ListPage = () =>{
                                 Remove
                             </button>
                         </div>
-                    ))} 
+                    ))}  */}
                 
         </div>
         
