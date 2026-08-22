@@ -1,9 +1,9 @@
 import { useOutletContext } from 'react-router-dom';
-import NavBar from '../components/NavBar';
+// import NavBar from '../components/NavBar';
 
 const ListPage = () =>{
     const {team, removeHttpCat} = useOutletContext();
-    // const count = team?.length
+    // length is marked as undefined, which means team is undefined. Need to define team
     return (
         <>
         <div className="main-page-contents">
