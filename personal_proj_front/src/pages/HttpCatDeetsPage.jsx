@@ -18,45 +18,8 @@ export default function HttpCatDeetsPage() {
    
     const [team, setTeam] = useState(0)
 
-//     useEffect(() => {
-//     const lookupId = id?.charAt(0) + id?.slice(1) || "";
-          
 
 
-//     const fetchHttpCat = async () => {
-//         try{
-//             const response = `https://http.cat/${httpCat}`
-            
-        
-//             setHttpCat(response.data);
-//             setErrorMessage("");
-//         }catch (error) {
-//             setHttpCat(null);
-//             setErrorMessage(`No such HTTP Cat with id of '${lookupId}' exists.`);
-//         }
-//     };
-//     fetchHttpCat();
-
-// }, [id]);
-
-    // useEffect(() => {
-    // const [src, setSrc] = useState(`https://http.cat/${httpCat}`);
-
-    // const fetchHttpCat = async () => {
-    // try {
-    //     const response = `https://http.cat/${httpCat}`
-    // setHttpCat(response.data)
-    // setErrorMessage("")
-    // }catch (error){
-    //     setHttpCat(null);
-    //     setErrorMessage(`No such HTTP Cat with id of '${httpCat}' exists.`)
-    // }
-
-    // }})
-// maybe write a function that fetches the image from http cat
-// and returns an image
-// Request https://http.cat/{code}, e.g. https://http.cat/404
-// https://freeapihub.com/apis/http-cat <- link to docs on http cat
 
     if (errorMessage) {
         return <MissingPage message={errorMessage}/>
@@ -84,3 +47,49 @@ export default function HttpCatDeetsPage() {
     );
 }
 
+// maybe write a function that fetches the image from http cat
+// and returns an image
+// Request https://http.cat/{code}, e.g. https://http.cat/404
+// https://freeapihub.com/apis/http-cat <- link to docs on http cat
+
+// Failed Experiments:
+
+// Experiment 01
+
+//     useEffect(() => {
+//     const lookupId = id?.charAt(0) + id?.slice(1) || "";
+          
+
+
+//     const fetchHttpCat = async () => {
+//         try{
+//             const response = `https://http.cat/${httpCat}`
+            
+        
+//             setHttpCat(response.data);
+//             setErrorMessage("");
+//         }catch (error) {
+//             setHttpCat(null);
+//             setErrorMessage(`No such HTTP Cat with id of '${lookupId}' exists.`);
+//         }
+//     };
+//     fetchHttpCat();
+
+// }, [id]);
+
+// Experiment 02
+
+    // useEffect(() => {
+    // const [src, setSrc] = useState(`https://http.cat/${httpCat}`);
+
+    // const fetchHttpCat = async () => {
+    // try {
+    //     const response = `https://http.cat/${httpCat}`
+    // setHttpCat(response.data)
+    // setErrorMessage("")
+    // }catch (error){
+    //     setHttpCat(null);
+    //     setErrorMessage(`No such HTTP Cat with id of '${httpCat}' exists.`)
+    // }
+
+    // }})
