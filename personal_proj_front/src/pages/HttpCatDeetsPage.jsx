@@ -9,37 +9,49 @@ export default function HttpCatDeetsPage() {
     const [httpCat, setHttpCat] = useState(null);
     // const [errorMessage, setErrorMessage] = useState("");
     // const {id} = useParams();
-    const {team, addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
+    const { addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
     const [errorMessage, setErrorMessage] = useState("");
     const {id} = useParams();
 
     const isCaught = httpCat ? hasHttpCat(httpCat.id): false;
     const canCatch = httpCat ? !isCaught && team.length < 10 : false;
    
-    // useEffect(() => {
-    // const lookupId = id?.charAt(0) + id?.slice(1) || "";
+    const [team, setTeam] = useState(0)
+
+//     useEffect(() => {
+//     const lookupId = id?.charAt(0) + id?.slice(1) || "";
           
 
 
-    // const fetchHttpCat = async () => {
-    //     try{
-    //         const response = `/cat/${httpCat}`
-            // `/cat/${lookupId}`
-            // Return an image, not a json - the cat api only deals with images
-            // I don't need an axios call to http.cat - but ai can call it like did an image source
+//     const fetchHttpCat = async () => {
+//         try{
+//             const response = `https://http.cat/${httpCat}`
+            
         
-    //         setHttpCat(response.data);
-    //         setErrorMessage("");
-    //     }catch (error) {
-    //         setHttpCat(null);
-    //         setErrorMessage(`No such HTTP Cat with id of '${lookupId}' exists.`);
-    //     }
-    // };
-    // fetchHttpCat();
+//             setHttpCat(response.data);
+//             setErrorMessage("");
+//         }catch (error) {
+//             setHttpCat(null);
+//             setErrorMessage(`No such HTTP Cat with id of '${lookupId}' exists.`);
+//         }
+//     };
+//     fetchHttpCat();
 
 // }, [id]);
+    // useEffect(() => {
+    // const [src, setSrc] = useState(`https://http.cat/${httpCat}`);
 
-const [src, setSrc] = useState(`https://http.cat/${httpCat}`)
+    // const fetchHttpCat = async () => {
+    // try {
+    //     const response = `https://http.cat/${httpCat}`
+    // setHttpCat(response.data)
+    // setErrorMessage("")
+    // }catch (error){
+    //     setHttpCat(null);
+    //     setErrorMessage(`No such HTTP Cat with id of '${httpCat}' exists.`)
+    // }
+
+    // }})
 // maybe write a function that fetches the image from http cat
 // and returns an image
 // Request https://http.cat/{code}, e.g. https://http.cat/404
