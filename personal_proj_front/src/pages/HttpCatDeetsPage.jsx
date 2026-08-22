@@ -7,15 +7,14 @@ import MissingPage from './MissingPage';
 export default function HttpCatDeetsPage() {
 
     const [httpCat, setHttpCat] = useState(null);
-    // const [errorMessage, setErrorMessage] = useState("");
-    // const {id} = useParams();
     const { addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
     const [errorMessage, setErrorMessage] = useState("");
     const {id} = useParams();
 
     const isCaught = httpCat ? hasHttpCat(httpCat.id): false;
     const canCatch = httpCat ? !isCaught && team.length < 10 : false;
-   
+    // why is length defined above?
+
     const [team, setTeam] = useState(0)
 
 
