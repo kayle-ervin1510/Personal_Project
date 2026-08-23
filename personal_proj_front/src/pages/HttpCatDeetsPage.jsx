@@ -13,7 +13,7 @@ export default function HttpCatDeetsPage() {
 // const [httpCat] = useState(null) originally
 
 
-    const { addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
+    const { hasHttpCat} = useOutletContext();
     // const [errorMessage, setErrorMessage] = useState("");
     // const {id} = useParams();
  
