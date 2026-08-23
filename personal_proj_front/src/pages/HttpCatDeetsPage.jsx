@@ -16,7 +16,22 @@ export default function HttpCatDeetsPage() {
     // why is length defined above?
 
     const [team, setTeam] = useState(0)
+    // const [imageData, setImageData] = useState(null);
 
+    // useEffect(() =>{
+    //     const fetchData = async()=> {
+    //         try{
+    //             const res = await fetch(`https://http.cat/${httpCat}`);
+    //             const blob = await res.blob();
+    //             const url = URL.createObjectURL(blob);
+
+    //             setImageData(url);
+    //         }catch(e){
+    //             console.log(`Error: ${e}`)
+    //         }
+    //     }
+    //     fetchData()
+    // }, [])
 
 
 
@@ -28,13 +43,13 @@ export default function HttpCatDeetsPage() {
     }
   
     return (
-        <div className="cat-ard">
+        <div className="cat-card">
             <h2>HTTP Status {httpCat}</h2>
             <img 
             src={`https://http.cat/${httpCat}`}
              alt={httpCat}
              />
-
+           
             <button 
             className="cat-action"
             disabled={!canCatch && !isCaught}
