@@ -6,7 +6,7 @@ import MissingPage from './MissingPage';
 
 export default function HttpCatDeetsPage() {
 
-    const [httpCat] = useState(null);
+    const [httpCat] = useState();
     const { addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
     // const [errorMessage, setErrorMessage] = useState("");
     // const {id} = useParams();
