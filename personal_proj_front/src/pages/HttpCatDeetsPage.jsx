@@ -30,7 +30,7 @@ export default function HttpCatDeetsPage() {
   
     return (
         <div className="cat-card">
-            <h2>HTTP Status {httpCat}</h2>
+            <h2>HTTP Status {`${httpCat}`}</h2>
             <img 
             src={`https://http.cat/${httpCat}`}
              alt={httpCat}
