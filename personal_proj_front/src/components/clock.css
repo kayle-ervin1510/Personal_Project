@@ -30,12 +30,13 @@ section span:nth-child(3) {
     left: 10%;
     width: 40%;
     height: 4px;
+    background: rgb(32, 2, 183);
 }
 
 span {
     position: absolute;
     top: 50%;
-    background: #e0e;
+    background: rgb(48, 7, 212);
     transform: rotate(90deg);
     transform-origin: 100%;
     transition: all 0.05s;
