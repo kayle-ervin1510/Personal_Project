@@ -38,7 +38,7 @@ export default function HttpCatDeetsPage() {
            
             <button 
             className="cat-action"
-            disabled={!canCatch && !isCaught}
+            disabled={canCatch && !isCaught}
             onClick={() => (isCaught ? removeHttpCat(httpCat.id) : addHttpCat(httpCat))}
             >
                 {isCaught ? "Remove Cat" : "Add Cat"}
