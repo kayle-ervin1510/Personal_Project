@@ -40,3 +40,7 @@ export default function CatCard ({httpCat}){
 // so .id won't be of use, because it has no call for "id"
 // I need to call and list the image as an image
 // not using id, or name
+// the stand-in for the http status code is undefined, or null
+// if I put null in the useState for httpCat
+// I need to figure out how to make it equal to the status codes
+// the actual status codes
