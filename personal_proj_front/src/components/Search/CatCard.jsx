@@ -22,6 +22,7 @@ export default function CatCard ({httpCat}){
                 <Card.Title>
                     Status {httpCat}
                 </Card.Title>
+                
                 <Stack gap={2}>
                     <Button
                     variant={capture?"secondary":"warning"}
