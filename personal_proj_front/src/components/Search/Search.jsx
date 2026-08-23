@@ -24,7 +24,7 @@ export default function Search() {
                 setHttpCat={setHttpCat}
                 httpCat={httpCat}
             />
-          {/*   <Container  team={team}/> */}
+            <Container  team={team}/>
         </>
     )
 }
