@@ -16,7 +16,17 @@ export default function HttpCatDeetsPage() {
     // why is length defined above?
 
     const [team, setTeam] = useState(0)
-    // const [imageData, setImageData] = useState(null);
+    const imageUrl = "https://http.cat${httpCat}";
+    const imgElement = document.getElementById("image")
+
+    fetch(imageUrl)
+    .then(response => response.blob())
+    .then(blob => {
+        let imgURL = URL.createObjectURL(blob);
+        imgElement.src = imgURL;
+
+    })
+    .catch(error => console.error("Error fetching image:", error))
 
     // useEffect(() =>{
     //     const fetchData = async()=> {
