@@ -16,32 +16,7 @@ export default function HttpCatDeetsPage() {
     // why is length defined above?
 
     const [team, setTeam] = useState(0)
-    const imageUrl = "https://http.cat${httpCat}";
-    const imgElement = document.getElementById("image")
 
-    fetch(imageUrl)
-    .then(response => response.blob())
-    .then(blob => {
-        let imgURL = URL.createObjectURL(blob);
-        imgElement.src = imgURL;
-
-    })
-    .catch(error => console.error("Error fetching image:", error))
-
-    // useEffect(() =>{
-    //     const fetchData = async()=> {
-    //         try{
-    //             const res = await fetch(`https://http.cat/${httpCat}`);
-    //             const blob = await res.blob();
-    //             const url = URL.createObjectURL(blob);
-
-    //             setImageData(url);
-    //         }catch(e){
-    //             console.log(`Error: ${e}`)
-    //         }
-    //     }
-    //     fetchData()
-    // }, [])
 
 
 
@@ -117,3 +92,34 @@ export default function HttpCatDeetsPage() {
     // }
 
     // }})
+
+// experiment 03
+
+    // const imageUrl = `https://http.cat${httpCat}`;
+    // const imgElement = document.getElementById("image")
+
+    // fetch(imageUrl)
+    // .then(response => response.blob())
+    // .then(blob => {
+    //     let imgURL = URL.createObjectURL(blob);
+    //     imgElement.src = imgURL;
+
+    // })
+    // .catch(error => console.error("Error fetching image:", error))
+
+// Failed Experiment 04
+
+    // useEffect(() =>{
+    //     const fetchData = async()=> {
+    //         try{
+    //             const res = await fetch(`https://http.cat/${httpCat}`);
+    //             const blob = await res.blob();
+    //             const url = URL.createObjectURL(blob);
+
+    //             setImageData(url);
+    //         }catch(e){
+    //             console.log(`Error: ${e}`)
+    //         }
+    //     }
+    //     fetchData()
+    // }, [])
