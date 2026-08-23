@@ -14,7 +14,7 @@ export default function CatCard ({httpCat}){
             <Card.Body>
                 
                 <Card.Title>
-                    Status {`${httpCat}`}
+                    Status Code: {`${httpCat}`}
                 </Card.Title>
                   <Card.Img
                 variant="top"
