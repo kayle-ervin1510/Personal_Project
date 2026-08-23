@@ -6,7 +6,13 @@ import MissingPage from './MissingPage';
 
 export default function HttpCatDeetsPage() {
 
+    // I want httpCat to be equal to what I type in
+    // Like, I want it to show up as the status code
+    // not show up as null, or undefined.
     const [httpCat] = useState();
+// const [httpCat] = useState(null) originally
+
+
     const { addHttpCat, removeHttpCat, hasHttpCat} = useOutletContext();
     // const [errorMessage, setErrorMessage] = useState("");
     // const {id} = useParams();
