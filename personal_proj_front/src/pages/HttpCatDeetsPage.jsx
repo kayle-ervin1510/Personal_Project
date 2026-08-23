@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, useOutletContext } from 'react-router-dom';
-// import CatCard from '../components/Search/CatCard';
+import CatCard from '../components/Search/CatCard';
 import MissingPage from './MissingPage';
 
 export default function HttpCatDeetsPage() {
@@ -49,6 +49,7 @@ export default function HttpCatDeetsPage() {
             >
                 {isCaught ? "Remove Cat" : "Add Cat"}
             </button>
+            <CatCard/>
         </div>
     );
 }

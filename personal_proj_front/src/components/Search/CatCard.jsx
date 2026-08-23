@@ -10,19 +10,17 @@ export default function CatCard ({httpCat}){
 
     return (
         <Card style={ {width:"18rem"} } id={ `cat-${httpCat}-card` }>
-            <Card.Img
+          
+            <Card.Body>
+                
+                <Card.Title>
+                    Status {`${httpCat}`}
+                </Card.Title>
+                  <Card.Img
                 variant="top"
                 src={`https://http.cat/${httpCat}`}
                 alt={`HTTP Cat ${httpCat}`}
             />
-            <Card.Body>
-                <Card.Text>
-                    <Badge bg="secondary">HTTP Code #{httpCat}</Badge>
-                </Card.Text>
-                <Card.Title>
-                    Status {httpCat}
-                </Card.Title>
-                
                 <Stack gap={2}>
                     <Button
                     variant={capture?"secondary":"warning"}
