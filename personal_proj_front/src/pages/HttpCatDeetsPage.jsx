@@ -16,7 +16,7 @@ export default function HttpCatDeetsPage() {
     const canCatch = httpCat ? !isCaught && team.length < 10 : false;
     // // why is length defined above?
 
-   
+   // still issues with the errorMessage - but that's okay
 
 
 
