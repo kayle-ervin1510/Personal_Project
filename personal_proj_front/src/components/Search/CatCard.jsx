@@ -3,7 +3,6 @@ import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
-// import { Link } from 'react-router-dom';
 
 export default function CatCard ({httpCat}){
     const [capture, setCapture] = useState(false);
