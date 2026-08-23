@@ -36,19 +36,19 @@ export default function HttpCatDeetsPage() {
   
     return (
         <div className="cat-card">
-            <h2>HTTP Status {`${httpCat}`}</h2>
-            <img 
+            {/* <h2>HTTP Status {`${httpCat}`}</h2> */}
+            {/* <img 
             src={`https://http.cat/${httpCat}`}
              alt={httpCat}
-             />
+             /> */}
            
-            <button 
+            {/* <button 
             className="cat-action"
             disabled={canCatch && !isCaught}
             onClick={() => (isCaught ? removeHttpCat(httpCat.id) : addHttpCat(httpCat))}
             >
                 {isCaught ? "Remove Cat" : "Add Cat"}
-            </button>
+            </button> */}
             <CatCard/>
         </div>
     );
