@@ -9,11 +9,11 @@ export default function HttpCatDeetsPage() {
     // I want httpCat to be equal to what I type in
     // Like, I want it to show up as the status code
     // not show up as null, or undefined.
-    const [httpCat] = useState("");
+    const [httpCat, setHttpCat, releaseCat] = useState(null);
 // const [httpCat] = useState(null) originally
 
 
-    const { hasHttpCat} = useOutletContext();
+    const {hasHttpCat} = useOutletContext();
     // const [errorMessage, setErrorMessage] = useState("");
     // const {id} = useParams();
  
@@ -24,7 +24,7 @@ export default function HttpCatDeetsPage() {
 
    // still issues with the errorMessage - but that's okay
 
-
+   
 
 
     // if (errorMessage) {

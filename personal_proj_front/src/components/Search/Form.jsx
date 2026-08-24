@@ -6,7 +6,7 @@ export default function Form({ handleSubmit, setHttpCat, httpCat}) {
                 type="text"
                 name="name"
                 placeholder="Try '308'"
-                value={httpCat}
+                value={httpCat ?? ""}
                 onChange={(e) => setHttpCat(e.target.value)}
                 className="flex-1 rounded-md border border-slate-300 px-3 py-1 outline-none"
             />

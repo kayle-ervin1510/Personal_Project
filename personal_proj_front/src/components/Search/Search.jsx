@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Search() {
-    const [httpCat, setHttpCat] = useState("");
+    const [httpCat, setHttpCat] = useState(null);
     const [team] = useState([]);
     const navigate = useNavigate();
 
