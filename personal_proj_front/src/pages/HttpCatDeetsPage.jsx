@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { useParams, useOutletContext } from 'react-router-dom';
 import CatCard from '../components/Search/CatCard';
 import MissingPage from './MissingPage';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Stack from 'react-bootstrap/Stack';
 
 export default function HttpCatDeetsPage() {
 
@@ -42,29 +45,38 @@ export default function HttpCatDeetsPage() {
 
   
     return (
-        <div style = {{width:"14rem"}}>
-            <h2>HTTP Status {`${httpCat}`}</h2>
-            <img 
+        <Card style = {{width:"16rem"}} id={`cat=${httpCat}-card`}>
+            <Card.Body>
+            <Card.Title>HTTP Status {`${httpCat}`}</Card.Title>
+            <Card.Img
             src={`https://http.cat/${httpCat}`}
              alt={httpCat}
              />
            
-            {/* <button 
+            {/* 
+            <Stack>
+            <Button 
             className="cat-action"
             disabled={canCatch && !isCaught}
             onClick={() => (isCaught ? releaseCat(httpCat.id) : catchHttpCat(httpCat))}
             >
                 {isCaught ? "Remove Cat" : "Add Cat"}
-            </button> */}
+            </Button> 
+            </Stack> */}
             <CatCard/>
-            {/* <button 
+            {/* 
+            <Stack>
+            <Button 
             className="cat-action"
             disabled={!canCatch && !isCaught}
             onClick={() => (isCaught ? releaseCat(httpCat.id): catchHttpCat(httpCat))}
             >
                 {isCaught ? "Let go" : "Catch"}
-            </button> */}
-        </div>
+            </Button>
+            </Stack>
+            */}
+            </Card.Body>
+        </Card>
     );
 }
 
