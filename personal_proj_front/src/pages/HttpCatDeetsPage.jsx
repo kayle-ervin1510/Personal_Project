@@ -12,7 +12,8 @@ export default function HttpCatDeetsPage() {
     
     // const { hasHttpCat, team, releaseCat, catchHttpCat} = useOutletContext();
     const {id} = useParams();
- 
+    
+    // hasHttpCat is listed as not being a function
     // const isCaught = httpCat ? hasHttpCat(httpCat.id): false;
     // const canCatch = httpCat ? !isCaught && team.length < 10 : false;
 
@@ -33,15 +34,18 @@ export default function HttpCatDeetsPage() {
    }, [id])
 
 
-    // if (errorMessage) {
-    //     return <MissingPage message={errorMessage}/>
-    // }
-    // if (!httpCat) {
-    //     return <MissingPage message={errorMessage}/>
+    if (errorMessage) {
+        return <MissingPage message={errorMessage}/>
+    }
+    if (!httpCat) {
+        return <MissingPage message={errorMessage}/>
+    }
+    // const cardStyle = {
+    //     backgroundColor: "#0000"
     // }
   
     return (
-        <div className="cat-card">
+        <div style = {{width:"14rem"}}>
             <h2>HTTP Status {`${httpCat}`}</h2>
             {/* <img 
             src={`https://http.cat/${httpCat}`}
@@ -56,6 +60,13 @@ export default function HttpCatDeetsPage() {
                 {isCaught ? "Remove Cat" : "Add Cat"}
             </button> */}
             <CatCard/>
+            {/* <button 
+            className="cat-action"
+            disabled={!canCatch && !isCaught}
+            onClick={() => (isCaught ? releaseCat(httpCat.id): catchHttpCat(httpCat))}
+            >
+                {isCaught ? "Let go" : "Catch"}
+            </button> */}
         </div>
     );
 }

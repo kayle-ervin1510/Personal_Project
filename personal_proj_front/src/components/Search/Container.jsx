@@ -1,7 +1,8 @@
 import CatCard from './CatCard';
+import {useParams} from 'react-router-dom';
 // define team, and find a way to add to it
 export default function Container({team}) {
-
+    const {id} = useParams()
     return (
         <>
          <div id="cat-container"
@@ -22,5 +23,3 @@ export default function Container({team}) {
         </>
     )
 }
-// defined team in search, so no longer getting an error there.
-// id is listed as undefined?
