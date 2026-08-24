@@ -28,7 +28,7 @@ export default function Search() {
 }
 
 // BELOW IS SOME CODE THAT DOESN'T LET ME SEARCH
-// BUT STILL HELPFUL:
+// BUT STILL HELPFUL: saved to extra_branch
 
     // const [httpCatId, setHttpCatId] = useState("");
     
