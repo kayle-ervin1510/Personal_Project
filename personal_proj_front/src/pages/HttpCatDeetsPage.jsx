@@ -12,7 +12,10 @@ export default function HttpCatDeetsPage() {
     
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
-    const { team, catchCat, releaseCat, hasCat } = useOutletContext()
+    // const {}
+    const [team, setTeam] = useState([]);
+    const [loading, setLoading] = useState(true);
+
     const {id} = useParams();
     const [capture, setCapture] = useState(false);
     
