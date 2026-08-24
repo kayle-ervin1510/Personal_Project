@@ -1,9 +1,9 @@
 import { useOutletContext } from 'react-router-dom';
 
 const ListPage = () =>{
-    const {team, releaseCat} = useOutletContext();
+    const { team, releaseCat} = useOutletContext();
     // length is marked as undefined, which means team is undefined. Need to define team
-    
+    // why is team undefined
     return (
         <>
         <div className="main-page-contents">
@@ -15,7 +15,7 @@ const ListPage = () =>{
                 <h2>No HTTP Codes saved yet!</h2>
             ) : (
                 team.map((httpCat) => (
-                    <div>
+                    <div className="cat-card" key={httpCat.id}>
                         <h3>{httpCat}</h3>
                         <img src={`https://http.cat/${httpCat}`} alt={`HTTP Cat ${httpCat}`} />
                         <button onClick={() => releaseCat(httpCat.id)}>Release</button>
