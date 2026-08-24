@@ -6,24 +6,25 @@ import MissingPage from './MissingPage';
 
 export default function HttpCatDeetsPage() {
 
-    // I want httpCat to be equal to what I type in
-    // Like, I want it to show up as the status code
-    // not show up as null, or undefined.
-    const [httpCat, setHttpCat, releaseCat] = useState(null);
-// const [httpCat] = useState(null) originally
-
-
-    const {hasHttpCat} = useOutletContext();
-    // const [errorMessage, setErrorMessage] = useState("");
-    // const {id} = useParams();
- 
-    const [team] = useState(0)
+    
+    const [httpCat, setHttpCat] = useState(null);
+    const [errorMessage, setErrorMessage] = useState("");
     const isCaught = httpCat ? hasHttpCat(httpCat.id): false;
     const canCatch = httpCat ? !isCaught && team.length < 10 : false;
-    // // why is length defined above?
-
-   // still issues with the errorMessage - but that's okay
-
+    const {hasHttpCat, team, releaseCat, catchHttpCat} = useOutletContext();
+    const {id} = useParams();
+ 
+    const fetchHttpCat = async () => {
+        try {
+            const response = `https://http.cat${httpCat}`
+            setHttpCat(response);
+            setErrorMessage("");
+        }catch (error) {
+            setHttpCat(null);
+            setErrorMessage(`No such cat with http code '${httpCat}' exists.`)
+        }
+        fetchHttpCat();
+    }
    
 
 
@@ -36,16 +37,16 @@ export default function HttpCatDeetsPage() {
   
     return (
         <div className="cat-card">
-            {/* <h2>HTTP Status {`${httpCat}`}</h2> */}
+            <h2>HTTP Status {`${httpCat}`}</h2>
             {/* <img 
             src={`https://http.cat/${httpCat}`}
              alt={httpCat}
-             /> */}
+             />
            
-            {/* <button 
+            <button 
             className="cat-action"
             disabled={canCatch && !isCaught}
-            onClick={() => (isCaught ? removeHttpCat(httpCat.id) : addHttpCat(httpCat))}
+            onClick={() => (isCaught ? releaseCat(httpCat.id) : catchHttpCat(httpCat))}
             >
                 {isCaught ? "Remove Cat" : "Add Cat"}
             </button> */}
