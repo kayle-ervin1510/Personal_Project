@@ -5,14 +5,17 @@ import Stack from 'react-bootstrap/Stack';
 
 
 
+
 // {httpCat} <-- when this is within the parameters of the function
 // status code comes back as undefined
 // whereas if I set httpCat as a const variable set to null
 // it comes back as null
+// better than undefined, I suppose
 export default function CatCard (){
     const [capture, setCapture] = useState(false);
     const [httpCat] = useState(null)
     const imageSource = `https://http.cat/${httpCat}`;
+  
    
     return (
         <Card style={ {width:"18rem"} } id={ `cat-${httpCat}-card` }>
