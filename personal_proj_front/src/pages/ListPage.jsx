@@ -11,24 +11,17 @@ const ListPage = () =>{
                             
                 
             <h2>My saved HTTP Codes</h2>
-             {/* {team.length >= 0} ? (
-                
-                <h2>No HTTP Codes Added Yet</h2> 
-            ): ()
-            {team.map((httpCat)=> (
-                 
-                    
-                        <div className="cat-card" key={httpCat.id}>
-                            <h3>Status Code: {httpCat.id}</h3>
-                            <img
-                                src={`https://http.cat/${httpCat.id}`}
-                                alt={`HTTP Status ${httpCat.id}`}
-                            />
-                            <button onClick={()=> removeHttpCat(httpCat.id)}>
-                                Remove
-                            </button>
-                        </div>
-                    ))}  */}
+            {/* {team.length === 0 ? (
+                <h2>No HTTP Codes saved yet!</h2>
+            ) : (
+                team.map((httpCat) => (
+                    <div>
+                        <h3>{httpCat}</h3>
+                        <img src={`https://http.cat/${httpCat}`} alt={`HTTP Cat ${httpCat}`} />
+                        <button onClick={() => removeHttpCat(httpCat.id)}>Release</button>
+                    </div>
+                ))
+            )} */}
                 
         </div>
         
@@ -37,3 +30,4 @@ const ListPage = () =>{
 }
 export default ListPage;
 
+// length is still marked as undefined
