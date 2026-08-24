@@ -5,12 +5,9 @@ import { useNavigate, useParams, useOutletContext} from 'react-router-dom';
 
 export default function Search() {
     const [httpCatId, setHttpCatId] = useState("");
-    const[team] = useState([]);
+    const[team, setTeam] = useState([]);
     const navigate = useNavigate();
-    // const {id} = useParams();
-
-
-
+   
     const handleSubmit = (event) => {
         event.preventDefault();
         if(!httpCatId) return
