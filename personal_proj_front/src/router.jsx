@@ -5,6 +5,7 @@ import ErrorPage from './pages/ErrorPage';
 import ListPage from './pages/ListPage';
 import NotFound from './pages/NotFound';
 import Clock from './components/Clock';
+import AboutPage from './pages/AboutPage';
 import HttpCatDeetsPage from './pages/HttpCatDeetsPage'
 import App from './App';
 
@@ -22,7 +23,10 @@ const router = createBrowserRouter([
             element:<AuthPage />,
             loader:redirectIfLoggedIn
             },
-
+            {
+                path: '/about',
+                element: <AboutPage />
+            },
 
             {
                 path:'/home',

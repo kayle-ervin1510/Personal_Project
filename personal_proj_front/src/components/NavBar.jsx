@@ -11,6 +11,7 @@ export default function NavBar() {
             <Nav.Link as={Link} to="/Clock">Clock</Nav.Link>
             <Nav.Link as={Link} to="/home">Home</Nav.Link>
             <Nav.Link as={Link} to="/list">My List </Nav.Link>
+            <Nav.Link as={Link} to="/about">About Page</Nav.Link>
             <Nav.Link></Nav.Link>
             <Search/>
         </Navbar>
