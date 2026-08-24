@@ -1,6 +1,9 @@
 export default function Form({ handleSubmit, setHttpCatId, httpCatId}) {
     return (
-        <form onSubmit={(event) => handleSubmit(event)} className="mb-6 p-6 rounded-x1">
+        <form 
+        onSubmit={(event) => handleSubmit(event)} 
+        className="mb-6 p-6 rounded-x1"
+        >
             <input
                 id="http-number"
                 type="text"
@@ -10,7 +13,10 @@ export default function Form({ handleSubmit, setHttpCatId, httpCatId}) {
                 onChange={(e) => setHttpCatId(e.target.value)}
                 className="flex-1 rounded-md border border-slate-300 px-3 py-1 outline-none"
             />
-            <button type="submit">Search!</button>
+            <button 
+            type="submit"
+            className="font-semibold text-black"
+            >Search!</button>
         </form>
     );
 }
