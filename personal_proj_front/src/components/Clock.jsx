@@ -32,11 +32,13 @@ function Clock() {
 
     return (
         <main className="clock">
+            
             <section>
                 <span ref={secondsRef}></span>
                 <span ref={minutesRef}></span>
                 <span ref={hoursRef}></span>
             </section>
+            
         </main>
     )
 }
