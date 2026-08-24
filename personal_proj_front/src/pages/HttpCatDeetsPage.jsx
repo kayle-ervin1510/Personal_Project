@@ -9,13 +9,12 @@ export default function HttpCatDeetsPage() {
     
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
-    
-    // const {hasHttpCat, team, releaseCat, catchCat} = useOutletContext();
+    const { team, catchCat, releaseCat, hasCat } = useOutletContext()
     const {id} = useParams();
     
-    // hasHttpCat is listed as not being a function
-    // const isCaught = httpCat ? hasHttpCat(httpCat.id): false;
-    // const canCatch = httpCat ? !isCaught && team.length < 10 : false;
+    // const isCaught = httpCat ? hasCat(httpCat.id) : false
+    // const canCatch = httpCat ? !isCaught && team.length < 10 : false
+
 
     useEffect ( () => {
         const lookupId = id?.charAt(0) + id?.slice(1) || ""
@@ -41,19 +40,17 @@ export default function HttpCatDeetsPage() {
     if (!httpCat) {
         return <MissingPage message={errorMessage}/>
     }
-    // const cardStyle = {
-    //     backgroundColor: "#0000"
-    // }
+
   
     return (
         <div style = {{width:"14rem"}}>
             <h2>HTTP Status {`${httpCat}`}</h2>
-            {/* <img 
+            <img 
             src={`https://http.cat/${httpCat}`}
              alt={httpCat}
              />
            
-            <button 
+            {/* <button 
             className="cat-action"
             disabled={canCatch && !isCaught}
             onClick={() => (isCaught ? releaseCat(httpCat.id) : catchHttpCat(httpCat))}
