@@ -3,10 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
 
+
 export default function CatCard ({httpCat}){
     const [capture, setCapture] = useState(false);
-    const imageSource = `https://http.cat/${httpCat}`
     
+
     return (
         <Card style={ {width:"18rem"} } id={ `cat-${httpCat}-card` }>
           
@@ -14,6 +15,7 @@ export default function CatCard ({httpCat}){
                 
                 <Card.Title>
                     Status Code: {`${httpCat}`}
+                    {/* Status Code: {`${httpCat}`} */}
                 </Card.Title>
                   <Card.Img
                 variant="top"
