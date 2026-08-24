@@ -1,7 +1,7 @@
 import { useOutletContext } from 'react-router-dom';
 
 const ListPage = () =>{
-    const {team, removeHttpCat} = useOutletContext();
+    const {team, releaseCat} = useOutletContext();
     // length is marked as undefined, which means team is undefined. Need to define team
     
     return (
@@ -18,7 +18,7 @@ const ListPage = () =>{
                     <div>
                         <h3>{httpCat}</h3>
                         <img src={`https://http.cat/${httpCat}`} alt={`HTTP Cat ${httpCat}`} />
-                        <button onClick={() => removeHttpCat(httpCat.id)}>Release</button>
+                        <button onClick={() => releaseCat(httpCat.id)}>Release</button>
                     </div>
                 ))
             )} */}

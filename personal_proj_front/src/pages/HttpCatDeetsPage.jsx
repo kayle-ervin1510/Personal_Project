@@ -10,7 +10,7 @@ export default function HttpCatDeetsPage() {
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
     
-    // const { hasHttpCat, team, releaseCat, catchHttpCat} = useOutletContext();
+    // const {hasHttpCat, team, releaseCat, catchCat} = useOutletContext();
     const {id} = useParams();
     
     // hasHttpCat is listed as not being a function

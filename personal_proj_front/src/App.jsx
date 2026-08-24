@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Outlet, useLoaderData } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar';
-// import HttpCatDeetsPage from './pages/HttpCatDeetsPage';
+
 
 
 
