@@ -22,7 +22,7 @@ export default function HttpCatDeetsPage() {
 
     const fetchHttpCat = async () => {
         try {
-            const response = `https://http.cat${lookupId}`
+            const response = `https://http.cat/${lookupId}`
             setHttpCat(response);
             setErrorMessage("");
         }catch (error) {
