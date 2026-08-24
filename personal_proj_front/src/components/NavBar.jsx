@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Search from './Search/Search';
+import BackButton from './BackButton';
 
 export default function NavBar() {
     return (
@@ -12,7 +13,6 @@ export default function NavBar() {
             <Nav.Link as={Link} to="/home">Home</Nav.Link>
             <Nav.Link as={Link} to="/list">My List </Nav.Link>
             <Nav.Link as={Link} to="/about">About Page</Nav.Link>
-            <Nav.Link></Nav.Link>
             <Search/>
         </Navbar>
     )
