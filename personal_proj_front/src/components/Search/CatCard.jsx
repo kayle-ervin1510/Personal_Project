@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';

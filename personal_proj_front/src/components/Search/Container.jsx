@@ -1,10 +1,7 @@
 import CatCard from './CatCard';
-import { useParams } from 'react-router-dom';
-// I think I need to remove list...maybe repalce it with team?
-// team is undefined
-// need to define it
-export default function Container({team, httpCat}) {
-    const {id} = useParams()
+// define team, and find a way to add to it
+export default function Container({team}) {
+
     return (
         <>
          <div id="cat-container"
