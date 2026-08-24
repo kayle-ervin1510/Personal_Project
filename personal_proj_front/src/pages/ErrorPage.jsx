@@ -8,7 +8,7 @@ const ErrorPage =()=>{
         <>
             <h1>Woops! Some wires got crossed!</h1>
             <p> {error?.message ?? "Unknown Error"}</p>
-            <Link to='/'>Return to Login Page</Link>
+            <Link to='/'>Return to Home Page</Link>
         </>
     );
 };

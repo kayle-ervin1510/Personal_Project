@@ -11,7 +11,7 @@ const ListPage = () =>{
                             
                 
             <h2>My saved HTTP Codes</h2>
-            {/* {team.length === 0 ? (
+            {team.length === 0 ? (
                 <h2>No HTTP Codes saved yet!</h2>
             ) : (
                 team.map((httpCat) => (
@@ -21,7 +21,7 @@ const ListPage = () =>{
                         <button onClick={() => releaseCat(httpCat.id)}>Release</button>
                     </div>
                 ))
-            )} */}
+            )}
                 
         </div>
         
