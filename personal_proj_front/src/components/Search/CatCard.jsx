@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import { useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
 
 
-export default function CatCard ({httpCat}){
+
+// {httpCat} <-- when this is within the parameters of the function
+// status code comes back as undefined
+// whereas if I set httpCat as a const variable set to null
+// it comes back as null
+export default function CatCard (){
     const [capture, setCapture] = useState(false);
-    const imageSource = `https://http.cat/${httpCat}`
-    
+    const [httpCat] = useState(null)
+    const imageSource = `https://http.cat/${httpCat}`;
+   
     return (
         <Card style={ {width:"18rem"} } id={ `cat-${httpCat}-card` }>
           
