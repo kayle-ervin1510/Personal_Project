@@ -9,23 +9,28 @@ export default function HttpCatDeetsPage() {
     
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
-    const isCaught = httpCat ? hasHttpCat(httpCat.id): false;
-    const canCatch = httpCat ? !isCaught && team.length < 10 : false;
-    const {hasHttpCat, team, releaseCat, catchHttpCat} = useOutletContext();
+    
+    // const { hasHttpCat, team, releaseCat, catchHttpCat} = useOutletContext();
     const {id} = useParams();
  
+    // const isCaught = httpCat ? hasHttpCat(httpCat.id): false;
+    // const canCatch = httpCat ? !isCaught && team.length < 10 : false;
+
+    useEffect ( () => {
+        const lookupId = id?.charAt(0) + id?.slice(1) || ""
+
     const fetchHttpCat = async () => {
         try {
-            const response = `https://http.cat${httpCat}`
+            const response = `https://http.cat${lookupId}`
             setHttpCat(response);
             setErrorMessage("");
         }catch (error) {
             setHttpCat(null);
             setErrorMessage(`No such cat with http code '${httpCat}' exists.`)
         }
+        }
         fetchHttpCat();
-    }
-   
+   }, [id])
 
 
     // if (errorMessage) {
