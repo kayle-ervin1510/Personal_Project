@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams, useOutletContext } from 'react-router-dom';
-import CatCard from '../components/Search/CatCard';
 import MissingPage from './MissingPage';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -13,6 +12,7 @@ export default function HttpCatDeetsPage() {
     const [errorMessage, setErrorMessage] = useState("");
     const { team, catchCat, releaseCat, hasCat } = useOutletContext()
     const {id} = useParams();
+    const [capture, setCapture] = useState(false);
     
     // const isCaught = httpCat ? hasCat(httpCat.id) : false
     // const canCatch = httpCat ? !isCaught && team.length < 10 : false
@@ -63,7 +63,15 @@ export default function HttpCatDeetsPage() {
                 {isCaught ? "Remove Cat" : "Add Cat"}
             </Button> 
             </Stack> */}
-            <CatCard/>
+            
+            <Stack>
+                <Button
+                variant={capture?"secondary":"warning"}
+                onClick={()=>setCapture(!capture)}
+                >
+                    {capture?"Release Cat":"Collect Cat"}
+                </Button>
+            </Stack>
             {/* 
             <Stack>
             <Button 

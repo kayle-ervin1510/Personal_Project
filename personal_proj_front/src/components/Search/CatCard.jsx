@@ -44,6 +44,7 @@ export default function CatCard (){
         </Card>
     )
 }
+// FIX THIS SO IT"S LIKE THE HTTPCATDEETSPAGE
 
 // httpCat, as the status code, is listed as undefined
 // but in HttpCatDeetsPage, it's listed as: "https://http.cat/500"
