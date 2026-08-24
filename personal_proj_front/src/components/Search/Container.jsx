@@ -2,7 +2,7 @@ import CatCard from './CatCard';
 import {useParams} from 'react-router-dom';
 // define team, and find a way to add to it
 export default function Container({team}) {
-    const {id} = useParams()
+    // const {id} = useParams()
     return (
         <>
          <div id="cat-container"

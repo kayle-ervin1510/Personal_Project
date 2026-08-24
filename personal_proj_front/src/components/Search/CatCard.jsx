@@ -11,7 +11,7 @@ import Stack from 'react-bootstrap/Stack';
 // whereas if I set httpCat as a const variable set to null
 // it comes back as null
 // better than undefined, I suppose
-export default function CatCard (){
+export default function CatCard ({}){
     const [capture, setCapture] = useState(false);
     const [httpCat] = useState(null)
     const imageSource = `https://http.cat/${httpCat}`;
