@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useNavigate, useParams, useOutletContext} from 'react-router-dom';
 
 export default function Search() {
-    const [httpCatId, setHttpCatId] = useState(null);
+    const [httpCatId, setHttpCatId] = useState("");
     const[team] = useState([]);
     const navigate = useNavigate();
     const {id} = useParams();
