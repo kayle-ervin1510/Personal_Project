@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams, useOutletContext } from 'react-router-dom';
 import CatCard from '../components/Search/CatCard';
