@@ -1,17 +1,16 @@
 import {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
 
 
+// if I want to have a details, that takes me to the HttpCatDeetsPage
+// I need to make it more like  page, 
+// less like a card, I think
+// we'll see
 
 
-// {httpCat} <-- when this is within the parameters of the function
-// status code comes back as undefined
-// whereas if I set httpCat as a const variable set to null
-// it comes back as null
-// better than undefined, I suppose
 export default function CatCard (){
     const [capture, setCapture] = useState(false);
     const [httpCat, setHttpCat] = useState(null);
@@ -55,7 +54,7 @@ export default function CatCard (){
                     >
                         {capture?"Release Cat":"Collect Cat"}
                     </Button>
-                    
+                    {/* <Button as={Link} to={`/cat/${httpCat}`}>Details</Button> */}
                 </Stack>
             </Card.Body>
 
