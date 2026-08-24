@@ -5,6 +5,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
 
+import CatCard from '../components/Search/CatCard';
+
 export default function HttpCatDeetsPage() {
 
     
@@ -29,7 +31,7 @@ export default function HttpCatDeetsPage() {
             setErrorMessage("");
         }catch (error) {
             setHttpCat(null);
-            setErrorMessage(`No such cat with http code '${httpCat}' exists.`)
+            setErrorMessage(`No such cat with http code '${lookupId}' exists.`)
         }
         }
         fetchHttpCat();
@@ -45,7 +47,7 @@ export default function HttpCatDeetsPage() {
 
   
     return (
-        <Card style = {{width:"16rem"}} id={`cat=${httpCat}-card`}>
+        <Card style = {{width:"18rem"}} id={`cat=${httpCat}-card`}>
             <Card.Body>
             <Card.Title>HTTP Status {`${httpCat}`}</Card.Title>
             <Card.Img
@@ -84,6 +86,7 @@ export default function HttpCatDeetsPage() {
             </Stack>
             */}
             </Card.Body>
+            <CatCard/>
         </Card>
     );
 }
