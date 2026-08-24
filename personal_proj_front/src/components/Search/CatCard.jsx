@@ -7,7 +7,7 @@ import Stack from 'react-bootstrap/Stack';
 export default function CatCard ({httpCat}){
     const [capture, setCapture] = useState(false);
     const imageSource = `https://http.cat/${httpCat}`
-
+    
     return (
         <Card style={ {width:"18rem"} } id={ `cat-${httpCat}-card` }>
           
@@ -28,6 +28,7 @@ export default function CatCard ({httpCat}){
                     >
                         {capture?"Release Cat":"Collect Cat"}
                     </Button>
+                    
                 </Stack>
             </Card.Body>
 
@@ -35,6 +36,5 @@ export default function CatCard ({httpCat}){
     )
 }
 
-// httpCat is listed as undefined in CatCard
-// as well as in all of the Search function
-// but in HttpCatDeetsPage it's no longer undefined
+// httpCat, as the status code, is listed as undefined
+// but in HttpCatDeetsPage, it's listed as: "https://http.cat/500"
