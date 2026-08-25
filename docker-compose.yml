@@ -19,18 +19,21 @@ services:
             - ./personal_proj_back:/app
         depends_on:
             - db
+        # restart: unless-stopped
     
     nginx:
         build: ./personal_proj_front
         container_name: nginx-container
         ports:
             - "80:80"
+            - "443:443"
         volumes:
             - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
             - /etc/letsencrypt:/etc/letsencrypt:ro
             #- ./personal_proj_front/dist:/usr/share/nginx/html
         depends_on:
             - backend
+        # restart: unless-stopped
     
 volumes:
     pgdata:
