@@ -1,7 +1,7 @@
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import authenticate
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status as s
@@ -15,63 +15,63 @@ from rest_framework_simplejwt.settings import api_settings
 
 
 
-# ACESS_MAX_AGE = int(settings.SIMPLE_JWT["ACCESS_TOKEN_LIFETIME"].total_seconds())
-# REFRESH_MAX_AGE = int(settings.SIMPLE_JWT["REFRESH_TOKEN_LIFETIME"].total_seconds())
-# REFRESH_COOKIE_PATH = "/api/v1/users/"
+ACCESS_MAX_AGE = int(settings.SIMPLE_JWT["ACCESS_TOKEN_LIFETIME"].total_seconds())
+REFRESH_MAX_AGE = int(settings.SIMPLE_JWT["REFRESH_TOKEN_LIFETIME"].total_seconds())
+REFRESH_COOKIE_PATH = "/api/v1/users/"
 
-# def set_auth_cookies(response, access=None, refresh=None):
-#   common = {
-#   "httponly":True,
-#   "secure": settings.AUTH_COOKIE_SECURE,
-#   "samesite":settings.AUTH_COOKIE_SAMESITE
-# }
-# if access:
-#   response.set_cookie("access", access, max_age=ACCESS_MAX_AGE, path="/", **common)
-# if refresh:
-#   response.set_cookie("refresh", refresh, max_age=REFRESH_MAX_AGE, path=REFRESH_COOKIE_PATH, **common)
-# return response
+def set_auth_cookies(response, access=None, refresh=None):
+  common = {
+  "httponly":True,
+  "secure": settings.AUTH_COOKIE_SECURE,
+  "samesite":settings.AUTH_COOKIE_SAMESITE
+    }
+  if access:
+    response.set_cookie("access", access, max_age=ACCESS_MAX_AGE, path="/", **common)
+  if refresh:
+    response.set_cookie("refresh", refresh, max_age=REFRESH_MAX_AGE, path=REFRESH_COOKIE_PATH, **common)
+  return response
 
-# def clear_auth_cookies(response):
-# response.delete_cookie("access", path="/")
-# response.delete_cookie("refresh", path=REFRESH_COOKIE_PATH)
-# return response
-
-# def token_for(user):
-#   refresh = RefreshToken.for_user(user)
-#   return str(refresh.access_token), str(refresh)
-
-# class JWTCookieAuthentication(JWTAuthentication):
-#   def authenticate(self, request):
-#       raw_token = request.COOKIES.get("access")
-#   if raw_token is None:
-#       return None
-# validated_token = self.get_validated_token(raw_token)
-# return self.get_user(validated_token), validated_token
-
-
-
-
-COOKIE_MAX_AGE = 60 * 60 * 7
-
-def set_token_cookie(response, token_key):
-    response.set_cookie(
-        key="token",
-        value=token_key,
-        httponly=True,
-        secure=settings.AUTH_COOKIE_SECURE,
-        samesite=settings.AUTH_COOKIE_SAMESITE,
-        max_age=COOKIE_MAX_AGE,
-        path="/"
-    )
+def clear_auth_cookies(response):
+    response.delete_cookie("access", path="/")
+    response.delete_cookie("refresh", path=REFRESH_COOKIE_PATH)
     return response
 
-class CookieAuthentication(TokenAuthentication):
+def token_for(user):
+  refresh = RefreshToken.for_user(user)
+  return str(refresh.access_token), str(refresh)
 
-    def authenticate(self, request):
-        token_key = request.COOKIES.get("token")
-        if not token_key:
-            return None
-        return self.authenticate_credentials(token_key)
+class JWTCookieAuthentication(JWTAuthentication):
+  def authenticate(self, request):
+    raw_token = request.COOKIES.get("access")
+    if raw_token is None:
+      return None
+    validated_token = self.get_validated_token(raw_token)
+    return self.get_user(validated_token), validated_token
+
+
+
+
+# COOKIE_MAX_AGE = 60 * 60 * 7
+
+# def set_token_cookie(response, token_key):
+#     response.set_cookie(
+#         key="token",
+#         value=token_key,
+#         httponly=True,
+#         secure=settings.AUTH_COOKIE_SECURE,
+#         samesite=settings.AUTH_COOKIE_SAMESITE,
+#         max_age=COOKIE_MAX_AGE,
+#         path="/"
+#     )
+#     return response
+
+# class CookieAuthentication(TokenAuthentication):
+
+#     def authenticate(self, request):
+#         token_key = request.COOKIES.get("token")
+#         if not token_key:
+#             return None
+#         return self.authenticate_credentials(token_key)
 
 
 
