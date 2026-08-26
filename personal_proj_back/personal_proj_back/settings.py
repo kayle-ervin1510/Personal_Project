@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 import os;
 from pathlib import Path;
-#from datetime import timedelta;
+from datetime import timedelta;
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
-    'rest_framework.authtoken',
+    # 'rest_framework.authtoken',
     'user_app',
     'note_app',
 ]
@@ -78,12 +78,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'personal_proj_back.wsgi.application'
 
 # access token & refresh token
-# SIMPLE_JWT = {
-#     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
-#     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
-#     "ROTate_REFRESH_TOKEN":True,
-#     "BLACKLIST_AFTER_ROTATION":True
-# }
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKEN":True,
+    "BLACKLIST_AFTER_ROTATION":True
+}
 
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
