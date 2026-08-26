@@ -5,20 +5,20 @@ import { redirect } from 'react-router-dom';
 // Use that baseURL to create the following:
 export const api = axios.create ({ 
   baseURL: "/api/v1/",
-//   withCredentials:true
+  withCredentials:true
 })
 
 // make an interceptor that can run before or after an api call
 // namely, one that will run immediately before very request the client sends.
 
 
-api.interceptors.request.use((config)=>{
-   const token = localStorage.getItem("token");
-   if (token){
-         config.headers.Authorization = `Token ${token}`
-        }
-        return config
- })
+// api.interceptors.request.use((config)=>{
+//    const token = localStorage.getItem("token");
+//    if (token){
+//          config.headers.Authorization = `Token ${token}`
+//         }
+//         return config
+//  })
 
 
 // Create an error message
@@ -45,9 +45,10 @@ export const userAuth = async (email, password, create)=> {
       password
     }
   );
-  const { email: userEmail, token} = response.data
-  localStorage.setItem("token", token)
-  return userEmail
+  // const { email: userEmail, token} = response.data
+  // localStorage.setItem("token", token)
+  // return userEmail
+  return response.data.email
 }catch (error){
   alert(errorMessage(error))
   return null;
@@ -66,7 +67,7 @@ export const userLogout = async () => {
   }catch(error){
     console.error("Logout request has failed", error);
 }
- localStorage.removeItem("token");
+//  localStorage.removeItem("token");
  return null;
 }
 
@@ -74,15 +75,15 @@ export const userLogout = async () => {
 // confirm the user
 
 export const userConfirmation = async () => {
-     const token = localStorage.getItem("token");
-     if(!token){return null}
+    //  const token = localStorage.getItem("token");
+    //  if(!token){return null}
      try{
          const response = await api.get("users/");
          return response.data.email;
      
     }catch(error){
-      localStorage.removeItem("token");
-      console.log(error)
+      // localStorage.removeItem("token");
+      // console.log(error)
       return null;
     }
 }
@@ -90,23 +91,23 @@ export const userConfirmation = async () => {
 // block a route to bounce the login page, if the user has no token
 // P.S. renaming requireLogin to mustLogin
 
-export const mustLogin = () =>{
-  // const email = await userConfirmation()
-  // if (!email) throw redirect("/");
-  //   return null;
+export const mustLogin = async () =>{
+  const email = await userConfirmation()
+  if (!email) throw redirect("/");
+    return null;
   
- if (!localStorage.getItem("token")) throw redirect("/");
- return null;
+//  if (!localStorage.getItem("token")) throw redirect("/");
+//  return null;
 }
 
 
 // if a user is logged in, they don't need to be on login page
 
 
-export const redirectIfLoggedIn =  () =>{
-  // const email = await userConfirmation()
-  // return email ? redirect("/home") : null;
-   return localStorage.getItem("token") ? redirect("/home") : null;
+export const redirectIfLoggedIn = async () =>{
+  const email = await userConfirmation()
+  return email ? redirect("/home") : null;
+  //  return localStorage.getItem("token") ? redirect("/home") : null;
  
 }
 
