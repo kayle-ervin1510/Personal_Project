@@ -111,13 +111,13 @@ export const redirectIfLoggedIn = async () =>{
  
 }
 
-export const homeLoader =  ()=>{
-  mustLogin()
+export const homeLoader = async ()=>{
+  await mustLogin()
   return getNotes()
 }
 
 
-export const getNotes = async()=>{
+export const getNotes = async ()=>{
   try{
     const response = await api.get("notes/");
     return response.data
