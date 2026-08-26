@@ -31,6 +31,7 @@ function Clock() {
 
 
     return (
+        <>
         <main className="clock">
             
             <section>
@@ -40,6 +41,10 @@ function Clock() {
             </section>
             
         </main>
+        <section>
+            Here's the time!
+        </section>
+        </>
     )
 }
 export default Clock
