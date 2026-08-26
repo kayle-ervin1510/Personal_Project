@@ -93,7 +93,8 @@ class CreateUser(APIView):
             token = Token.objects.create(user=new_user)
             # return Response({"token":token.key, "email":new_user.email}, status=s.HTTP_201_CREATED)
             response = Response({"email":new_user.email}, status=s.HTTP_201_CREATED)
-            return set_token_cookie(response, token.key)
+            # return set_token_cookie(response, token.key)
+            return set_auth_cookies(response, access, refresh)
         except Exception as e:
             return Response(e.args, status=s.HTTP_400_BAD_REQUEST)
         
