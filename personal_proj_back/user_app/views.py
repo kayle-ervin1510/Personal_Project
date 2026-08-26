@@ -26,9 +26,13 @@ def set_auth_cookies(response, access=None, refresh=None):
   "samesite":settings.AUTH_COOKIE_SAMESITE
     }
   if access:
-    response.set_cookie("access", access, max_age=ACCESS_MAX_AGE, path="/", **common)
+    response.set_cookie("access", access, 
+                        max_age=ACCESS_MAX_AGE, path="/", 
+                        **common)
   if refresh:
-    response.set_cookie("refresh", refresh, max_age=REFRESH_MAX_AGE, path=REFRESH_COOKIE_PATH, **common)
+    response.set_cookie("refresh", refresh, 
+                        max_age=REFRESH_MAX_AGE, path=REFRESH_COOKIE_PATH, 
+                        **common)
   return response
 
 def clear_auth_cookies(response):
@@ -65,10 +69,14 @@ class CreateUser(APIView):
             new_user.full_clean()
             new_user.save()
             access, refresh = tokens_for(new_user)
-            response = Response({"email":new_user.email}, status=s.HTTP_201_CREATED)
+            response = Response({"email":new_user.email}, 
+                                status=s.HTTP_201_CREATED
+                                )
             return set_auth_cookies(response, access, refresh)
         except Exception as e:
-            return Response(e.args, status=s.HTTP_400_BAD_REQUEST)
+            return Response(e.args, 
+                            status=s.HTTP_400_BAD_REQUEST
+                            )
         
 
 class Login(APIView):
@@ -80,36 +88,46 @@ class Login(APIView):
         data = request.data.copy()        
         data['username'] = data.get('email')
         # DON'T CHANGE THE ABOVE - I CAN MAKE A NEW ACCOUNT, AND LOGIN
-        user = authenticate(username=data.get('username'), password=data.get("password"))
+        user = authenticate(username=data.get('username'), 
+                            password=data.get("password")
+                            )
 
         if user:
             access, refresh = tokens_for(user)
             response = Response({"email":user.email})
             return set_auth_cookies(response, access, refresh)                  
         else:
-            return Response("A user matching that value does not exist.", status=s.HTTP_404_NOT_FOUND)
+            return Response("A user matching that value does not exist.", 
+                            status=s.HTTP_404_NOT_FOUND
+                            )
 
 
 class RefreshView(APIView):
     authentication_classes = []
     permission_classes = []
+
     def post(self, request):
-        raw_refresh=request.COOKIES.get("refresh")
+        raw_refresh = request.COOKIES.get("refresh")
+
         if not raw_refresh:
-            return Response({"detail":"No refresh token available"}, status=s.HTTP_401_UNAUTHORIZED)
+            return Response({"detail":"No refresh token available"}, 
+                            status=s.HTTP_401_UNAUTHORIZED
+                            )
         try:
             refresh = RefreshToken(raw_refresh)
+
         except TokenError:
             return clear_auth_cookies(
                 Response({"detail":"Invalid or expired refresh token."},
                         status=s.HTTP_401_UNAUTHORIZED)
                 )
+        
         access = str(refresh.access_token)
-
         new_refresh = None
 
         if api_settings.ROTATE_REFRESH_TOKENS:
             if api_settings.BLACKLIST_AFTER_ROTATION:
+
                 try:
                     refresh.blacklist()
                 except AttributeError:
