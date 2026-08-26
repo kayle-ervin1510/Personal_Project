@@ -89,7 +89,7 @@ export default function HttpCatDeetsPage() {
             </Stack>
             */}
             </Card.Body>
-            <CatCard/>
+            {/* <CatCard/> */}
         </Card>
     );
 }
