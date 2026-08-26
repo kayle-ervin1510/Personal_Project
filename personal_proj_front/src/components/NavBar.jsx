@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Search from './Search/Search';
-import Count from './Count/Count';
+
 
 
 export default function NavBar() {
@@ -15,7 +15,7 @@ export default function NavBar() {
             <Nav.Link as={Link} to="/list">My List </Nav.Link>
             <Nav.Link as={Link} to="/about">About Page</Nav.Link>
             <Search/>
-            <Count/>
+            
         </Navbar>
     )
 
