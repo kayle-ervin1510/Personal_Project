@@ -100,16 +100,16 @@ DATABASES = {
 }
 # Cookie Sessions
 
-# SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE', 'False') == 'True'
-# SESSION_COOKIE_HTTPONLY = os.environ.get('SESSION_COOKIE_HTTPONLY', 'True') == 'True'
-# CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE', 'False') == 'True'
+SESSION_COOKIE_SECURE = os.environ.get('SESSION_COOKIE_SECURE', 'False') == 'True'
+SESSION_COOKIE_HTTPONLY = os.environ.get('SESSION_COOKIE_HTTPONLY', 'True') == 'True'
+CSRF_COOKIE_SECURE = os.environ.get('CSRF_COOKIE_SECURE', 'False') == 'True'
 
-# # Cookie Authentication
+ # Cookie Authentication
 
-# AUTH_COOKIE_SECURE = os.environ.get('AUTH_COOKIE_SECURE', False) == 'True'
-# AUTH_COOKIE_SAMESITE = os.environ.get('AUTH_COOKIE_SECURE', 'Lax')
+AUTH_COOKIE_SECURE = os.environ.get('AUTH_COOKIE_SECURE', False) == 'True'
+AUTH_COOKIE_SAMESITE = os.environ.get('AUTH_COOKIE_SAMESITE', 'Lax')
 
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 
