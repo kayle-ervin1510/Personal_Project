@@ -23,6 +23,3 @@ export default function Form({ handleSubmit, setHttpCatId, httpCatId}) {
         </form>
     );
 }
-
-// should I take out name="name"? Maybe swap it out with something like httpCat={httpCat}?
-// originally value ={httpCat} was value={httpCat ?? ""}

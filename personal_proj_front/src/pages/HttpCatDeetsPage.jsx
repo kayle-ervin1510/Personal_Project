@@ -47,7 +47,8 @@ export default function HttpCatDeetsPage() {
     if (!httpCat) {
         return <MissingPage message={errorMessage}/>
     }
-
+// Cannot add any cats to a list, yet, I need to 
+// change my backend for that
   
     return (
         <Card style = {{width:"18rem"}} id={`cat=${httpCat}-card`}>
@@ -58,17 +59,7 @@ export default function HttpCatDeetsPage() {
              alt={httpCat}
              />
            
-            {/* 
-            <Stack>
-            <Button 
-            className="cat-action"
-            disabled={canCatch && !isCaught}
-            onClick={() => (isCaught ? releaseCat(httpCat.id) : catchHttpCat(httpCat))}
-            >
-                {isCaught ? "Remove Cat" : "Add Cat"}
-            </Button> 
-            </Stack> */}
-            
+              
             <Stack>
                 <Button
                 variant={capture?"secondary":"warning"}
@@ -77,19 +68,9 @@ export default function HttpCatDeetsPage() {
                     {capture?"Release Cat":"Collect Cat"}
                 </Button>
             </Stack>
-            {/* 
-            <Stack>
-            <Button 
-            className="cat-action"
-            disabled={!canCatch && !isCaught}
-            onClick={() => (isCaught ? releaseCat(httpCat.id): catchHttpCat(httpCat))}
-            >
-                {isCaught ? "Let go" : "Catch"}
-            </Button>
-            </Stack>
-            */}
+ 
             </Card.Body>
-            {/* <CatCard/> */}
+            
         </Card>
     );
 }

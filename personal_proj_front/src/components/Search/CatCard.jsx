@@ -5,18 +5,12 @@ import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
 
 
-// if I want to have a details, that takes me to the HttpCatDeetsPage
-// I need to make it more like  page, 
-// less like a card, I think
-// we'll see
-
-
 export default function CatCard (){
     const [capture, setCapture] = useState(false);
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("")
     const {id} = useParams();
-    // const imageSource = `https://http.cat/${httpCat}`;
+   
     
     useEffect( () => {
         const findId = id?.charAt(0) + id?.slice(1) || ""
@@ -54,14 +48,9 @@ export default function CatCard (){
                     >
                         {capture?"Release Cat":"Collect Cat"}
                     </Button>
-                    {/* <Button as={Link} to={`/cat/${httpCat}`}>Details</Button> */}
                 </Stack>
             </Card.Body>
 
         </Card>
     )
 }
-// FIX THIS SO IT"S LIKE THE HTTPCATDEETSPAGE
-
-// httpCat, as the status code, is listed as undefined
-// but in HttpCatDeetsPage, it's listed as: "https://http.cat/500"

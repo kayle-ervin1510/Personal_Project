@@ -29,5 +29,3 @@ const ListPage = () =>{
     )
 }
 export default ListPage;
-
-// length is still marked as undefined

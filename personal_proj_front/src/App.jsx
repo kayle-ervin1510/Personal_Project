@@ -24,10 +24,7 @@ function App() {
     setTeam((last)=>last.filter((httpCat)=> httpCat.id !== httpCatId))
   }
   const hasCat = (httpCatId) => team.some((httpCat)=> httpCat.id === httpCatId);
-  // const test_connection = async()=>{
-  //   let response = await api.get("/api/v1/test")
-  //   console.log(response)
-  // }
+
 
   return (
     <section>
