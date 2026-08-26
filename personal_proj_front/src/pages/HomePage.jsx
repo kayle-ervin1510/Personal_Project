@@ -3,6 +3,7 @@ import { useOutletContext, useNavigate, useLoaderData } from 'react-router-dom';
 import Stack from 'react-bootstrap/Stack';
 import NoteDisplay from '../components/NoteDisplay';
 import NoteForm from '../components/NoteForm';
+import Count from '../components/Counter';
 import { userLogout } from '../user_utilities';
 
 
@@ -52,6 +53,7 @@ const HomePage = ()=>{
                     />
                 ))}
             </Stack>
+            <Count/>
             
         </>
     )
