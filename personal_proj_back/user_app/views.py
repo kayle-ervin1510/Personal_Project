@@ -138,7 +138,7 @@ class RefreshView(APIView):
                 Response({"detail":"Invalid or expired refresh token."},
                         status=s.HTTP_401_UNAUTHORIZED)
                 )
-        acess = str(refresh.access_token)
+        access = str(refresh.access_token)
 
         new_refresh = None
 
