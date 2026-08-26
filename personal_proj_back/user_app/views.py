@@ -36,7 +36,7 @@ def clear_auth_cookies(response):
     response.delete_cookie("refresh", path=REFRESH_COOKIE_PATH)
     return response
 
-def token_for(user):
+def tokens_for(user):
   refresh = RefreshToken.for_user(user)
   return str(refresh.access_token), str(refresh)
 
@@ -89,8 +89,8 @@ class CreateUser(APIView):
             new_user = User.objects.create_user(**data)            
             new_user.full_clean()
             new_user.save()
-            # acess, refresh = tokens_for(new_user_)
-            token = Token.objects.create(user=new_user)
+            access, refresh = tokens_for(new_user)
+            # token = Token.objects.create(user=new_user)
             # return Response({"token":token.key, "email":new_user.email}, status=s.HTTP_201_CREATED)
             response = Response({"email":new_user.email}, status=s.HTTP_201_CREATED)
             # return set_token_cookie(response, token.key)
@@ -111,65 +111,61 @@ class Login(APIView):
         user = authenticate(username=data.get('username'), password=data.get("password"))
 
         if user:
-
-            token, _= Token.objects.get_or_create(user=user)
+            access, refresh = tokens_for(user)
+            #token, _= Token.objects.get_or_create(user=user)
             response = Response({"email":user.email})
-            return set_token_cookie(response, token.key)
+            return set_auth_cookies(response, access, refresh)
+            # return set_token_cookie(response, token.key)
             # Token.objects.get_or_create(user=user)
             # return Response({"token":user.auth_token.key, "email":user.email})
         
-           
-
-            # acess, refresh = tokens_for(user)
-            # response = Response({"email":user.email})
-            # return set_auth_cookies(response, access, refresh)
-        
+                  
         else:
             return Response("A user matching that value does not exist.", status=s.HTTP_404_NOT_FOUND)
 
 
-# class RefreshView(APIView):
-#     authentication_classes = []
-#     permission_classes = []
-#     def post(self, request):
-#         raw_refresh=request.COOKIES.get("refresh")
-#         if not raw_refresh:
-#             return Response({"detail":"No refresh token available"}, status=s.HTTP_401_UNAUTHORIZED)
-#         try:
-#             refresh = RefreshToken(raw_refresh)
-#         except TokenError:
-#             return clear_auth_cookies(
-#                 Reponse({"detail":"Invalid or expired refresh token."},
-#                         status=s.HTTP_401_UNAUTHORIZED)
-#                 )
-#         acess = str(refresh.access_token)
+class RefreshView(APIView):
+    authentication_classes = []
+    permission_classes = []
+    def post(self, request):
+        raw_refresh=request.COOKIES.get("refresh")
+        if not raw_refresh:
+            return Response({"detail":"No refresh token available"}, status=s.HTTP_401_UNAUTHORIZED)
+        try:
+            refresh = RefreshToken(raw_refresh)
+        except TokenError:
+            return clear_auth_cookies(
+                Response({"detail":"Invalid or expired refresh token."},
+                        status=s.HTTP_401_UNAUTHORIZED)
+                )
+        acess = str(refresh.access_token)
 
-#         new_refresh = None
+        new_refresh = None
 
-#         if api_settings.ROTATE_REFRESH_TOKENS:
-#             if api_settings.BLACKLIST_AFTER_ROTATION:
-#                 try:
-#                     refresh.blacklist()
-#                 except AttributeError:
-#                     pass
+        if api_settings.ROTATE_REFRESH_TOKENS:
+            if api_settings.BLACKLIST_AFTER_ROTATION:
+                try:
+                    refresh.blacklist()
+                except AttributeError:
+                    pass
 
-#             refresh.set_jti()
-#             refresh.set_exp()
-#             refresh.set_iat()
-#             new_refresh = str(refresh)
-#         response = Response({"refreshed":True})
-#         return set_auth_cookies(response, access, new_refresh)
+            refresh.set_jti()
+            refresh.set_exp()
+            refresh.set_iat()
+            new_refresh = str(refresh)
+        response = Response({"refreshed":True})
+        return set_auth_cookies(response, access, new_refresh)
 
 
 class UserView(APIView):
     # authentication_classes = [TokenAuthentication]
     # permission_classes = [IsAuthenticated]
 
-    authentication_classes = [CookieAuthentication]
-    permission_classes = [IsAuthenticated]
-
-    # authentication_classes = [JWTCookieAuthentication]
+    # authentication_classes = [CookieAuthentication]
     # permission_classes = [IsAuthenticated]
+
+    authentication_classes = [JWTCookieAuthentication]
+    permission_classes = [IsAuthenticated]
 
 class Info(UserView):
     
@@ -180,51 +176,20 @@ class Info(UserView):
 
 class Logout(UserView):
     def post(self, request):
-        user = request.user
-        user.auth_token.delete()
+        # user = request.user
+        # user.auth_token.delete()
         # return Response(f"{user.email} has been logged out.")
 
-        response = Response({"detail":"logged out"})
-        response.delete_cookie("token", path="/")
-        return response
+        # response = Response({"detail":"logged out"})
+        # response.delete_cookie("token", path="/")
+        # return response
 
-        # raw_refresh = request.COOKIES.get("refresh")
-        # if raw_refresh:
-        #   try:
-        #       RefreshToken(raw_refresh).blacklist()
-        #   except TokenError:
-        #       pass
-        # return clear_aruth_cookies(Response({"detail":"logged out"}))
+        raw_refresh = request.COOKIES.get("refresh")
+        if raw_refresh:
+          try:
+              RefreshToken(raw_refresh).blacklist()
+          except TokenError:
+              pass
+        return clear_auth_cookies(Response({"detail":"logged out"}))
 
 
-## When trying to create a user on port 8000 ##
-
-# I get the following error:
-# POST /api/v1/users/create/
-# HTTP 400 Bad Request
-# Allow: POST, OPTIONS
-# Content-Type: application/json
-# Vary: Accept
-# [ "User() got unexpected keyword arguments:
-#  '_content_type",'_content'" ]
-
-# When I submit the username, email, and password as a dictionary
-# Then I receive this response:
-# POST /api/v1/users/create/
-# HTTP 400 Bad Request
-# Allow: POST, OPTIONS
-# Content-Type: application/json
-# Vary: Accept
-# [ "value too long for type character varrying(150)"]
-
-# When I try to send in an email and password, no username now
-# I get this error:
-# POST /api/v1/users/create/
-# HTTP 400 Bad Request
-# Allow: POST, OPTIONS
-# Content-Type: application/json
-# Vary: Accept
-
-# [
-#     "duplicate key value violates unique constraint \"user_app_user_email_key\"\nDETAIL:  Key (email)=() already exists."
-# ]
