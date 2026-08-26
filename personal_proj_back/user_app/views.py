@@ -160,5 +160,3 @@ class Logout(UserView):
           except TokenError:
               pass
         return clear_auth_cookies(Response({"detail":"logged out"}))
-
-
