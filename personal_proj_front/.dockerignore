@@ -1,7 +1,4 @@
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-db.sqlite3
+node_modules
+dist
 .env
 .git
