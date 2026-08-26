@@ -7,11 +7,11 @@ from rest_framework.views import APIView
 from rest_framework import status as s
 from .models import User
 
-# from django.conf import settings
-# from rest_framework_simplejwt.tokens import RefreshToken
-# from rest_framework_simplejwt.exceptions import TokenError
-# from rest_framework_simplejwt.authentication import JWTAuthentication
-# from rest_framework_simplejwt.settings import api_settings
+from django.conf import settings
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.exceptions import TokenError
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework_simplejwt.settings import api_settings
 
 
 
@@ -51,26 +51,27 @@ from .models import User
 
 
 
-# COOKIE_MAX_AGE = 60 * 60 * 7
+COOKIE_MAX_AGE = 60 * 60 * 7
 
-# def set_token_cookie(response, token_key):
-#     response.set_cookie(
-#         key="token",
-#         value=token_key,
-#         httponly=True,
-#         secure=settings.AUTH_COOKIE_SECURE,
-#         samesite=settings.AUTH_COOKIE_SAMESITE,
-#         max_age=COOKIE_MAX_AGE,
-#         path="/"
-#     )
-#     return response
+def set_token_cookie(response, token_key):
+    response.set_cookie(
+        key="token",
+        value=token_key,
+        httponly=True,
+        secure=settings.AUTH_COOKIE_SECURE,
+        samesite=settings.AUTH_COOKIE_SAMESITE,
+        max_age=COOKIE_MAX_AGE,
+        path="/"
+    )
+    return response
 
-# class CookieAuthentication(TokenAuthentication):
-#     def authentication(self, request):
-#         token_key = request.COOKIES.get("token")
-#         if not token_key:
-#             return None
-#         return self.authenticate_credentials(token_key)
+class CookieAuthentication(TokenAuthentication):
+
+    def authenticate(self, request):
+        token_key = request.COOKIES.get("token")
+        if not token_key:
+            return None
+        return self.authenticate_credentials(token_key)
 
 
 
@@ -84,20 +85,18 @@ class CreateUser(APIView):
         # DON'T CHANGE THE ABOVE - I CAN MAKE A NEW ACCOUNT, AND LOGIN
         
         try:
-            #**data
-            new_user = User.objects.create_user(**data)
             
+            new_user = User.objects.create_user(**data)            
             new_user.full_clean()
             new_user.save()
             # acess, refresh = tokens_for(new_user_)
             token = Token.objects.create(user=new_user)
-            return Response({"token":token.key, "email":new_user.email}, status=s.HTTP_201_CREATED)
-            # response = Response({"email":new_user.email}, status=s.HTTP_201_CREATED)
-            # return set_token_cookie(response, token.key)
+            # return Response({"token":token.key, "email":new_user.email}, status=s.HTTP_201_CREATED)
+            response = Response({"email":new_user.email}, status=s.HTTP_201_CREATED)
+            return set_token_cookie(response, token.key)
         except Exception as e:
             return Response(e.args, status=s.HTTP_400_BAD_REQUEST)
-        # On firefox, trying to create an account, I got a 400 bad request, saying user could not be null
-        # When it came to creating a note, that is
+        
 
 class Login(APIView):
     authentication_classes = []
@@ -105,25 +104,20 @@ class Login(APIView):
 
 
     def post(self, request):
-        data = request.data.copy()
-        # originally data = request.data
-        # can make a new account & signin with data = request.data.copy()
-            
+        data = request.data.copy()        
         data['username'] = data.get('email')
-        # originally data['username'] = request.data.get('email')
-        # can make a new account & sign in with data.get('email')
         # DON'T CHANGE THE ABOVE - I CAN MAKE A NEW ACCOUNT, AND LOGIN
-        
         user = authenticate(username=data.get('username'), password=data.get("password"))
+
         if user:
 
-            # token, _= Token.objects.get_or_create(user=user)
-            # response = Response({"email":user.email})
-
-            Token.objects.get_or_create(user=user)
-            return Response({"token":user.auth_token.key, "email":user.email})
+            token, _= Token.objects.get_or_create(user=user)
+            response = Response({"email":user.email})
+            return set_token_cookie(response, token.key)
+            # Token.objects.get_or_create(user=user)
+            # return Response({"token":user.auth_token.key, "email":user.email})
         
-            #return set_token_cookie(response, token.key)
+           
 
             # acess, refresh = tokens_for(user)
             # response = Response({"email":user.email})
@@ -167,11 +161,11 @@ class Login(APIView):
 
 
 class UserView(APIView):
-    authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticated]
-
-    # authentication_classes = [CookieAuthentication]
+    # authentication_classes = [TokenAuthentication]
     # permission_classes = [IsAuthenticated]
+
+    authentication_classes = [CookieAuthentication]
+    permission_classes = [IsAuthenticated]
 
     # authentication_classes = [JWTCookieAuthentication]
     # permission_classes = [IsAuthenticated]
@@ -180,19 +174,18 @@ class Info(UserView):
     
     def get(self, request):
         user = request.user
-        return Response({"token":user.auth_token.key, "email":user.email})
-
-        # return Response({"email":user.email})
+        # return Response({"token":user.auth_token.key, "email":user.email})
+        return Response({"email":user.email})
 
 class Logout(UserView):
     def post(self, request):
         user = request.user
         user.auth_token.delete()
-        return Response(f"{user.email} has been logged out.")
+        # return Response(f"{user.email} has been logged out.")
 
-        # response = Response({"detail":"logged out"})
-        # response.delete_cookie("token", path="/")
-        # return response
+        response = Response({"detail":"logged out"})
+        response.delete_cookie("token", path="/")
+        return response
 
         # raw_refresh = request.COOKIES.get("refresh")
         # if raw_refresh:
