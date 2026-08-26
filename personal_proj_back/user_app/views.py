@@ -61,7 +61,6 @@ class CreateUser(APIView):
         # DON'T CHANGE THE ABOVE - I CAN MAKE A NEW ACCOUNT, AND LOGIN
         
         try:
-            
             new_user = User.objects.create_user(**data)            
             new_user.full_clean()
             new_user.save()

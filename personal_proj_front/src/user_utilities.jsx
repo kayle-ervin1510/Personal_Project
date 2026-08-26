@@ -8,22 +8,6 @@ export const api = axios.create ({
   withCredentials:true
 })
 
-// make an interceptor that can run before or after an api call
-// namely, one that will run immediately before very request the client sends.
-
-
-// api.interceptors.request.use((config)=>{
-//    const token = localStorage.getItem("token");
-//    if (token){
-//          config.headers.Authorization = `Token ${token}`
-//         }
-//         return config
-//  })
-
-
-// Create an error message
-
-
 const errorMessage = (error) => {
   const data = error.response?.data;
   if (!data) return "Something's gone wrong!";
@@ -45,9 +29,7 @@ export const userAuth = async (email, password, create)=> {
       password
     }
   );
-  // const { email: userEmail, token} = response.data
-  // localStorage.setItem("token", token)
-  // return userEmail
+
   return response.data.email
 }catch (error){
   alert(errorMessage(error))
@@ -67,7 +49,7 @@ export const userLogout = async () => {
   }catch(error){
     console.error("Logout request has failed", error);
 }
-//  localStorage.removeItem("token");
+
  return null;
 }
 
@@ -75,15 +57,12 @@ export const userLogout = async () => {
 // confirm the user
 
 export const userConfirmation = async () => {
-    //  const token = localStorage.getItem("token");
-    //  if(!token){return null}
      try{
          const response = await api.get("users/");
          return response.data.email;
      
     }catch(error){
-      // localStorage.removeItem("token");
-      // console.log(error)
+
       return null;
     }
 }
@@ -96,8 +75,7 @@ export const mustLogin = async () =>{
   if (!email) throw redirect("/");
     return null;
   
-//  if (!localStorage.getItem("token")) throw redirect("/");
-//  return null;
+
 }
 
 
@@ -107,7 +85,6 @@ export const mustLogin = async () =>{
 export const redirectIfLoggedIn = async () =>{
   const email = await userConfirmation()
   return email ? redirect("/home") : null;
-  //  return localStorage.getItem("token") ? redirect("/home") : null;
  
 }
 
