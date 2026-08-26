@@ -94,8 +94,8 @@ DATABASES = {
         'NAME': os.environ.get('POSTGRES_DB'),
         'USER': os.environ.get('POSTGRES_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST','personal_proj-container'),#'personal_proj-container'
-        'PORT': os.environ.get('DB_PORT','5432')#'5432'
+        'HOST': os.environ.get('DB_HOST','personal_proj-container'), # 'personal_proj-container'
+        'PORT': os.environ.get('DB_PORT','5432') #'5432'
     }
 }
 # Cookie Sessions
