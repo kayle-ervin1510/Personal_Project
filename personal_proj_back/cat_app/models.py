@@ -1,12 +1,21 @@
 from django.db import models
-from user_app.views import UserView
-from rest_framework.response import Response
-from rest_framework import status as s
+from user_app.models import User
+
 
 
 # Create your models here.
 
-# class AllCats(UserView):
+class Cat(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cats')
 
-#     def get(self, request):
-#         return Response(CatSerializer)
+    def __str__(self):
+        return f"{self.user.email}'s List"
+
+class List_Cat(models.Model):
+    cat = models.ForeignKey(Cat, on_delte=models.CASCADE, realted_name='list_cats')
+    list = models.ForeignKey(List, on_delte=models.CASCADE, related_name='cats')
+    user = models.ForeignKey(User, on_delte=models.CASCADE, related_name='list_cats')
+    amount = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.amount}"
