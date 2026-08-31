@@ -9,7 +9,7 @@ from rest_framework.permissions import IsAuthenticated
 from .serializer import CatSerializer
 # Create your views here.
 
-class List():
+class List(UserView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
@@ -21,7 +21,7 @@ class List():
     def post(self, request):
         data = request.data
         # data = request.data.copy()
-        data = ['user'] = request.user.id
+        # data = ['user'] = request.user.id
         ser_cat = CatSerializer(data=data)
         if ser_cat.is_valid():
             ser_cat.save()
