@@ -1,4 +1,5 @@
 describe("Test 1", () => {
+    // put instructions for cypress test to make a user to test function
     it("will test the structure of the navbar", () => {
         cy.visit("/home");
         cy.get("nav").should("exist");
