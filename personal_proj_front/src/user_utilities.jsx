@@ -116,6 +116,8 @@ export const redirectIfLoggedIn = async () =>{
  
 }
 
+// notes
+
 export const homeLoader = async ()=>{
   await mustLogin()
   return getNotes()
@@ -165,3 +167,35 @@ export const deleteNote = async (noteId) =>{
     
   }
 }
+
+// -- cats
+
+// export const getCats = async () => {
+//     try{
+//         const response = await api.get("cats/");
+//         return response.data
+//     }catch(error){
+//         console.error(errorMessage(error));
+//         return []
+//     }
+// }
+
+// export const addCat = async (catId) => {
+//     try{
+//         await api.add(`cats/${catId}/`);
+//         return true;
+//     }catch (error){
+//         alert(errorMessage(error));
+//         return false;
+//     }
+// }
+
+// export const deleteCat = async (catId) => {
+//     try{
+//         await api.delete(`cats/${catId}/`);
+//         return true;
+//     }catch(error){
+//         alert(errorMessage(error));
+//         return false;
+//     }
+// }
