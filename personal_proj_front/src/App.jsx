@@ -9,7 +9,7 @@ import NavBar from './components/NavBar';
 
 function App() {
   // does adding useLoaderData for team make it stick?
-  const [team, setTeam] = useState(useLoaderData());
+  // const [team, setTeam] = useState(useLoaderData());
   // const [team, setTeam] = useState([])
   const [user, setUser] = useState(useLoaderData());
   
@@ -25,12 +25,12 @@ function App() {
   const releaseCat = (httpCatId)=>{
     setTeam((last)=>last.filter((httpCat)=> httpCat.id !== httpCatId))
   }
-  const hasCat = (httpCatId) => team.some((httpCat)=> httpCat.id === httpCatId);
+  const hasCat = (httpCatId) => ((httpCat)=> httpCat.id === httpCatId);
 
 
   return (
     <section>
-      <NavBar  count={team.length}/>
+      <NavBar />
       <div>
       <Outlet 
       context={{ 

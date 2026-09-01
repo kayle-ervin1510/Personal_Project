@@ -15,7 +15,7 @@ export default function HttpCatDeetsPage() {
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
     
-    const {team, catchCat, releaseCat, hasCat} = useOutletContext();
+    // const {team, catchCat, releaseCat, hasCat} = useOutletContext();
     const {id} = useParams();
     const [capture, setCapture] = useState(false);
     
@@ -67,8 +67,8 @@ export default function HttpCatDeetsPage() {
                 className="cat-action"
                 
                 variant={capture?"secondary":"warning"}
-                //onCLick={()=>createCat({title:httpCat})}
-                onClick={createCat({title:httpCat})}
+                onClick={()=>createCat({title:httpCat})}
+                // onClick={createCat({title:httpCat})}
                 //{()=>setCapture(!capture)}
                 >
                     {capture?"Release Cat":"Collect Cat"}
