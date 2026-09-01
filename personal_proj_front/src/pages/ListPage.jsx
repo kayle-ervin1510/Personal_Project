@@ -1,9 +1,42 @@
 import { useOutletContext } from 'react-router-dom';
+import { useState } from 'react';
+import { updateCatList as updateCatListRequest, deleteCat as deleteCatRequest, createCatList } from '../user_utilities';
 
-const ListPage = () =>{
-    const { team, releaseCat} = useOutletContext();
-    // length is marked as undefined, which means team is undefined. Need to define team
-    // why is team undefined
+const ListPage = ({httpCat, rmHttpCat, updateCatList, addHttpCat}) =>{
+
+    const [httpCat, setHttpCat] = useState('')
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const newList = await createCatList({title: httpCat})
+        if (newList) {
+            addHttpCat(newList)
+        }
+        setHttpCat('')
+    }
+    // const [add, setAdd] = useState(false)
+    // const [addCat, setAddCat] = useState(cat.title)
+    
+    // const addCatHandle = async ()=> {
+    //     const addedCat = await updateCatListRequest(
+    //         {
+    //             id:cat.id,
+    //             title: addCat
+    //         }
+    //     )
+    //     if (addedCat){
+    //         updateCatList(addedCat)
+    //         setAdd(false)            
+    //     }
+    // }
+
+    const deleteCatHandle = async () => {
+        const wasDeleted = await deleteCatRequest(cat.id)
+        if (wasDeleted) {
+           rmCat(cat)
+        }
+    }
+
     return (
         <>
         <div className="main-page-contents">
