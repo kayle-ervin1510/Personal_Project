@@ -1,8 +1,8 @@
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
 import { updateCatList as updateCatListRequest, deleteCat as deleteCatRequest, createCatList } from '../user_utilities';
-
-const ListPage = ({rmHttpCat, updateCatList, addHttpCat}) =>{
+// No props for ListPage!
+const ListPage = () =>{
 
     const [httpCat, setHttpCat] = useState('')
 
