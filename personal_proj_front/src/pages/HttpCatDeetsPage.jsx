@@ -19,7 +19,7 @@ export default function HttpCatDeetsPage() {
     const [capture, setCapture] = useState(false);
     
     // const isCaught = httpCat ? hasCat(httpCat.id) : false
-    // const canCatch = httpCat ? !isCaught && team.length < 10 : false
+    // const canCatch = httpCat ? !isCaught && cats.length < 10 : false
 
 
     useEffect ( () => {

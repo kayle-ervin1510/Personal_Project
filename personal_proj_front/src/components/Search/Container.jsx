@@ -1,6 +1,6 @@
 import CatCard from './CatCard';
 
-export default function Container({team}) {
+export default function Container({cats}) {
    
     return (
         <>
@@ -8,7 +8,7 @@ export default function Container({team}) {
             className="flex flex-wrap items-stretch gap-5">
                
                   {
-                    team.map(
+                    cats.map(
                         (httpCat)=>( 
                             <CatCard
                                 httpCat={httpCat}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet, useLoaderData } from 'react-router-dom';
+import { Outlet, useLoaderData, useOutletContext } from 'react-router-dom';
 import './App.css';
 import NavBar from './components/NavBar';
 
@@ -10,8 +10,9 @@ import NavBar from './components/NavBar';
 function App() {
   
   const [user, setUser] = useState(useLoaderData());
-  
-
+  const [cats, setCats] = useState([])
+  // const [cats, setCats] = useState(useLoaderData())
+  // const [cats, setCats] = useState(useOutletContext())
   
 
   return (
