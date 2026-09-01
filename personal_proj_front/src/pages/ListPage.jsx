@@ -1,10 +1,29 @@
 import { useOutletContext, useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
-import { updateCatList as updateCatListRequest, deleteCat as deleteCatRequest, createCatList } from '../user_utilities';
+import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat } from '../user_utilities';
 // No props for ListPage!
 const ListPage = () =>{
 
     const [httpCat, setHttpCat] = useState('')
+    const [cats, setCats] = useState(useLoaderData())
+    
+
+    const addHttpCat = (cat) => {
+        setHttpCat([...cats, cat])
+    }
+
+    const rmHttpCat = (rmHttpCat) => {
+        setCats(cats.filter((cat)=>(
+            cat.id != rmHttpCat.id
+        )))
+    }
+
+    const updateCat = (editTeam) => {
+        setCats(cats.map((cat)=> (
+            cat.id === editTeam.id ? editTeam : cat
+        )))
+    }
+    //
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -30,12 +49,12 @@ const ListPage = () =>{
     //     }
     // }
 
-    const deleteCatHandle = async () => {
-        const wasDeleted = await deleteCatRequest(cat.id)
-        if (wasDeleted) {
-           rmCat(cat)
-        }
-    }
+    // const deleteCatHandle = async () => {
+    //     const wasDeleted = await deleteCatRequest(cat.id)
+    //     if (wasDeleted) {
+    //        rmCat(cat)
+    //     }
+    // }
 
     return (
         <>

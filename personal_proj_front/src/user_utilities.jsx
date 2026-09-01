@@ -186,7 +186,7 @@ export const getCats = async () =>{
   }
 }
 // I think this would be create a new list, which I can add cats to
-export const createCatList = async (catObj) => {
+export const createCat = async (catObj) => {
   try{
     const response = await api.post("cats/", catObj);
     return response.data;
@@ -196,7 +196,7 @@ export const createCatList = async (catObj) => {
   }
 }
 // this would be updating the list
-export const updateCatList = async (catObj) => {
+export const updateCat = async (catObj) => {
   try{
     const response = await api.put(`cats/${catObj.id}/`, catObj);
     return response.data;
