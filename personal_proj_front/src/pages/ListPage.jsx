@@ -1,15 +1,15 @@
 import { useOutletContext, useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
-import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat } from '../user_utilities';
+import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat as createCatRequest } from '../user_utilities';
 // No props for ListPage!
 const ListPage = () =>{
     // changed httpCat, setHttpCat from useState('') to useState(null)
-    const [httpCat, setHttpCat] = useState(null)
+    const [cat, setCat] = useState(null)
     const [cats, setCats] = useState(useLoaderData())
     
 
     const addHttpCat = (cat) => {
-        setHttpCat([...cats, cat])
+        setCat([...cats, cat])
     }
 
     const rmHttpCat = (rmHttpCat) => {
@@ -63,10 +63,10 @@ const ListPage = () =>{
                             
                 
             <h2>My saved HTTP Codes</h2>
-            {team.length === 0 ? (
+            {cats.length === 0 ? (
                 <h2>No HTTP Codes saved yet!</h2>
             ) : (
-                team.map((httpCat) => (
+                cats.map((httpCat) => (
                     <div className="cat-card" key={httpCat.id}>
                         <h3>{httpCat}</h3>
                         <img src={`https://http.cat/${httpCat}`} alt={`HTTP Cat ${httpCat}`} />
