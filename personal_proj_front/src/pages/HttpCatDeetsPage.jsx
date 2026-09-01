@@ -49,6 +49,7 @@ export default function HttpCatDeetsPage() {
     //        rmCat(cat)
     //     }
     // }
+    // new code below, old code above
     const [capture, setCapture] = useState(false);
     const {id} = useParams();
     const [cat, setCat] = useState(null);

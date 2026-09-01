@@ -4,20 +4,21 @@ import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat
 // No props for ListPage!
 const ListPage = () =>{
   
-   const [httpCat, setHttpCat] = useState(null);
-    const [errorMessage, setErrorMessage] = useState("");
+  // const [httpCat, setHttpCat] = useState(null);
+  //  const [errorMessage, setErrorMessage] = useState("");
     
-    const {id} = useParams();
-    const [capture, setCapture] = useState(false);
+   // const {id} = useParams();
+   // const [capture, setCapture] = useState(false);
     
   // I think I'd have this here. 
    // Looking NoteForm and NoteDisplay, this seems to fit
    // i.e. ListPage has the "HomePage" for my adding cats, removing cats, etc
    // while HttpCatDeetsPage has the "NoteDisplay" which is the const handleing
-
-
+    const [cat, setCat] = useState(null);
+    const [cats, getCats] = useState(null);
     const [add, setAdd] = useState(false)
     const [addCat, setAddCat] = useState(cat.title)
+    const {id} = useParams()
     
     const addCatHandle = async ()=> {
         const addedCat = await updateCatRequest(
@@ -35,7 +36,8 @@ const ListPage = () =>{
     const deleteCatHandle = async () => {
         const wasDeleted = await deleteCatRequest(cat.id)
         if (wasDeleted) {
-           rmCat(cat)
+            // previously rmCat
+           rmHttpCat(cat)
         }
     }
 // old code
