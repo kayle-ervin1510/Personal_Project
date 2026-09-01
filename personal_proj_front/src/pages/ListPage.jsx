@@ -5,6 +5,7 @@ import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat
 const ListPage = () =>{
     // changed httpCat, setHttpCat from useState('') to useState(null)
     const [cat, setCat] = useState(null)
+    const [httpCat, setHttpCat] = useState(null)
     const [cats, setCats] = useState(useLoaderData())
     
 
@@ -27,7 +28,7 @@ const ListPage = () =>{
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const newList = await createCatList({title: httpCat})
+        const newList = await createCat({title: httpCat})
         if (newList) {
             addHttpCat(newList)
         }
