@@ -7,6 +7,7 @@ import Stack from 'react-bootstrap/Stack';
 
 
 import CatCard from '../components/Search/CatCard';
+import { createCat } from '../user_utilities';
 
 export default function HttpCatDeetsPage() {
 
@@ -14,9 +15,7 @@ export default function HttpCatDeetsPage() {
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
     
-    const [list, setList] = useState([]);
-    
-
+    const {team, catchCat, releaseCat, hasCat} = useOutletContext();
     const {id} = useParams();
     const [capture, setCapture] = useState(false);
     
@@ -64,12 +63,20 @@ export default function HttpCatDeetsPage() {
            
               
             <Stack>
-                <Button
+                <Button 
+                id="add"
                 variant={capture?"secondary":"warning"}
                 //onCLick={()=>createCat({title:httpCat})}
-                onClick={()=>setCapture(!capture)}
+                onClick={createCat({title:httpCat})}
+                //{()=>setCapture(!capture)}
                 >
                     {capture?"Release Cat":"Collect Cat"}
+
+                {/* // className="cat-action"
+                // disabled={!canCatch && !isCaught}
+                // onClick={() => (isCaught ? releaseCat(cat.id) : catchCat(cat))}
+                //> 
+                //     {isCaught ? "Release Cat":"Collect Cat"} */}
                 </Button>
             </Stack>
  

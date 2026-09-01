@@ -9,20 +9,21 @@ export const api = axios.create ({
 })
 
 const refreshAccessToken=() => {
-  return axios.post("/api/v1/users/refresh", {}, {withCredentials:true})
+
+  return axios.post("/api/v1/users/refresh/", {}, {withCredentials:true})
 }
 
 // new interceptor!
 
 api.interceptors.response.use(
-  // on success, do nothing
+  
   (response)=>response,
-  // upon failure do this
+  
   async (error) => {
     const originalRequest = error.config;
-
-    const isRefreshCall = originalRequest?.url?.includes("users/refresh")
-    // redundant check, double checking the response
+    
+    const isRefreshCall = originalRequest?.url?.includes("users/refresh/")
+    
     if (error.response?.status === 401 && !originalRequest._retry && !isRefreshCall){
       originalRequest._retry = true
       try {
