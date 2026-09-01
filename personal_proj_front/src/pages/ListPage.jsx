@@ -2,7 +2,7 @@ import { useOutletContext } from 'react-router-dom';
 import { useState } from 'react';
 import { updateCatList as updateCatListRequest, deleteCat as deleteCatRequest, createCatList } from '../user_utilities';
 
-const ListPage = ({httpCat, rmHttpCat, updateCatList, addHttpCat}) =>{
+const ListPage = ({rmHttpCat, updateCatList, addHttpCat}) =>{
 
     const [httpCat, setHttpCat] = useState('')
 

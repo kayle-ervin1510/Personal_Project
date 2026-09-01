@@ -20,9 +20,9 @@ class AllCats(UserView):
         # return Response(ser_cat.data)
 
     def post(self, request):
-        data = request.data
-        # data = request.data.copy()
-        # data = ['user'] = request.user.id
+        # data = request.data
+        data = request.data.copy()
+        data['user'] = request.user.id
         ser_cat = CatSerializer(data=data)
         if ser_cat.is_valid():
             ser_cat.save()
