@@ -9,7 +9,8 @@ import AboutPage from './pages/AboutPage';
 import HttpCatDeetsPage from './pages/HttpCatDeetsPage'
 import App from './App';
 
-import { redirectIfLoggedIn, homeLoader, mustLogin, userConfirmation } from './user_utilities'
+
+import { redirectIfLoggedIn, listLoader, homeLoader, mustLogin, userConfirmation } from './user_utilities'
 
 const router = createBrowserRouter([
     {
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
             {
             path: '/list',
             element: <ListPage />, 
-            loader:mustLogin
+            loader:listLoader
             },
 
             {
