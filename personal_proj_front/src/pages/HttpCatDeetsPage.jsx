@@ -66,6 +66,7 @@ export default function HttpCatDeetsPage() {
             <Stack>
                 <Button
                 variant={capture?"secondary":"warning"}
+                //onCLick={()=>createCat({title:httpCat})}
                 onClick={()=>setCapture(!capture)}
                 >
                     {capture?"Release Cat":"Collect Cat"}
