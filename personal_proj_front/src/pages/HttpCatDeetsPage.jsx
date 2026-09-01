@@ -20,7 +20,35 @@ export default function HttpCatDeetsPage() {
     
     // const isCaught = httpCat ? hasCat(httpCat.id) : false
     // const canCatch = httpCat ? !isCaught && cats.length < 10 : false
+   
+   // I think I'd have this here. 
+   // Looking NoteForm and NoteDisplay, this seems to fit
+   // i.e. ListPage has the "NoteForm" for my adding cats, removing cats, etc
+   // while HttpCatDeetsPage has the "NoteDisplay" which is the const handleing
 
+   
+    // const [add, setAdd] = useState(false)
+    // const [addCat, setAddCat] = useState(cat.title)
+    
+    // const addCatHandle = async ()=> {
+    //     const addedCat = await updateCatRequest(
+    //         {
+    //             id:cat.id,
+    //             title: addCat
+    //         }
+    //     )
+    //     if (addedCat){
+    //         updateCatList(addedCat)
+    //         setAdd(false)            
+    //     }
+    // }
+
+    // const deleteCatHandle = async () => {
+    //     const wasDeleted = await deleteCatRequest(cat.id)
+    //     if (wasDeleted) {
+    //        rmCat(cat)
+    //     }
+    // }
 
     useEffect ( () => {
         const lookupId = id?.charAt(0) + id?.slice(1) || ""
