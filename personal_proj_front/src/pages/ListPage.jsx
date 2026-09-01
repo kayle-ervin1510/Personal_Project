@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat } from '../user_utilities';
 // No props for ListPage!
 const ListPage = () =>{
-
-    const [httpCat, setHttpCat] = useState('')
+    // changed httpCat, setHttpCat from useState('') to useState(null)
+    const [httpCat, setHttpCat] = useState(null)
     const [cats, setCats] = useState(useLoaderData())
     
 

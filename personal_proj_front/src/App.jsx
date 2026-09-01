@@ -8,25 +8,11 @@ import NavBar from './components/NavBar';
 
 
 function App() {
-  // does adding useLoaderData for team make it stick?
-  // const [team, setTeam] = useState(useLoaderData());
-  // const [team, setTeam] = useState([])
+  
   const [user, setUser] = useState(useLoaderData());
   
 
-  const catchCat = (httpCat) => {
-    setTeam((last)=>{
-      if(last.length >= 10) return last
-      if(last.some((cat)=>cat.id === httpCat.id)) return last
-      return [...last, httpCat]
-    });
-  };
-
-  const releaseCat = (httpCatId)=>{
-    setTeam((last)=>last.filter((httpCat)=> httpCat.id !== httpCatId))
-  }
-  const hasCat = (httpCatId) => ((httpCat)=> httpCat.id === httpCatId);
-
+  
 
   return (
     <section>
@@ -35,11 +21,8 @@ function App() {
       <Outlet 
       context={{ 
         user, 
-        // team
-        setUser,
-        catchCat,
-        releaseCat,
-        hasCat,
+        setUser
+        
         
         }} 
         />
@@ -50,3 +33,18 @@ function App() {
 }
 
 export default App
+// catchCat,
+        // releaseCat,
+        // hasCat
+        // const catchCat = (httpCat) => {
+  //   setTeam((last)=>{
+  //     if(last.length >= 10) return last
+  //     if(last.some((cat)=>cat.id === httpCat.id)) return last
+  //     return [...last, httpCat]
+  //   });
+  // };
+
+  // const releaseCat = (httpCatId)=>{
+  //   setTeam((last)=>last.filter((httpCat)=> httpCat.id !== httpCatId))
+  // }
+  // const hasCat = (httpCatId) => ((httpCat)=> httpCat.id === httpCatId);

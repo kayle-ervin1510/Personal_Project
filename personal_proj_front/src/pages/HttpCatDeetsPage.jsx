@@ -15,7 +15,6 @@ export default function HttpCatDeetsPage() {
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
     
-    // const {team, catchCat, releaseCat, hasCat} = useOutletContext();
     const {id} = useParams();
     const [capture, setCapture] = useState(false);
     
@@ -29,7 +28,6 @@ export default function HttpCatDeetsPage() {
     const fetchHttpCat = async () => {
         try {
             const response = `${lookupId}`
-            // originally response = `https://http.cat/${lookupId}`
             setHttpCat(response);
             setErrorMessage("");
         }catch (error) {
@@ -47,8 +45,7 @@ export default function HttpCatDeetsPage() {
     if (!httpCat) {
         return <MissingPage message={errorMessage}/>
     }
-// Cannot add any cats to a list, yet, I need to 
-// change my backend for that
+
 
     
   
@@ -65,16 +62,14 @@ export default function HttpCatDeetsPage() {
             <Stack>
                 <Button 
                 className="cat-action"
-                
                 variant={capture?"secondary":"warning"}
                 onClick={()=>createCat({title:httpCat})}
-                // onClick={createCat({title:httpCat})}
-                //{()=>setCapture(!capture)}
+                
                 >
                     {capture?"Release Cat":"Collect Cat"}
 
                 {/* // className="cat-action"
-                // disabled={!canCatch && !isCaught}
+                disabled={!canCatch && !isCaught}
                 // onClick={() => (isCaught ? releaseCat(cat.id) : catchCat(cat))}
                 //> 
                 //     {isCaught ? "Release Cat":"Collect Cat"} */}
