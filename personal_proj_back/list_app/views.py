@@ -14,8 +14,8 @@ class List(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        list_of_cats = Cat_list.objects.filter(user=request.user)
-        serializer = ListCatSerializer(list_of_cats)
+        list_of_cats = Cat_list.objects.filter(user=request.user).order_by('id')
+        serializer = ListCatSerializer(list_of_cats, many=True)
 
         payload = {
             "list_of_cats":serializer.data
@@ -23,7 +23,11 @@ class List(APIView):
 
         return Response(payload, status=s.HTTP_200_OK)
 
-class List_cat_add(APIView):
+class List_cat_quantity(APIView):
+
+    authentication_clases = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def put(self, request, method, cat_id):
         list_of_cats = get_object_or_404(Cat_list, id=cat_id, user=request.user)
 
