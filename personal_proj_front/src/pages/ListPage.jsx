@@ -38,7 +38,7 @@ const ListPage = () =>{
     // const [addCat, setAddCat] = useState(cat.title)
     
     // const addCatHandle = async ()=> {
-    //     const addedCat = await updateCatListRequest(
+    //     const addedCat = await updateCatRequest(
     //         {
     //             id:cat.id,
     //             title: addCat
