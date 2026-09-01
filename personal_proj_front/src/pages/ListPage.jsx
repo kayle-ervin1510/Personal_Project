@@ -28,7 +28,7 @@ const ListPage = () =>{
             }
         )
         if (addedCat){
-            updateCatList(addedCat)
+            updateCat(addedCat)
             setAdd(false)            
         }
     }

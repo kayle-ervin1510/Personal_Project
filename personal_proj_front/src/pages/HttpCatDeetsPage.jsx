@@ -4,7 +4,7 @@ import MissingPage from './MissingPage';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
-
+// import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat as createCatRequest } from '../user_utilities';
 
 import CatCard from '../components/Search/CatCard';
 import { createCat } from '../user_utilities';
@@ -61,12 +61,14 @@ export default function HttpCatDeetsPage() {
         setCats([...cats, cat])
     }
 
+    // is rmHttpCat supposed to be deleteCat or deleteCatRequest?
     const rmHttpCat = (rmHttpCat) => {
         setCats(cats.filter((cat)=>(
             cat.id != rmHttpCat.id
         )))
     }
 
+    // maybe supposed to be updateCatRequest
     const updateCat = (editTeam) => {
         setCats(cats.map((cat)=> (
             cat.id === editTeam.id ? editTeam : cat
