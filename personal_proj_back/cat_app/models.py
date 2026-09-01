@@ -6,10 +6,11 @@ from user_app.models import User
 # Create your models here.
 
 class Cat(models.Model):
+    title = models.CharField(default="")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cats')
 
     def __str__(self):
-        return f"{self.user.email}'s List"
+        return f"{self.title}"
 
 # class List_Cat(models.Model):
 #     cat = models.ForeignKey(Cat, on_delte=models.CASCADE, realted_name='list_cats')
