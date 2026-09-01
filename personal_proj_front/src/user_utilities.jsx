@@ -120,7 +120,8 @@ export const redirectIfLoggedIn = async () =>{
 
 export const homeLoader = async ()=>{
   await mustLogin()
-  return getNotes()
+  return getNotes() && getCats()
+  
 }
 
 
@@ -168,3 +169,48 @@ export const deleteNote = async (noteId) =>{
   }
 }
 
+// cats
+// export const homeLoader = async ()=>{
+//   await mustLogin()
+//   return getCats()
+// }
+
+export const getCats = async () =>{
+  try{
+    const response = await api.get("cats/");
+    return response.data
+  }catch(error){
+    console.error(errorMessage(error));
+    return []
+  }
+}
+
+export const createCat = async (catObj) => {
+  try{
+    const response = await api.post("cats/", catObj);
+    return response.data;
+  }catch(error) {
+    alert(errorMessage(error));
+    return null;
+  }
+}
+
+export const updateCat = async (catObj) => {
+  try{
+    const response = await api.put(`cats/${catObj.id}/`, catObj);
+    return response.data;
+  }catch(error){
+    alert(errorMessage(error));
+  return null;
+  }
+}
+
+export const deleteCat = async (catId) => {
+  try{
+    await api.delete(`cats/${catId}/`);
+    return true;
+  }catch(error){
+    alert(errorMessage(error));
+    return false;
+  }
+}
