@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useOutletContext} from 'react-router-dom';
+import { useParams, useOutletContext, useLoaderData} from 'react-router-dom';
 import MissingPage from './MissingPage';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -12,21 +12,21 @@ import { createCat } from '../user_utilities';
 export default function HttpCatDeetsPage() {
 
     
-    const [httpCat, setHttpCat] = useState(null);
-    const [errorMessage, setErrorMessage] = useState("");
+    // const [httpCat, setHttpCat] = useState(null);
     
-    const {id} = useParams();
-    const [capture, setCapture] = useState(false);
+    
+    // const {id} = useParams();
+    
     
     // const isCaught = httpCat ? hasCat(httpCat.id) : false
     // const canCatch = httpCat ? !isCaught && cats.length < 10 : false
    
    // I think I'd have this here. 
    // Looking NoteForm and NoteDisplay, this seems to fit
-   // i.e. ListPage has the "NoteForm" for my adding cats, removing cats, etc
+   // i.e. ListPage has the "HomePage" for my adding cats, removing cats, etc
    // while HttpCatDeetsPage has the "NoteDisplay" which is the const handleing
 
-   
+
     // const [add, setAdd] = useState(false)
     // const [addCat, setAddCat] = useState(cat.title)
     
@@ -49,7 +49,39 @@ export default function HttpCatDeetsPage() {
     //        rmCat(cat)
     //     }
     // }
+    const [capture, setCapture] = useState(false);
+    const {id} = useParams();
+    const [cat, setCat] = useState(null);
+    const [httpCat, setHttpCat] = useState(null);
+    const [cats, setCats] = useState(useLoaderData());
+    const [errorMessage, setErrorMessage] = useState("");
 
+    const addHttpCat = (cat) => {
+        setCats([...cats, cat])
+    }
+
+    const rmHttpCat = (rmHttpCat) => {
+        setCats(cats.filter((cat)=>(
+            cat.id != rmHttpCat.id
+        )))
+    }
+
+    const updateCat = (editTeam) => {
+        setCats(cats.map((cat)=> (
+            cat.id === editTeam.id ? editTeam : cat
+        )))
+    }
+    //
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const newList = await createCat({title: httpCat})
+        if (newList) {
+            addHttpCat(newList)
+        }
+        setHttpCat('')
+    }
+   
     useEffect ( () => {
         const lookupId = id?.charAt(0) + id?.slice(1) || ""
 

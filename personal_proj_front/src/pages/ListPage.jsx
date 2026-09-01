@@ -3,37 +3,70 @@ import { useState } from 'react';
 import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat as createCatRequest } from '../user_utilities';
 // No props for ListPage!
 const ListPage = () =>{
-    // changed httpCat, setHttpCat from useState('') to useState(null)
-    const [cat, setCat] = useState(null)
-    const [httpCat, setHttpCat] = useState(null)
-    const [cats, setCats] = useState(useLoaderData())
+  
+   const [httpCat, setHttpCat] = useState(null);
+    const [errorMessage, setErrorMessage] = useState("");
     
+    const {id} = useParams();
+    const [capture, setCapture] = useState(false);
+    
+  // I think I'd have this here. 
+   // Looking NoteForm and NoteDisplay, this seems to fit
+   // i.e. ListPage has the "HomePage" for my adding cats, removing cats, etc
+   // while HttpCatDeetsPage has the "NoteDisplay" which is the const handleing
 
-    const addHttpCat = (cat) => {
-        setCat([...cats, cat])
-    }
 
-    const rmHttpCat = (rmHttpCat) => {
-        setCats(cats.filter((cat)=>(
-            cat.id != rmHttpCat.id
-        )))
-    }
-
-    const updateCat = (editTeam) => {
-        setCats(cats.map((cat)=> (
-            cat.id === editTeam.id ? editTeam : cat
-        )))
-    }
-    //
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const newList = await createCat({title: httpCat})
-        if (newList) {
-            addHttpCat(newList)
+    const [add, setAdd] = useState(false)
+    const [addCat, setAddCat] = useState(cat.title)
+    
+    const addCatHandle = async ()=> {
+        const addedCat = await updateCatRequest(
+            {
+                id:cat.id,
+                title: addCat
+            }
+        )
+        if (addedCat){
+            updateCatList(addedCat)
+            setAdd(false)            
         }
-        setHttpCat('')
     }
+
+    const deleteCatHandle = async () => {
+        const wasDeleted = await deleteCatRequest(cat.id)
+        if (wasDeleted) {
+           rmCat(cat)
+        }
+    }
+// old code
+//     const [cat, setCat] = useState(null)
+    // const [httpCat, setHttpCat] = useState(null)
+    // const [cats, setCats] = useState(useLoaderData())
+    // const addHttpCat = (cat) => {
+    //     setCat([...cats, cat])
+    // }
+
+    // const rmHttpCat = (rmHttpCat) => {
+    //     setCats(cats.filter((cat)=>(
+    //         cat.id != rmHttpCat.id
+    //     )))
+    // }
+
+    // const updateCat = (editTeam) => {
+    //     setCats(cats.map((cat)=> (
+    //         cat.id === editTeam.id ? editTeam : cat
+    //     )))
+    // }
+    // //
+
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault()
+    //     const newList = await createCat({title: httpCat})
+    //     if (newList) {
+    //         addHttpCat(newList)
+    //     }
+    //     setHttpCat('')
+    // }
    
 
     return (
