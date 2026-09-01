@@ -6,9 +6,7 @@ from user_app.models import User
 class Note(models.Model):
     title = models.CharField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='notes')
-    # content = models.TextField(default="", blank=True)
-    # created_at = models.DateTimeField(auto_now_add=True)
-    # updated_at = models.DateTimeField(auto_now=True)
+
     
 
     def __str__(self):

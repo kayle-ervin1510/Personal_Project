@@ -12,11 +12,3 @@ class Cat(models.Model):
     def __str__(self):
         return f"{self.title}"
 
-# class List_Cat(models.Model):
-#     cat = models.ForeignKey(Cat, on_delte=models.CASCADE, realted_name='list_cats')
-#     # list = models.ForeignKey(List, on_delte=models.CASCADE, related_name='cats')
-#     user = models.ForeignKey(User, on_delte=models.CASCADE, related_name='list_cats')
-#     amount = models.PositiveIntegerField(default=0)
-
-#     def __str__(self):
-#         return f"{self.amount}"
