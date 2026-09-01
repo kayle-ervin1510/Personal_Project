@@ -18,18 +18,20 @@ const router = createBrowserRouter([
         loader: userConfirmation,
         errorElement: <ErrorPage />,
         children: [
+
             {
             index:true,
             element:<AuthPage />,
             loader:redirectIfLoggedIn
             },
+
             {
-                path: '/about',
-                element: <AboutPage />
+            path: '/about',
+            element: <AboutPage />
             },
 
             {
-                path:'/home',
+            path:'/home',
             element: <HomePage />,
             loader:homeLoader
             },
@@ -42,13 +44,14 @@ const router = createBrowserRouter([
 
             {
             path: '/cat/:id',
-            element: <HttpCatDeetsPage />
+            element: <HttpCatDeetsPage />,
             },
             
             {
-                path: '/clock',
-                element: <Clock />
+            path: '/clock',
+            element: <Clock />
             }
+            
         ],
     },
     {

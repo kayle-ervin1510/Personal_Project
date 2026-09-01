@@ -120,7 +120,7 @@ export const redirectIfLoggedIn = async () =>{
 
 export const homeLoader = async ()=>{
   await mustLogin()
-  return getNotes() && getCats()
+  return getNotes() // && getCats()
   
 }
 
