@@ -4,86 +4,24 @@ import MissingPage from './MissingPage';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
-// import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat as createCatRequest } from '../user_utilities';
+import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat as createCatRequest } from '../user_utilities';
 
 import CatCard from '../components/Search/CatCard';
 import { createCat } from '../user_utilities';
 
 export default function HttpCatDeetsPage() {
-
-    
-    // const [httpCat, setHttpCat] = useState(null);
-    
-    
-    // const {id} = useParams();
-    
+ 
     
     // const isCaught = httpCat ? hasCat(httpCat.id) : false
     // const canCatch = httpCat ? !isCaught && cats.length < 10 : false
    
-   // I think I'd have this here. 
-   // Looking NoteForm and NoteDisplay, this seems to fit
-   // i.e. ListPage has the "HomePage" for my adding cats, removing cats, etc
-   // while HttpCatDeetsPage has the "NoteDisplay" which is the const handleing
-
-
-    // const [add, setAdd] = useState(false)
-    // const [addCat, setAddCat] = useState(cat.title)
-    
-    // const addCatHandle = async ()=> {
-    //     const addedCat = await updateCatRequest(
-    //         {
-    //             id:cat.id,
-    //             title: addCat
-    //         }
-    //     )
-    //     if (addedCat){
-    //         updateCatList(addedCat)
-    //         setAdd(false)            
-    //     }
-    // }
-
-    // const deleteCatHandle = async () => {
-    //     const wasDeleted = await deleteCatRequest(cat.id)
-    //     if (wasDeleted) {
-    //        rmCat(cat)
-    //     }
-    // }
-    // new code below, old code above
+   
     const [capture, setCapture] = useState(false);
     const {id} = useParams();
     const [cat, setCat] = useState(null);
     const [httpCat, setHttpCat] = useState(null);
-    const [cats, setCats] = useState(useLoaderData());
     const [errorMessage, setErrorMessage] = useState("");
-
-    const addHttpCat = (cat) => {
-        setCats([...cats, cat])
-    }
-
-    // is rmHttpCat supposed to be deleteCat or deleteCatRequest?
-    const rmHttpCat = (rmHttpCat) => {
-        setCats(cats.filter((cat)=>(
-            cat.id != rmHttpCat.id
-        )))
-    }
-
-    // maybe supposed to be updateCatRequest
-    const updateCat = (editTeam) => {
-        setCats(cats.map((cat)=> (
-            cat.id === editTeam.id ? editTeam : cat
-        )))
-    }
-    //
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const newList = await createCat({title: httpCat})
-        if (newList) {
-            addHttpCat(newList)
-        }
-        setHttpCat('')
-    }
+    
    
     useEffect ( () => {
         const lookupId = id?.charAt(0) + id?.slice(1) || ""

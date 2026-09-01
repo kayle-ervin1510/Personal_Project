@@ -10,65 +10,43 @@ const ListPage = () =>{
    // const {id} = useParams();
    // const [capture, setCapture] = useState(false);
     
-  // I think I'd have this here. 
-   // Looking NoteForm and NoteDisplay, this seems to fit
-   // i.e. ListPage has the "HomePage" for my adding cats, removing cats, etc
-   // while HttpCatDeetsPage has the "NoteDisplay" which is the const handleing
-    const [cat, setCat] = useState(null);
-    const [cats, getCats] = useState(null);
-    const [add, setAdd] = useState(false)
-    const [addCat, setAddCat] = useState(cat.title)
-    const {id} = useParams()
-    
-    const addCatHandle = async ()=> {
-        const addedCat = await updateCatRequest(
-            {
-                id:cat.id,
-                title: addCat
-            }
-        )
-        if (addedCat){
-            updateCat(addedCat)
-            setAdd(false)            
-        }
-    }
+  
+    // const [cat, setCat] = useState(null);
+    // const [cats, getCats] = useState(null);
+    // const [add, setAdd] = useState(false)
+    // const [addCat, setAddCat] = useState(cat.title)
+    // const {id} = useParams()
 
-    const deleteCatHandle = async () => {
-        const wasDeleted = await deleteCatRequest(cat.id)
-        if (wasDeleted) {
-            // previously rmCat
-           rmHttpCat(cat)
-        }
-    }
 // old code
-//     const [cat, setCat] = useState(null)
-    // const [httpCat, setHttpCat] = useState(null)
-    // const [cats, setCats] = useState(useLoaderData())
-    // const addHttpCat = (cat) => {
-    //     setCat([...cats, cat])
-    // }
+    const [cat, setCat] = useState(null)
+    const [httpCat, setHttpCat] = useState(null)
+    const [cats, setCats] = useState(useLoaderData())
+    
+    const addHttpCat = (cat) => {
+        setCat([...cats, cat])
+    }
 
-    // const rmHttpCat = (rmHttpCat) => {
-    //     setCats(cats.filter((cat)=>(
-    //         cat.id != rmHttpCat.id
-    //     )))
-    // }
+    const rmHttpCat = (rmHttpCat) => {
+        setCats(cats.filter((cat)=>(
+            cat.id != rmHttpCat.id
+        )))
+    }
 
-    // const updateCat = (editTeam) => {
-    //     setCats(cats.map((cat)=> (
-    //         cat.id === editTeam.id ? editTeam : cat
-    //     )))
-    // }
-    // //
+    const updateCat = (editTeam) => {
+        setCats(cats.map((cat)=> (
+            cat.id === editTeam.id ? editTeam : cat
+        )))
+    }
+    //
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault()
-    //     const newList = await createCat({title: httpCat})
-    //     if (newList) {
-    //         addHttpCat(newList)
-    //     }
-    //     setHttpCat('')
-    // }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        const newList = await createCat({title: httpCat})
+        if (newList) {
+            addHttpCat(newList)
+        }
+        setHttpCat('')
+    }
    
 
     return (
