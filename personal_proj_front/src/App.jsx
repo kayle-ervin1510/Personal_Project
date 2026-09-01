@@ -9,8 +9,8 @@ import NavBar from './components/NavBar';
 
 function App() {
   // does adding useLoaderData for team make it stick?
-  // const [team, setTeam] = useState(useLoaderData());
-  const [team, setTeam] = useState([])
+  const [team, setTeam] = useState(useLoaderData());
+  // const [team, setTeam] = useState([])
   const [user, setUser] = useState(useLoaderData());
   
 
