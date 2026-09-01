@@ -2,6 +2,7 @@ from django.shortcuts import render
 from user_app.views import UserView
 from rest_framework.response import Response
 from rest_framework import status as s
+from .models import Cat
 
 
 from rest_framework.authentication import TokenAuthentication
@@ -9,14 +10,14 @@ from rest_framework.permissions import IsAuthenticated
 from .serializer import CatSerializer
 # Create your views here.
 
-class List(UserView):
+class AllCats(UserView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        # list_cats = List_Cat.objects.filter(user=request.user).order_by('id')
-        # serializer = CatSerializer(list_cats, many=True)
-        return Response(CatSerializer(request.user.cats.all(), many=True).data)
+        cat = Cat.objects.all().order_by("id")
+        ser_cat = CatSerializer(cat, many=True)
+        return Response(ser_cat.data)
 
     def post(self, request):
         data = request.data
