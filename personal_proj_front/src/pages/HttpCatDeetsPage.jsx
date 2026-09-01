@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useParams, useOutletContext } from 'react-router-dom';
+import { useParams, useOutletContext} from 'react-router-dom';
 import MissingPage from './MissingPage';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
+
 
 import CatCard from '../components/Search/CatCard';
 
@@ -12,9 +13,9 @@ export default function HttpCatDeetsPage() {
     
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
-    // const {}
-    const [team, setTeam] = useState([]);
-    const [loading, setLoading] = useState(true);
+    
+    const [list, setList] = useState([]);
+    
 
     const {id} = useParams();
     const [capture, setCapture] = useState(false);
@@ -49,6 +50,8 @@ export default function HttpCatDeetsPage() {
     }
 // Cannot add any cats to a list, yet, I need to 
 // change my backend for that
+
+    
   
     return (
         <Card style = {{width:"18rem"}} id={`cat=${httpCat}-card`}>
