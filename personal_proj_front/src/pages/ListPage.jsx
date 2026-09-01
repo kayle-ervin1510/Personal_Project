@@ -34,28 +34,7 @@ const ListPage = () =>{
         }
         setHttpCat('')
     }
-    // const [add, setAdd] = useState(false)
-    // const [addCat, setAddCat] = useState(cat.title)
-    
-    // const addCatHandle = async ()=> {
-    //     const addedCat = await updateCatRequest(
-    //         {
-    //             id:cat.id,
-    //             title: addCat
-    //         }
-    //     )
-    //     if (addedCat){
-    //         updateCatList(addedCat)
-    //         setAdd(false)            
-    //     }
-    // }
-
-    // const deleteCatHandle = async () => {
-    //     const wasDeleted = await deleteCatRequest(cat.id)
-    //     if (wasDeleted) {
-    //        rmCat(cat)
-    //     }
-    // }
+   
 
     return (
         <>
@@ -82,3 +61,27 @@ const ListPage = () =>{
     )
 }
 export default ListPage;
+
+// Possible Code:
+ // const [add, setAdd] = useState(false)
+    // const [addCat, setAddCat] = useState(cat.title)
+    
+    // const addCatHandle = async ()=> {
+    //     const addedCat = await updateCatRequest(
+    //         {
+    //             id:cat.id,
+    //             title: addCat
+    //         }
+    //     )
+    //     if (addedCat){
+    //         updateCatList(addedCat)
+    //         setAdd(false)            
+    //     }
+    // }
+
+    // const deleteCatHandle = async () => {
+    //     const wasDeleted = await deleteCatRequest(cat.id)
+    //     if (wasDeleted) {
+    //        rmCat(cat)
+    //     }
+    // }
