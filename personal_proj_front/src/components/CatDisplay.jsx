@@ -44,6 +44,8 @@ const CatDisplay = ({cat, rmHttpCat, updateCat})=> {
                 value={addCat}
                 onChange={(e)=>setAddCat(e.target.value)}
                 />
+                
+                {/* <img src={`https://http.cat/${cat}`} alt={`HTTP Cat ${cat}`}/> */}
                 <Button variant="outline-primary" onClick={addCatHandle}>Add</Button>
                     <div className="vr"/>
                 
