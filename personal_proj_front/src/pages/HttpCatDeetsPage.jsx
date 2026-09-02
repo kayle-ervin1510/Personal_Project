@@ -4,15 +4,10 @@ import MissingPage from './MissingPage';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
-// import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat as createCatRequest } from '../user_utilities';
-
-import CatCard from '../components/Search/CatCard';
 import { createCat } from '../user_utilities';
 
 export default function HttpCatDeetsPage() {
  
-    
-    // const {hasCat} = useOutletContext()
    
    
     const [capture, setCapture] = useState(false);
@@ -20,8 +15,7 @@ export default function HttpCatDeetsPage() {
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
 
-    // const isCaught = httpCat ? hasCat(httpCat.id) : false
-    // const canCatch = httpCat ? !isCaught && cats.length < 10 : false
+   
    
     useEffect ( () => {
         const lookupId = id?.charAt(0) + id?.slice(1) || ""
@@ -53,7 +47,7 @@ export default function HttpCatDeetsPage() {
     return (
         <Card style = {{width:"18rem"}} id={`cat=${httpCat}-card`}>
             <Card.Body>
-            <Card.Title>HTTP Status {`${httpCat}`}</Card.Title>
+            <Card.Title className="text-center">HTTP Status {`${httpCat}`}</Card.Title>
             <Card.Img
             src={`https://http.cat/${httpCat}`}
              alt={httpCat}
@@ -71,13 +65,6 @@ export default function HttpCatDeetsPage() {
 
                 </Button>
 
-                {/* <Button 
-                className="kitty-action"
-                disabled={!canCatch && !isCaught}
-                onClick={() => (isCaught ? releaseCat(httpCat.id) : catchCat(httpCat))}
-                >
-                    {isCaught ? "Release Cat":"Catch Cat"}
-                </Button> */}
             </Stack>
  
             </Card.Body>

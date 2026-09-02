@@ -24,7 +24,7 @@ const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
                 <>
                 <Form.Control
                 style={{width:"18rem"}}
-                className="cat-auto"
+                className="cat-auto text-center"
                 placeholder={cat.title}
                 
                 />
@@ -35,7 +35,6 @@ const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
                 <>
                 <img style={ {width:"18rem"} }src={`https://http.cat/${cat.title}`} alt={`HTTP Cat ${cat.title}`}/>
                     <div className="vr"/>
-                <div >{cat.title}</div>
                 <div className="vr"/>
                 <div className="card-footer d-flex">
                     <Button type="button" className="mx-auto btn btn-danger" onClick={deleteCatHandle}>
@@ -50,3 +49,5 @@ const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
 }
 
 export default CatDisplay;
+
+//  <div className="card-img-overlay h-100 d-flex flex-column justify-content-end">{cat.title}</div>
