@@ -4,7 +4,7 @@ import MissingPage from './MissingPage';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Stack from 'react-bootstrap/Stack';
-import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat as createCatRequest } from '../user_utilities';
+// import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat as createCatRequest } from '../user_utilities';
 
 import CatCard from '../components/Search/CatCard';
 import { createCat } from '../user_utilities';
@@ -12,16 +12,16 @@ import { createCat } from '../user_utilities';
 export default function HttpCatDeetsPage() {
  
     
-    // const isCaught = httpCat ? hasCat(httpCat.id) : false
-    // const canCatch = httpCat ? !isCaught && cats.length < 10 : false
+    // const {hasCat} = useOutletContext()
    
    
     const [capture, setCapture] = useState(false);
     const {id} = useParams();
-    // const [cat, setCat] = useState(null);
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
-    
+
+    // const isCaught = httpCat ? hasCat(httpCat.id) : false
+    // const canCatch = httpCat ? !isCaught && cats.length < 10 : false
    
     useEffect ( () => {
         const lookupId = id?.charAt(0) + id?.slice(1) || ""
@@ -38,7 +38,7 @@ export default function HttpCatDeetsPage() {
         }
         fetchHttpCat();
    }, [id])
-
+   
 
     if (errorMessage) {
         return <MissingPage message={errorMessage}/>
@@ -69,12 +69,15 @@ export default function HttpCatDeetsPage() {
                 >
                     {capture?"Release Cat":"Collect Cat"}
 
-                {/* // className="cat-action"
-                disabled={!canCatch && !isCaught}
-                // onClick={() => (isCaught ? releaseCat(cat.id) : catchCat(cat))}
-                //> 
-                //     {isCaught ? "Release Cat":"Collect Cat"} */}
                 </Button>
+
+                {/* <Button 
+                className="kitty-action"
+                disabled={!canCatch && !isCaught}
+                onClick={() => (isCaught ? releaseCat(httpCat.id) : catchCat(httpCat))}
+                >
+                    {isCaught ? "Release Cat":"Catch Cat"}
+                </Button> */}
             </Stack>
  
             </Card.Body>
