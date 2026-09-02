@@ -15,3 +15,8 @@ jobs:
         steps:
             - name: Setup Node 
               run: actions/setup-node@v4
+            
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+              
