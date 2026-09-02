@@ -18,7 +18,7 @@ export default function HttpCatDeetsPage() {
    
     const [capture, setCapture] = useState(false);
     const {id} = useParams();
-    const [cat, setCat] = useState(null);
+    // const [cat, setCat] = useState(null);
     const [httpCat, setHttpCat] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
     

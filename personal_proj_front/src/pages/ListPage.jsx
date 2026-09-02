@@ -1,25 +1,13 @@
 import { useOutletContext, useLoaderData } from 'react-router-dom';
+import CatDisplay from '../components/CatDisplay';
 import { useState } from 'react';
-import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat as createCatRequest } from '../user_utilities';
+//import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat as createCatRequest } from '../user_utilities';
 // No props for ListPage!
 const ListPage = () =>{
   
-  // const [httpCat, setHttpCat] = useState(null);
-  //  const [errorMessage, setErrorMessage] = useState("");
-    
-   // const {id} = useParams();
-   // const [capture, setCapture] = useState(false);
-    
-  
-    // const [cat, setCat] = useState(null);
-    // const [cats, getCats] = useState(null);
-    // const [add, setAdd] = useState(false)
-    // const [addCat, setAddCat] = useState(cat.title)
-    // const {id} = useParams()
-
-// old code
-    const [cat, setCat] = useState(null)
-    const [httpCat, setHttpCat] = useState(null)
+  // const [cat, setCat] = useOutletContext()
+    const [cat, setCat] = useState(useLoaderData())
+    // const [httpCat, setHttpCat] = useState(null)
     const [cats, setCats] = useState(useLoaderData())
     
     const addHttpCat = (cat) => {
@@ -39,18 +27,20 @@ const ListPage = () =>{
     }
     //
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const newList = await createCat({title: httpCat})
-        if (newList) {
-            addHttpCat(newList)
-        }
-        setHttpCat('')
-    }
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault()
+    //     const newList = await createCat({title: httpCat})
+    //     if (newList) {
+    //         addHttpCat(newList)
+    //     }
+    //     setHttpCat('')
+    // }
    
 
     return (
         <>
+
+        
         <div className="main-page-contents">
                
                             
@@ -59,12 +49,19 @@ const ListPage = () =>{
             {cats.length === 0 ? (
                 <h2>No HTTP Codes saved yet!</h2>
             ) : (
-                cats.map((httpCat) => (
-                    <div className="cat-card" key={httpCat.id}>
-                        <h3>{httpCat}</h3>
-                        <img src={`https://http.cat/${httpCat}`} alt={`HTTP Cat ${httpCat}`} />
-                        <button onClick={() => releaseCat(httpCat.id)}>Release</button>
-                    </div>
+                cats.map((cats) => (
+                    <CatDisplay
+                    key = {cat.id}
+                    cat={cat}
+                    rmHttpCat={rmHttpCat}
+                    updateCat={updateCat}
+                    />
+
+                    // <div className="cat-card" key={httpCat.id}>
+                    //     <h3>{httpCat}</h3>
+                    //     <img src={`https://http.cat/${httpCat}`} alt={`HTTP Cat ${httpCat}`} />
+                    //     <button onClick={() => releaseCat(httpCat.id)}>Release</button>
+                    // </div>
                 ))
             )}
                 
@@ -75,26 +72,3 @@ const ListPage = () =>{
 }
 export default ListPage;
 
-// Possible Code:
- // const [add, setAdd] = useState(false)
-    // const [addCat, setAddCat] = useState(cat.title)
-    
-    // const addCatHandle = async ()=> {
-    //     const addedCat = await updateCatRequest(
-    //         {
-    //             id:cat.id,
-    //             title: addCat
-    //         }
-    //     )
-    //     if (addedCat){
-    //         updateCatList(addedCat)
-    //         setAdd(false)            
-    //     }
-    // }
-
-    // const deleteCatHandle = async () => {
-    //     const wasDeleted = await deleteCatRequest(cat.id)
-    //     if (wasDeleted) {
-    //        rmCat(cat)
-    //     }
-    // }
