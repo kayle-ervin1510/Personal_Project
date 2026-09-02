@@ -8,6 +8,7 @@ import { updateCat as updateCatRequest, deleteCat as deleteCatRequest } from '..
 const CatDisplay = ({cat, rmHttpCat, updateCat})=> {
     // const [cat, setCat] = useState(null);
     // const [cats, getCats] = useState(null);
+    const [httpCat, setHttpCat] = useState(null);
     const [add, setAdd] = useState(true)
     const [addCat, setAddCat] = useState(cat.title)
     // const {id} = useParams()
@@ -45,7 +46,7 @@ const CatDisplay = ({cat, rmHttpCat, updateCat})=> {
                 onChange={(e)=>setAddCat(e.target.value)}
                 />
                 
-                {/* <img src={`https://http.cat/${cat}`} alt={`HTTP Cat ${cat}`}/> */}
+                <img src={`https://http.cat/${httpCat}`} alt={`HTTP Cat ${httpCat}`}/>
                 <Button variant="outline-primary" onClick={addCatHandle}>Add</Button>
                     <div className="vr"/>
                 
