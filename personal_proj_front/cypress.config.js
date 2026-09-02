@@ -4,11 +4,11 @@ export default defineConfig({
   allowCypressEnv: false,
 
   e2e: {
-    baseURL: "http://localhost:5173/",
+    baseUrl: "http://localhost:5173/",
     supportFile: false
   },
   viewportWidth:1024,
-  viewportWidth:768,
+  viewportHeight:768,
   video:false
 
 
