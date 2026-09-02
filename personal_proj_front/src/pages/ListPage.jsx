@@ -1,11 +1,10 @@
 import { useOutletContext, useLoaderData } from 'react-router-dom';
 import CatDisplay from '../components/CatDisplay';
 import { useState } from 'react';
-//import { updateCat as updateCatRequest, deleteCat as deleteCatRequest, createCat as createCatRequest } from '../user_utilities';
-// No props for ListPage!
+
 const ListPage = () =>{
   
-  // const [cat, setCat] = useOutletContext()
+  
     const [cat, setCat] = useState(useLoaderData())
     // const [httpCat, setHttpCat] = useState(null)
     const [cats, setCats] = useState(useLoaderData())
@@ -25,17 +24,7 @@ const ListPage = () =>{
             cat.id === editTeam.id ? editTeam : cat
         )))
     }
-    //
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault()
-    //     const newList = await createCat({title: httpCat})
-    //     if (newList) {
-    //         addHttpCat(newList)
-    //     }
-    //     setHttpCat('')
-    // }
-   
 
     return (
         <>
@@ -57,11 +46,7 @@ const ListPage = () =>{
                     updateCat={updateCat}
                     />
 
-                    // <div className="cat-card" key={httpCat.id}>
-                    //     <h3>{httpCat}</h3>
-                    //     <img src={`https://http.cat/${httpCat}`} alt={`HTTP Cat ${httpCat}`} />
-                    //     <button onClick={() => releaseCat(httpCat.id)}>Release</button>
-                    // </div>
+
                 ))
             )}
                 
@@ -72,3 +57,9 @@ const ListPage = () =>{
 }
 export default ListPage;
 
+// old return code:
+                    // <div className="cat-card" key={httpCat.id}>
+                    //     <h3>{httpCat}</h3>
+                    //     <img src={`https://http.cat/${httpCat}`} alt={`HTTP Cat ${httpCat}`} />
+                    //     <button onClick={() => releaseCat(httpCat.id)}>Release</button>
+                    // </div>
