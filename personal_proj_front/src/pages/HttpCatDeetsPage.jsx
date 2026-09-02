@@ -46,7 +46,7 @@ export default function HttpCatDeetsPage() {
   
     return (
         <Card style = {{width:"18rem"}} id={`cat=${httpCat}-card`}>
-            <Card.Body>
+            <Card.Body >
             <Card.Title className="text-center">HTTP Status {`${httpCat}`}</Card.Title>
             <Card.Img
             src={`https://http.cat/${httpCat}`}

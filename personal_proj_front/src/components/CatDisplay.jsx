@@ -28,9 +28,7 @@ const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
                 placeholder={cat.title}
                 
                 />
-                
-                
-                
+                              
                     </>
                 <>
                 <img style={ {width:"18rem"} }src={`https://http.cat/${cat.title}`} alt={`HTTP Cat ${cat.title}`}/>
@@ -50,4 +48,3 @@ const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
 
 export default CatDisplay;
 
-//  <div className="card-img-overlay h-100 d-flex flex-column justify-content-end">{cat.title}</div>

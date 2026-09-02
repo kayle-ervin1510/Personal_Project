@@ -34,7 +34,6 @@ export default function CatCard (){
             <Card.Body>
                 
                 <Card.Title className="text-center">
-                    {/* Status Code: {`${httpCat}`} */}
                 </Card.Title>
                   <Card.Img
                 variant="top"
