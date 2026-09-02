@@ -45,7 +45,7 @@ export default function HttpCatDeetsPage() {
     
   
     return (
-        <Card style = {{width:"18rem"}} id={`cat=${httpCat}-card`}>
+        <Card style = {{width:"18rem", display:"flex", gap:"5vmin", flexWrap:"wrap"}} id={`cat=${httpCat}-card`}>
             
             <Card.Body >
             
