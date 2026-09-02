@@ -1,6 +1,11 @@
 describe("Test 2", () =>{
+    beforeEach(() => {
+        cy.visit('http://localhost:5173')
+    })
+
     it("can navigate to List Page, then back to Home Page", ()=>{
-        cy.visit("http://localhost:5173/home");
+        cy.get('.action-email').type('fake@email.com')
+        // cy.visit("http://localhost:5173");
         cy.get("[href='/list']").click();
 
         cy.location().should((location) =>{
