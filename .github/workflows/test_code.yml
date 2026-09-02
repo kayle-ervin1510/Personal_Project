@@ -2,10 +2,12 @@
 name: Cypress Tests
 
 on:
-  push_request:
+  
+  pull_request:
     branches:
         - main
-  pull_request:
+
+  push:
     branches:
         - main
 
@@ -19,13 +21,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+            node-version: 24
+            cache: npm
 
-      - name: Cypress run
+      - name: Install Dependencies
+        run: npm ci
+      - name: execute cypress
         uses: cypress-io/github-action@v7
         with:
-          build: npm run build
-          start: npm start
-          browser: chrome
+            browser: chrome
+            start: npm run dev
+            wait-on: http://localhost:5173/
+    #   - name: Cypress run
+    #     uses: cypress-io/github-action@v7
+    #     with:
+    #       build: npm run build
+    #       start: npm start
+    #       browser: chrome
 
           # example code from GitHub Actions Video:
 
