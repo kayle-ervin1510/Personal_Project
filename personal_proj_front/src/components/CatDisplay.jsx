@@ -4,10 +4,10 @@ import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 import { updateCat as updateCatRequest, deleteCat as deleteCatRequest } from '../user_utilities';
 
-const CatDisplay = ({cat, rmHttpCat})=> {
+const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
 
 
-    const [addCat, setAddCat] = useState(cat.title)
+    // const [addCat, setAddCat] = useState(cat.title)
  
     
     // const addCatHandle = async ()=> {
@@ -37,20 +37,21 @@ const CatDisplay = ({cat, rmHttpCat})=> {
                 
                 <>
                 <Form.Control
+                style={{width:"18rem"}}
                 className="cat-auto"
                 placeholder={cat.title}
-                value={addCat}
-                onChange={(e)=>setAddCat(e.target.value)}
+                // value={addCat}
+                // onChange={(e)=>setAddCat(e.target.value)}
                 />
                 
                 
                 
                     </>
                 <>
-                <img src={`https://http.cat/${cat.title}`} alt={`HTTP Cat ${cat.title}`}/>
+                <img style={ {width:"18rem"} }src={`https://http.cat/${cat.title}`} alt={`HTTP Cat ${cat.title}`}/>
                 {/* <Button variant="outline-primary" onClick={addCatHandle}>Add</Button> */}
                     <div className="vr"/>
-                <div>{cat.title}</div>
+                <div >{cat.title}</div>
                 <div className="vr"/>
                 <div className="p-2">
                     <Button variant="danger" onClick={deleteCatHandle}>
