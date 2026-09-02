@@ -8,7 +8,7 @@ import { updateCat as updateCatRequest, deleteCat as deleteCatRequest } from '..
 const CatDisplay = ({cat, rmHttpCat, updateCat})=> {
     // const [cat, setCat] = useState(null);
     // const [cats, getCats] = useState(null);
-    const [add, setAdd] = useState(false)
+    const [add, setAdd] = useState(true)
     const [addCat, setAddCat] = useState(cat.title)
     // const {id} = useParams()
     
@@ -21,7 +21,7 @@ const CatDisplay = ({cat, rmHttpCat, updateCat})=> {
         )
         if (addedCat){
             updateCat(addedCat)
-            setAdd(false)            
+            setAdd(true)            
         }
     }
 

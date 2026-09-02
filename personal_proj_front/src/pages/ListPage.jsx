@@ -38,7 +38,7 @@ const ListPage = () =>{
             {cats.length === 0 ? (
                 <h2>No HTTP Codes saved yet!</h2>
             ) : (
-                cats.map((cats) => (
+                cats.map((cat) => (
                     <CatDisplay
                     key = {cat.id}
                     cat={cat}
