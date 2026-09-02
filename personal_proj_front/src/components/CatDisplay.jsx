@@ -1,6 +1,7 @@
 import Stack from 'react-bootstrap/Stack';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { updateCat as updateCatRequest, deleteCat as deleteCatRequest } from '../user_utilities';
 
 const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
@@ -18,6 +19,7 @@ const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
     return (
         <>
             <Stack>
+                <Card style={{width:"18rem"}}>
                 
                 <>
                 <Form.Control
@@ -35,13 +37,13 @@ const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
                     <div className="vr"/>
                 <div >{cat.title}</div>
                 <div className="vr"/>
-                <div className="p-2">
-                    <Button variant="danger" onClick={deleteCatHandle}>
+                <div className="card-footer d-flex">
+                    <Button type="button" className="mx-auto btn btn-danger" onClick={deleteCatHandle}>
                         Delete
                     </Button>
                 </div>
                 </>
-                
+                </Card>
             </Stack>
         </>
     )
