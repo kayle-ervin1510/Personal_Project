@@ -42,6 +42,7 @@ export default function CatCard (){
             />
                 <Stack gap={2}>
                     <Button
+                    className="mx-auto"
                     variant={capture?"secondary":"warning"}
                     onClick={()=>setCapture(!capture)}
                     >

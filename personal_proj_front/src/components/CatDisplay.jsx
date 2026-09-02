@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { updateCat as updateCatRequest, deleteCat as deleteCatRequest } from '../user_utilities';
 
-const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
+const CatDisplay = ({cat, rmHttpCat})=> {
 
 
 
@@ -19,9 +19,11 @@ const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
     return (
         <>
             <Stack>
+                <center>
                 <Card style={{width:"18rem"}}>
                 
                 <>
+                
                 <Form.Control
                 style={{width:"18rem"}}
                 className="cat-auto text-center"
@@ -31,6 +33,7 @@ const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
                               
                     </>
                 <>
+                
                 <img style={ {width:"18rem"} }src={`https://http.cat/${cat.title}`} alt={`HTTP Cat ${cat.title}`}/>
                     <div className="vr"/>
                 <div className="vr"/>
@@ -39,8 +42,12 @@ const CatDisplay = ({cat, rmHttpCat, addCat, setAddCat})=> {
                         Delete
                     </Button>
                 </div>
+                
                 </>
+                
+                
                 </Card>
+                </center>
             </Stack>
         </>
     )

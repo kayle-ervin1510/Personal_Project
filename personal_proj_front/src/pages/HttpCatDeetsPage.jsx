@@ -46,15 +46,18 @@ export default function HttpCatDeetsPage() {
   
     return (
         <Card style = {{width:"18rem"}} id={`cat=${httpCat}-card`}>
+            
             <Card.Body >
+            
             <Card.Title className="text-center">HTTP Status {`${httpCat}`}</Card.Title>
             <Card.Img
             src={`https://http.cat/${httpCat}`}
              alt={httpCat}
              />
-           
+        
               
             <Stack>
+                
                 <Button 
                 className="cat-action"
                 variant={capture?"secondary":"warning"}
@@ -64,9 +67,9 @@ export default function HttpCatDeetsPage() {
                     {capture?"Release Cat":"Collect Cat"}
 
                 </Button>
-
+            
             </Stack>
- 
+        
             </Card.Body>
             
         </Card>
