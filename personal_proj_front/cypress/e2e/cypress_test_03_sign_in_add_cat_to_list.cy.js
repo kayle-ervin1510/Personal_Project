@@ -1,5 +1,5 @@
 describe("Test 3", ()=>{
-    it("Should be able to sign up, sign in, and add a cat to a list and view cat in MyList", ()=>{
+    it("Should be able to visit the website", ()=>{
         cy.visit('http://localhost:5173/');
         
     })    
