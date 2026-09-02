@@ -1,6 +1,6 @@
 describe("Test 2", () =>{
     it("can navigate to List Page, then back to Home Page", ()=>{
-        cy.visit("/home");
+        cy.visit("http://localhost:5173/home");
         cy.get("[href='/list']").click();
 
         cy.location().should((location) =>{
