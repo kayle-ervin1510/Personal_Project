@@ -20,6 +20,8 @@ jobs:
     #   image: cypress/browsers:22.15.0
     #   options: --user 1001
     steps:
+      # - name: Checkout repository
+      # uses: actions/checkout@v7
       - name: Checkout
         uses: actions/checkout@v4
 
