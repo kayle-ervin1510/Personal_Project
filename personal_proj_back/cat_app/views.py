@@ -36,9 +36,8 @@ class ACat(UserView):
         return Response(CatSerializer(request.user.cats.get(id=cat_id)).data)
 
     def put(self, request, cat_id):
-        data = request.data
-        # data = request.data.copy()
-        ser_cat = CatSerializer(request.user.cats.get(id=cat_id), data=data)
+        data = request.data.copy()
+        ser_cat = CatSerializer(request.user.cats.get(id=cat_id), data=data, partial=True)
         if ser_cat.is_valid():
             ser_cat.save()
             return Response(ser_cat.data)
