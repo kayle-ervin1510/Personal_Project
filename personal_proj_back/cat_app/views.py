@@ -15,6 +15,7 @@ class AllCats(UserView):
 
     def get(self, request):
         return Response(CatSerializer(request.user.cats.all(), many=True).data)
+    
         # cat = Cat.objects.all().order_by("id")
         # ser_cat = CatSerializer(cat, many=True)
         # return Response(ser_cat.data)
