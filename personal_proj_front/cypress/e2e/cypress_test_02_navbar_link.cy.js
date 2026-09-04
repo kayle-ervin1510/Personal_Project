@@ -24,6 +24,14 @@ describe("Test 2", () =>{
         cy.location().should((location) => {
             expect(location.pathname).to.equal("/home")
         })
+
+
+        cy.visit('/list')
+
+        cy.get("[href='list']").click()
+        cy.location().should((location) => {
+            expect(location.pathname).to.equal("/list")
+        })
         // cy.get('email').type('fake@email.com')
         // cy.visit('/home')
         
