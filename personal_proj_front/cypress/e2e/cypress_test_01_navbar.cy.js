@@ -5,7 +5,7 @@ describe("Test 1", () => {
         cy.get("nav").should("exist");
         cy.get("nav h1").should("have.text", "Navigation Bar")
 
-        cy.get("nav input").should("have.atrr", "placeholder", "Try '308'");
+        cy.get("nav input").should("have.atrr", "placeholder", "Try 308");
 
         cy.get("nav button").should("have.text", "Search!");
     });
