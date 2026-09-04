@@ -1,7 +1,11 @@
 describe("Test 2", () =>{
-    beforeEach(() => {
-        cy.visit('http://localhost:5173')
+     beforeEach(() => {
+        cy.request('POST', '/api/v1/users/create/', {
+      email: "testytester@test.com",
+      password: "testtesttest"
     })
+    cy.visit('/home')
+  })
 
     it("can navigate to List Page, then back to Home Page", ()=>{
         // I want to sign up/sign in as a user

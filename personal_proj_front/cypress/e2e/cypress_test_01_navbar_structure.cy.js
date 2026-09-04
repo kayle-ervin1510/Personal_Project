@@ -1,5 +1,11 @@
 describe("Test 1", () => {
-    // put instructions for cypress test to make a user to test function
+    beforeEach(() => {
+        cy.request('POST', '/api/v1/users/create/', {
+      email: "testytester@test.com",
+      password: "testtesttest"
+    })
+    cy.visit('/home')
+  })
     it("will test the structure of the navbar", () => {
         cy.visit("http://localhost:5173");
         cy.get("nav").should("exist");

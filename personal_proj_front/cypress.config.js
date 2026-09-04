@@ -12,6 +12,7 @@ export default defineConfig({
   video:false
 
 
+
   // old code:
   // e2e: {
   //   setupNodeEvents(on, config) {
