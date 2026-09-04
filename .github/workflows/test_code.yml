@@ -19,12 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     
     container: django-contianer
-    
+
     services:
       postgres:
         image: postgres
         env:
-          POSTGRES_PASSWORD:
+          POSTGRES_DB: personal_proj_db
+          POSTGRES_USER: pp_user
+          POSTGRES_PASSWORD: pencilLIP
         
         options:
           --health-cmd pg_isready
