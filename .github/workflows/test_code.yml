@@ -46,8 +46,8 @@ jobs:
         run: node # requirements.txt? Do I need to make a client.js?
         env:
           # POSTGRES_HOST: postgres
-          POSTGRES_HOST: localhost #personal_project-container?
-          POSTGRES_PORT: 5432
+          DB_HOST: personal_project-container
+          DB_PORT: 5432
       
       - name: Checkout
         uses: actions/checkout@v4
