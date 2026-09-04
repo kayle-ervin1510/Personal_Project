@@ -18,6 +18,12 @@ describe("Test 2", () =>{
         // test navbar links
         cy.get("nav").should("exist");
         cy.visit('/home')
+
+
+        cy.get("[href='/home']").click()
+        cy.location().should((location) => {
+            expect(location.pathname).to.equal("/home")
+        })
         // cy.get('email').type('fake@email.com')
         // cy.visit('/home')
         
