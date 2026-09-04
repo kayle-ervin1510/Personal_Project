@@ -6,7 +6,7 @@ on:
   pull_request:
     branches:
         - main
-# add service that install postgres
+
   push:
     branches:
         - main
@@ -35,17 +35,20 @@ jobs:
           --health-retries 5
         
 
-    #   image: cypress/browsers:22.15.0
-    #   options: --user 1001
+    
     steps:
       - name: Check out repository code
-        run: node client.js
+        uses: actions/checkout@v6
+      - name: Install Dependencies
+        run: npm ci
+        working-directory: personal_proj_back
+      - name: Connect to PostgreSQL
+        run: node # requirements.txt? Do I need to make a client.js?
         env:
           # POSTGRES_HOST: postgres
-          POSTGRES_HOST: localhost
+          POSTGRES_HOST: localhost #personal_project-container?
           POSTGRES_PORT: 5432
-      # - name: Checkout repository
-      # uses: actions/checkout@v7
+      
       - name: Checkout
         uses: actions/checkout@v4
       
@@ -62,7 +65,7 @@ jobs:
             python -m pip install --upgrade pip
             pip install -r requirements.txt
         working-directory: personal_proj_back
-        
+
       - name: Run Migrations
         run: |
           python manage.py migrate
@@ -95,5 +98,4 @@ jobs:
             start: npm run dev
             wait-on: http://localhost:5173/
 
-      # add in backend tests
    
