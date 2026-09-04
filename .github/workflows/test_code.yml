@@ -27,17 +27,22 @@ jobs:
           POSTGRES_DB: personal_proj_db
           POSTGRES_USER: pp_user
           POSTGRES_PASSWORD: pencilLIP
-          DB_HOST: localhost
-          DB_PORT: 5432
-          SECRET_KEY: test-secret-key-practice-ci-cd-not-real
-        
-        options:
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+         
         ports:
           - 5432:5432
+    env:
+      POSTGRES_DB: personal_proj_db
+      POSTGRES_USER: pp_user
+      POSTGRES_PASSWORD: pencilLIP
+      DB_HOST: localhost
+      DB_PORT: 5432
+      SECRET_KEY: test-secret-key-practice-ci-cd-not-real
+        # options:
+        #   --health-cmd pg_isready
+        #   --health-interval 10s
+        #   --health-timeout 5s
+        #   --health-retries 5
+        
         
         
 
@@ -46,14 +51,11 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v6
 
-      - name: Install Dependencies
-        run: npm ci
-        # working-directory: personal_proj_back
-    
+   
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: '3.13'
 
       - name: Install Dependencies
         run: |
