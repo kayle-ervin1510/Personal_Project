@@ -66,9 +66,13 @@ jobs:
             pip install -r requirements.txt
       - name: Run Migrations
         run: |
-            python manage.py migrate
-
+          python manage.py migrate
+      
+      - name: Start Django server
+        run: |
+          python manage.py runserver
           
+
 
           
       - name: Set up Node.js
