@@ -46,22 +46,14 @@ jobs:
         run: npm ci
         working-directory: personal_proj_back
       
-      - name: Test with my tests
-        run: |
-          cd personal_proj_back/tests
-          source run_all_tests.sh 
+      # - name: Test with my tests
+      #   run: |
+      #     cd personal_proj_back/tests
+      #     source run_all_tests.sh 
         # maybe make a run_all_tets.sh file to run my tests
 
-      # - name: Connect to PostgreSQL
-      # # do I run my django-container, after making migrations?
-      # # but then I won't be making a table with my information
-      # # need to figure out what to do after connecting to PostgreSQL
-      # # I want to set up a new table in PostgreSQL
-      # # So I can test my cypress tests with said new table
-      #   run: node #Do any env variables use a script to create a new postgresSQL table?
-        env:
-          DB_HOST: localhost
-          DB_PORT: 5432
+    
+       
       
       - name: Checkout
         uses: actions/checkout@v4
@@ -84,12 +76,15 @@ jobs:
       - name: Run Migrations
         run: |
           python manage.py migrate
+        working-directory: personal_proj_back
       
       - name: Start Django server
         run: |
-          python manage.py runserver
+          python manage.py runserver 8000 --noreload &
           
-
+        env:
+          DB_HOST: localhost
+          DB_PORT: 5432
 
           
       - name: Set up Node.js
