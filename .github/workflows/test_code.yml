@@ -22,11 +22,13 @@ jobs:
 
     services:
       postgres:
-        image: postgres
+        image: postgres:15
         env:
           POSTGRES_DB: personal_proj_db
           POSTGRES_USER: pp_user
           POSTGRES_PASSWORD: pencilLIP
+          DB_HOST: localhost
+          DB_PORT: 5432
         ports:
           - 5432:5432
         options:
@@ -44,28 +46,12 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
-        working-directory: personal_proj_back
-      
-      # - name: Test with my tests
-      #   run: |
-      #     cd personal_proj_back/tests
-      #     source run_all_tests.sh 
-        # maybe make a run_all_tets.sh file to run my tests
-
+        # working-directory: personal_proj_back
     
-       
-      
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      # step Python
-      # install backend dpendencies
-      # run migrations
-      # start django
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.11
+          python-version: '3.11'
 
       - name: Install Dependencies
         run: |
@@ -81,10 +67,9 @@ jobs:
       - name: Start Django server
         run: |
           python manage.py runserver 8000 --noreload &
+        working-directory: personal_proj_back
+      
           
-        env:
-          DB_HOST: localhost
-          DB_PORT: 5432
 
           
       - name: Set up Node.js
