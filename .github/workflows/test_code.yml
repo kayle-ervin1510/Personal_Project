@@ -39,9 +39,11 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v6
+
       - name: Install Dependencies
         run: npm ci
         working-directory: personal_proj_back
+
       - name: Connect to PostgreSQL
         run: node # requirements.txt? Do I need to make a client.js?
         env:
@@ -60,6 +62,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
+          
       - name: Install Dependencies
         run: |
             python -m pip install --upgrade pip
