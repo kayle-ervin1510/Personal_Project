@@ -1,10 +1,16 @@
 describe("Test 1", () => {
     beforeEach(() => {
-        cy.request('POST', '/api/v1/users/create/', {
-      email: "testytester@test.com",
-      password: "testtesttest"
-    })
-    cy.visit('/home')
+        cy.request ({
+            method: 'POST',
+            url: '/api/v1/users/create/',
+            body: { email: 'testytester@test.com', password: 'testtesttest'},
+            failOnStatusCode: false
+        })
+        cy.request('POST', '/api/v1/users/login/', {
+            email: 'testytester@test.com',
+            password: 'testtesttest'
+        })
+        cy.visit('/home')
   })
     it("will test the structure of the navbar", () => {
         cy.visit("http://localhost:5173");

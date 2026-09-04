@@ -1,10 +1,16 @@
 describe("Test 2", () =>{
-     beforeEach(() => {
-        cy.request('POST', '/api/v1/users/create/', {
-      email: "testytester@test.com",
-      password: "testtesttest"
-    })
-    cy.visit('/home')
+       beforeEach(() => {
+        cy.request ({
+            method: 'POST',
+            url: '/api/v1/users/create/',
+            body: { email: 'testytester@test.com', password: 'testtesttest'},
+            failOnStatusCode: false
+        })
+        cy.request('POST', '/api/v1/users/login/', {
+            email: 'testytester@test.com',
+            password: 'testtesttest'
+        })
+        cy.visit('/home')
   })
 
     it("can navigate to List Page, then back to Home Page", ()=>{
