@@ -28,7 +28,7 @@ describe("Test 2", () =>{
 
         cy.visit('/list')
 
-        cy.get("[href='list']").click()
+        cy.get("[href='/list']").click()
         cy.location().should((location) => {
             expect(location.pathname).to.equal("/list")
         })
