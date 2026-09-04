@@ -47,6 +47,11 @@ jobs:
         working-directory: personal_proj_back
 
       - name: Connect to PostgreSQL
+      # do I run my django-container, after making migrations?
+      # but then I won't be making a table with my information
+      # need to figure out what to do after connecting to PostgreSQL
+      # I want to set up a new table in PostgreSQL
+      # So I can test my cypress tests with said new table
         run: node #Do any env variables use a script to create a new postgresSQL table?
         env:
           DB_HOST: localhost
