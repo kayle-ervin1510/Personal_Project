@@ -59,10 +59,15 @@ class CreateUser(APIView):
     authentication_classes = []
     permission_classes = []
 
+    #
+    def get(self, request):
+        return Response(status=s.HTTP_200_OK)
+    #
+
     def post(self, request):
         data = request.data.copy()
         data['username'] = request.data.get('email')
-        # DON'T CHANGE THE ABOVE - I CAN MAKE A NEW ACCOUNT, AND LOGIN
+        
         
         try:
             new_user = User.objects.create_user(**data)            
@@ -87,7 +92,6 @@ class Login(APIView):
     def post(self, request):
         data = request.data.copy()        
         data['username'] = data.get('email')
-        # DON'T CHANGE THE ABOVE - I CAN MAKE A NEW ACCOUNT, AND LOGIN
         user = authenticate(username=data.get('username'), 
                             password=data.get("password")
                             )
