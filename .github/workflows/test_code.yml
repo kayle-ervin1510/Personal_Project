@@ -72,8 +72,11 @@ jobs:
         run: |
           python manage.py runserver 8000 --noreload &
           python manage.py test tests.test_01_user_signup &
+          yes &
           python manage.py test tests.test_02_user_login &
-          python manage.py test tests.test_03_user_logout
+          yes &
+          python manage.py test tests.test_03_user_logout &
+          yes
         working-directory: personal_proj_back
       
           
