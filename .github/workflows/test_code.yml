@@ -18,7 +18,7 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
     
-    # container: django-containner
+  
 
     services:
       postgres:
@@ -37,11 +37,7 @@ jobs:
       DB_HOST: localhost
       DB_PORT: 5432
       SECRET_KEY: test-secret-key-practice-ci-cd-not-real
-        # options:
-        #   --health-cmd pg_isready
-        #   --health-interval 10s
-        #   --health-timeout 5s
-        #   --health-retries 5
+      
         
         
         
@@ -72,9 +68,7 @@ jobs:
         run: |
           python manage.py runserver 8000 --noreload &
           python manage.py test tests.test_01_user_signup &
-          
           python manage.py test tests.test_02_user_login &
-       
           python manage.py test tests.test_03_user_logout &
         
         working-directory: personal_proj_back
@@ -99,7 +93,6 @@ jobs:
         with:
             working-directory: personal_proj_front
             browser: electron
-           # browser: chrome 
             start: npm run dev
             wait-on: http://localhost:5173/
 
