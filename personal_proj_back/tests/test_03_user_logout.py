@@ -9,7 +9,7 @@ class Test_user_logout(APITestCase):
     def test_003_user_logout(self):
         user = Client()
         sign_up_response = user.post(
-            reverse("signup"),
+            reverse("create"),
             data={"email": "manga@rules.com", "password": "yugioh"},
             content_type="application/json",
         )

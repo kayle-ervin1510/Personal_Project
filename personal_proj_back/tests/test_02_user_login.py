@@ -5,7 +5,7 @@ class Test_user_login_up(TestCase):
     def test_002_user_login_up(self):
         user = Client()
         user.post(
-            reverse("signup"),
+            reverse("create"),
             data = {"email":"je@je.com", "password": "je"},
             content_type = "application/json",
         )
