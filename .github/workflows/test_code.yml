@@ -63,15 +63,22 @@ jobs:
         run: |
           python manage.py migrate
         working-directory: personal_proj_back
-      
-      - name: Start Django server
-        run: |
-          python manage.py runserver 8000 --noreload &
-          python manage.py test tests.test_01_user_signup &
-          python manage.py test tests.test_02_user_login &
-          python manage.py test tests.test_03_user_logout &
-        
+      - name: Run my backend tests
+        run: python manage.py test --noinput
         working-directory: personal_proj_back
+      - name: Start Djnago server
+        run: |
+         python manage.py runserver 8000 --noreload &
+        working-directory: personal_proj_back
+      
+      # - name: Start Django server
+      #   run: |
+      #     python manage.py runserver 8000 --noreload &
+      #     python manage.py test tests.test_01_user_signup &
+      #     python manage.py test tests.test_02_user_login &
+      #     python manage.py test tests.test_03_user_logout &
+        
+        # working-directory: personal_proj_back
       
           
 
