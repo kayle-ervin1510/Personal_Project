@@ -65,7 +65,7 @@ jobs:
         working-directory: personal_proj_back
       - name: Run my backend tests
         run: python manage.py test --noinput
-        working-directory: personal_proj_back
+        working-directory: personal_proj_back/tests
       - name: Start Djnago server
         run: |
          python manage.py runserver 8000 --noreload &
