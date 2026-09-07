@@ -13,7 +13,7 @@ class Test_user_logout(APITestCase):
             data={"email": "manga@rules.com", "password": "yugioh"},
             content_type="application/json",
         )
-        response_body = json.loads(sign_up_response.content)
+        # response_body = json.loads(sign_up_response.content)
         # self(HTTP_AUTHORIZATION=f"Token {response_body['token']}")
         response = self.post(reverse("logout"))
         with self.subTest():

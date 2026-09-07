@@ -156,6 +156,8 @@ class Info(UserView):
         return Response({"email":user.email})
 
 class Logout(UserView):
+    # authentication_classes = [JWTCookieAuthentication]
+    # persmission_classes = [IsAuthenticated]
     def post(self, request):
         raw_refresh = request.COOKIES.get("refresh")
         if raw_refresh:
@@ -163,4 +165,6 @@ class Logout(UserView):
               RefreshToken(raw_refresh).blacklist()
           except TokenError:
               pass
-        return clear_auth_cookies(Response({"detail":"logged out"}))
+        return clear_auth_cookies(Response(
+            {"detail":"logged out"},
+            status=s.HTTP_204_NO_CONTENT))
