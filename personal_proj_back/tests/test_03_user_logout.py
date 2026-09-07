@@ -8,16 +8,21 @@ from rest_framework.authtoken.models import Token
 class Test_user_logout(APITestCase):
     def test_003_user_logout(self):
         user = Client()
-        sign_up_response = user.post(
+        user.post(
             reverse("create"),
             data={"email": "manga@rules.com", "password": "yugioh"},
             content_type="application/json",
         )
+        # response = user.post(
+        # reverse("login"),
+        # data={"email": "je@je.com", "password": "je"},
+        # content_type="application/json",
+        # )
         # response_body = json.loads(sign_up_response.content)
         # self(HTTP_AUTHORIZATION=f"Token {response_body['token']}")
         response = self.post(reverse("logout"))
         with self.subTest():
             tokens = Token.objects.all()
             self.assertEqual(len(tokens), 0)
-        # self.assertEqual(response.status_code, 204)
+        self.assertEqual(response.status_code, 204)
        
