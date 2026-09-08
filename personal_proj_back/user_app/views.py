@@ -59,10 +59,10 @@ class CreateUser(APIView):
     authentication_classes = []
     permission_classes = []
 
-    #
-    def get(self, request):
-        return Response(status=s.HTTP_200_OK)
-    #
+    # # def get is for the tests
+    # def get(self, request):
+    #     return Response(status=s.HTTP_200_OK)
+    # #
 
     def post(self, request):
         data = request.data.copy()
