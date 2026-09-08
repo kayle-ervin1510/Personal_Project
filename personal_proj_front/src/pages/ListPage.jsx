@@ -6,10 +6,10 @@ const ListPage = () =>{
   
   
     const [cat, setCat] = useState(useLoaderData())
-    const [cats, setCats] = useState(useOutletContext())
-    // maybe const [cats, setCats] = useState(useOutletContext())??
-    // og code below
-    // const [cats, setCats] = useState(useLoaderData())
+    // const [cats, setCats] = useState(useOutletContext())
+    // // maybe const [cats, setCats] = useState(useOutletContext())??
+    // // og code below
+    const [cats, setCats] = useState(useLoaderData())
     
     const addHttpCat = (cat) => {
         setCat([...cats, cat])
