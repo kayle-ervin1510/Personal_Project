@@ -4,29 +4,29 @@ services:
         container_name: personal_proj-container
         env_file:
             - ./personal_proj_back/.env
-        ports:
-            - "5431:5432"
+        # ports:
+        #     - "5431:5432"
         volumes:
             - pgdata:/var/lib/postgresql/data
         # for instance:
-        # restart: unless-stopped
+        restart: unless-stopped
     
     backend:
         build: ./personal_proj_back
         container_name: django-container
-        command: sh -c "gunicorn personal_proj_back.wsgi --bind 0.0.0.0:8000 --reload"
+       # command:  sh -c "gunicorn personal_proj_back.wsgi --bind 0.0.0.0:8000 --reload"
         # instance:
-        #command: gunicorn personal_proj_back.wsgi --bind 0.0.0.0:8000
+        command: gunicorn personal_proj_back.wsgi --bind 0.0.0.0:8000
         env_file:
             - ./personal_proj_back/.env
-        ports:
-            - "8000:8000"
-        volumes:
-            - ./personal_proj_back:/app
+        # ports:
+        #     - "8000:8000"
+        # volumes:
+        #     - ./personal_proj_back:/app
         depends_on:
             - db
         # instance
-        # restart: unless-stopped
+        restart: unless-stopped
     
     nginx:
         build: ./personal_proj_front
@@ -41,7 +41,7 @@ services:
         depends_on:
             - backend
         # instance:
-        # restart: unless-stopped
+        restart: unless-stopped
     
 volumes:
     pgdata:
